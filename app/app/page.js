@@ -54,7 +54,7 @@ export default function MainPage() {
         <h1 className="font-display text-3xl text-ink mb-1.5">Tailor your résumé to this job</h1>
         <p className="text-sm text-gray-500 mb-8">Paste the posting, add your résumé, and get a version built for it in under a minute.</p>
 
-                <div className="flex flex-col sm:flex-row gap-4 mb-4">
+        <div className="flex flex-col sm:flex-row gap-4 mb-4">
           <div className="flex-1">
             <label className="text-sm font-medium text-ink">Position title</label>
             <Input className="mt-1.5" placeholder="e.g. Senior Product Manager"
@@ -66,7 +66,7 @@ export default function MainPage() {
                    value={orgName} onChange={e => setOrgName(e.target.value)} />
           </div>
           <div className="flex-1">
-            <label className="text-sm font-medium text-ink">Organization address (optional)</label>
+            <label className="text-sm font-medium text-ink">Org. address (optional)</label>
             <Input className="mt-1.5" placeholder="e.g. 123 Main St, City"
                    value={orgAddress} onChange={e => setOrgAddress(e.target.value)} />
           </div>
