@@ -8,7 +8,7 @@ import ResemyLogo from '@/components/ui/ResemyLogo'
 import { ChevronDown, Menu, X } from 'lucide-react'
 
 const items = [
-  { label: 'New', href: '/' },
+  { label: 'New', href: '/app' },
   { label: 'Search & Downloads', href: '/history' },
   { label: 'Credit Usage', href: '/account/credits' },
   { label: 'For HR Managers', href: '/hr' },
