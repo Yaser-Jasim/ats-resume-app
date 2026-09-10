@@ -1,4 +1,18 @@
 @import "tailwindcss";
+@theme {
+  --color-brand: #1F3864;
+  --color-navy-light: #2C4A7C;
+  --color-navy-dark: #14243D;
+  --color-ink: #14243D;
+  --color-paper: #FAFAF9;
+  --color-mist: #EEF1F5;
+  --color-success: #2E7D32;
+  --color-amber: #B36B00;
+}
+
+body {
+  background-color: var(--color-paper);
+}
 
 :root {
   --background: #ffffff;
@@ -23,4 +37,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
 }
