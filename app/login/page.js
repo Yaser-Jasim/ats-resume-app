@@ -9,14 +9,21 @@ export default function LoginPage() {
   const [agreed, setAgreed] = useState(false)
   const supabase = createClient()
 
-  async function signInWithGoogle() {
+    async function signInWithGoogle() {
     if (!agreed) return
-    await supabase.auth.signInWithOAuth({ provider: 'google' })
+    await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: `${window.location.origin}/app` },
+    })
   }
 
   async function signUpWithEmail() {
     if (!agreed) return
-    const { error } = await supabase.auth.signUp({ email, password })
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { emailRedirectTo: `${window.location.origin}/app` },
+    })
     if (error) alert(error.message)
     else alert('Check your email to confirm your account.')
   }
