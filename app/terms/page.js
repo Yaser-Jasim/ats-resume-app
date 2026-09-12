@@ -2,7 +2,7 @@ export default function TermsPage() {
   return (
       <div className="max-w-3xl mx-auto px-6 py-16 prose-sm text-justify">
       <h1 className="text-3xl font-semibold mb-2">Terms of Service</h1>
-      <p className="text-sm text-gray-500 mb-8">Last updated: [DATE]</p>
+      <p className="text-sm text-gray-500 mb-8">Last updated: September/2026 </p>
 
       <p className="mb-4">
         These Terms of Service ("Terms") govern your access to and use of Resemy
