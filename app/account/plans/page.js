@@ -17,7 +17,7 @@ const PLANS = [
   {
     id: 'pro',
     name: 'Pro',
-    price: '$15',
+    price: '$19',
     period: 'CAD/month',
     tagline: 'For active job seekers',
     priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_PRO,
