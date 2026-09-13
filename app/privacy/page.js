@@ -67,20 +67,20 @@ export default function PrivacyPage() {
         letter for evaluation, your information is processed on that user's instructions, as described above.
         We require HR users of the Service to confirm they have a lawful basis to submit a candidate's information.
         If you are a candidate and have questions about information submitted about you, we recommend contacting
-        the organization that evaluated you directly; you may also contact us at [YOUR SUPPORT EMAIL].
+        the organization that evaluated you directly; you may also contact us at info@getresemy.com.
       </p>
 
       <h2 className="text-xl font-semibold mt-8 mb-2">6. Data Retention</h2>
       <p className="mb-4">
         We retain your account information and generation history for as long as your account is active, so you
         can access your past resumes, cover letters, and evaluations. You can request deletion of your account and
-        associated data at any time by contacting us at [YOUR SUPPORT EMAIL].
+        associated data at any time by contacting us at info@getresemy.com.
       </p>
 
       <h2 className="text-xl font-semibold mt-8 mb-2">7. Your Rights</h2>
       <p className="mb-4">
         Depending on where you live, you may have rights to access, correct, or delete your personal information,
-        or to object to certain processing. To exercise these rights, contact us at [YOUR SUPPORT EMAIL]. We will
+        or to object to certain processing. To exercise these rights, contact us at info@getresemy.com. We will
         respond in accordance with applicable law.
       </p>
 
@@ -117,7 +117,7 @@ export default function PrivacyPage() {
       </p>
 
       <h2 className="text-xl font-semibold mt-8 mb-2">13. Contact</h2>
-      <p className="mb-4">Questions about this policy can be sent to [YOUR SUPPORT EMAIL].</p>
+      <p className="mb-4">Questions about this policy can be sent to info@getresemy.com.</p>
     </div>
   )
 }

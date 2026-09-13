@@ -115,7 +115,7 @@ export default function TermsPage() {
       </p>
 
       <h2 className="text-xl font-semibold mt-8 mb-2">14. Contact</h2>
-      <p className="mb-4">Questions about these Terms can be sent to [YOUR SUPPORT EMAIL].</p>
+      <p className="mb-4">Questions about these Terms can be sent to info@getresemy.com.</p>
     </div>
   )
 }
