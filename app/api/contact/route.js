@@ -9,7 +9,7 @@ export async function POST(req) {
     }
 
     await resend.emails.send({
-      from: 'Resemy Contact <onboarding@resend.dev>',
+      from: 'Resemy Contact <noreply@getresemy.com>',
       to: process.env.ADMIN_EMAIL,
       subject: `New contact form message from ${name}`,
       text: `From: ${name} <${email}>\n\n${message}`,

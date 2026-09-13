@@ -26,7 +26,7 @@ export async function POST(req) {
 
     try {
       await resend.emails.send({
-        from: 'Feedback <onboarding@resend.dev>',
+        from: 'Resemy Feedback <noreply@getresemy.com>',
         to: process.env.ADMIN_EMAIL,
         subject: 'New feedback submitted',
         text: `From: ${user.email}\n\n${message}`,
