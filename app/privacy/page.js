@@ -109,6 +109,11 @@ export default function PrivacyPage() {
         encrypted connections, to protect your information. No method of transmission or storage is 100% secure,
         and we cannot guarantee absolute security.
       </p>
+      <p className="mb-4">
+        If we become aware of a security breach that creates a real risk of significant harm to you, we will
+        notify affected users and any applicable regulatory authorities without unreasonable delay, as required
+        by applicable law.
+      </p>
 
       <h2 className="text-xl font-semibold mt-8 mb-2">12. Changes to This Policy</h2>
       <p className="mb-4">

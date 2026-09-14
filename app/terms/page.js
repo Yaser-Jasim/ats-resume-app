@@ -31,6 +31,13 @@ export default function TermsPage() {
         or hiring outcomes. You are solely responsible for reviewing all AI-generated content for accuracy before
         using, sending, or relying on it.
       </p>
+      <p className="mb-4">
+        While every rewrite is grounded in the resume, job description, or other content you provide, AI-generated
+        text can occasionally echo common phrasing found elsewhere. We do not guarantee that AI-generated content
+        is free of any third-party copyright, trademark, or other intellectual property interest, and you are
+        responsible for reviewing generated content for this before relying on it for any purpose where it matters
+        to you.
+      </p>
 
       <h2 className="text-xl font-semibold mt-8 mb-2">3. Accounts</h2>
       <p className="mb-4">
