@@ -39,6 +39,7 @@ export default function PlansPage() {
   const [userId, setUserId] = useState(null)
   const [currentPlan, setCurrentPlan] = useState('free')
   const [loadingPlan, setLoadingPlan] = useState(null)
+  const [showSuccess, setShowSuccess] = useState(false)
   const supabase = createClient()
 
   useEffect(() => {
@@ -51,7 +52,8 @@ export default function PlansPage() {
     }
     load()
   }, [])
-    useEffect(() => {
+
+  useEffect(() => {
     function handlePageShow(event) {
       if (event.persisted) {
         setLoadingPlan(null)
@@ -59,6 +61,11 @@ export default function PlansPage() {
     }
     window.addEventListener('pageshow', handlePageShow)
     return () => window.removeEventListener('pageshow', handlePageShow)
+  }, [])
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('success') === 'true') setShowSuccess(true)
   }, [])
 
   async function subscribe(plan) {
@@ -86,7 +93,18 @@ export default function PlansPage() {
 
   return (
     <div className="max-w-5xl mx-auto mt-16 px-6 pb-16">
-        <BackButton />
+      <BackButton />
+
+      {showSuccess && (
+        <div className="bg-green-50 border border-green-100 rounded-2xl p-6 mb-8 text-center">
+          <p className="text-lg font-semibold text-green-800 mb-1">Payment successful — you're upgraded!</p>
+          <p className="text-sm text-green-700 mb-4">Head back into the app to start using your new plan.</p>
+          <a href="/app" className="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-b from-navy-light to-brand shadow-[inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-2px_0_rgba(0,0,0,0.15),0_6px_14px_-4px_rgba(20,36,61,0.5)] hover:from-brand hover:to-navy-dark active:translate-y-px transition-all">
+            Go to the app →
+          </a>
+        </div>
+      )}
+
       <h1 className="text-3xl font-semibold text-center mb-2">Subscription Plans</h1>
       <p className="text-center text-gray-500 mb-10">Pick the plan that fits how you're using the app.</p>
 
