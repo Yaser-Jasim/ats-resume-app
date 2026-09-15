@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react'
 import { Check } from 'lucide-react'
 import { createClient } from '@/lib/supabaseClient'
-import BackButton from '@/components/ui/BackButton'
 
 const PLANS = [
   {
@@ -93,7 +92,9 @@ export default function PlansPage() {
 
   return (
     <div className="max-w-5xl mx-auto mt-16 px-6 pb-16">
-      <BackButton />
+      <a href="/app" className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-ink transition-colors mb-4">
+        ← Back to the app
+      </a>
 
       {showSuccess && (
         <div className="bg-green-50 border border-green-100 rounded-2xl p-6 mb-8 text-center">
