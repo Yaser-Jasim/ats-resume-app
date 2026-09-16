@@ -15,8 +15,13 @@ export async function POST(req) {
     const supabase = createServerClient()
     const { data: gen } = await supabase.from('generations').select('*').eq('id', generationId).single()
 
-    if (!gen || gen.user_id !== user.id) {
+        if (!gen || gen.user_id !== user.id) {
       return NextResponse.json({ error: 'Generation not found.' }, { status: 404 })
+    }
+
+    const { data: profile } = await supabase.from('profiles').select('plan').eq('id', user.id).single()
+    if (!profile || profile.plan === 'free') {
+      return NextResponse.json({ error: 'Application emails are a Pro feature. Please upgrade to continue.' }, { status: 402 })
     }
 
     const email = await generateApplicationEmail({
