@@ -50,17 +50,17 @@ export default function MarketingFooter() {
         <div>
           <p className="text-white text-sm font-semibold mb-3">{t.followUs}</p>
           <div className="flex gap-3">
-            <SocialIcon href="#" label="Facebook">
+            <SocialIcon href="https://www.facebook.com/profile.php?id=61594488354438" label="Facebook">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-2.9h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6v1.9H16l-.4 2.9h-2.1v7A10 10 0 0 0 22 12z"/></svg>
             </SocialIcon>
-            <SocialIcon href="#" label="Instagram">
+            <SocialIcon href="https://www.instagram.com/getresemy" label="Instagram">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                 <rect x="3" y="3" width="18" height="18" rx="5"/>
                 <circle cx="12" cy="12" r="4"/>
                 <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/>
               </svg>
             </SocialIcon>
-            <SocialIcon href="#" label="TikTok">
+            <SocialIcon href="https://www.tiktok.com/@getresemy" label="TikTok">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v10.5a3 3 0 1 1-2-2.83V9a5 5 0 1 0 5 5V8.2a6.5 6.5 0 0 0 3 .8V6.5A4.5 4.5 0 0 1 16 3h-2z"/></svg>
             </SocialIcon>
           </div>
