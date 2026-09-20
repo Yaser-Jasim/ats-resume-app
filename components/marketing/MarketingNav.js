@@ -14,6 +14,7 @@ export default function MarketingNav() {
   const links = [
     { label: t.about, href: '/welcome/about' },
     { label: t.services, href: '/welcome/services' },
+    { label: t.forRecruiters, href: '/welcome#recruiters' },
     { label: t.pricing, href: '/account/plans' },
     { label: t.help, href: '/help' },
     { label: t.contact, href: '/welcome/contact' },

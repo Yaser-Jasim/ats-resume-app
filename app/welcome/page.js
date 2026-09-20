@@ -12,6 +12,7 @@ import { CONTENT } from '@/components/marketing/marketingContent'
 export default function WelcomePage() {
   const { lang, dir } = useLanguage()
   const t = CONTENT[lang].home
+  const tHr = CONTENT[lang].services
 
   return (
     <div className="bg-paper" dir={dir}>
@@ -146,6 +147,33 @@ export default function WelcomePage() {
               </FadeIn>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section id="recruiters" className="bg-ink py-20">
+        <div className="max-w-6xl mx-auto px-6">
+          <FadeIn>
+            <p className="text-xs font-semibold text-brand uppercase tracking-wide mb-2">{tHr.hrTitle}</p>
+            <h2 className="font-display text-3xl text-white mb-4">{t.recruitersTitle}</h2>
+            <p className="text-gray-300 max-w-2xl mb-12">{t.recruitersSub}</p>
+          </FadeIn>
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+              <p className="font-semibold text-white mb-1">{tHr.h1t}</p>
+              <p className="text-sm text-gray-300">{tHr.h1d}</p>
+            </div>
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+              <p className="font-semibold text-white mb-1">{tHr.h2t}</p>
+              <p className="text-sm text-gray-300">{tHr.h2d}</p>
+            </div>
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+              <p className="font-semibold text-white mb-1">{tHr.h3t}</p>
+              <p className="text-sm text-gray-300">{tHr.h3d}</p>
+            </div>
+          </div>
+          <Link href="/account/plans" className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-medium text-ink bg-white hover:bg-gray-100 transition-all">
+            {tHr.cta} →
+          </Link>
         </div>
       </section>
 

@@ -1,6 +1,6 @@
 export const CONTENT = {
   en: {
-    nav: { about: 'About Us', services: 'Services', pricing: 'Pricing', help: 'Help', contact: 'Contact', getStarted: 'Get Started' },
+    nav: { about: 'About Us', services: 'Services', pricing: 'Pricing', help: 'Help', contact: 'Contact', getStarted: 'Get Started', forRecruiters: 'For Recruiters' },
     footer: {
       tagline: 'Get past the bots. Get in front of the humans.',
       product: 'Product', services: 'Services', pricing: 'Pricing', tryFree: 'Try it free',
@@ -38,6 +38,8 @@ export const CONTENT = {
       finalTitle: 'Stop getting filtered out.', finalSub: 'Free to start. No credit card required.', finalCta: 'Get Started free',
       globalTitle: 'Made in Canada. Built for the world.',
       globalSub: "Whether you're applying down the street or across the globe, Resemy works the same honest way for everyone — wherever you're headed next.",
+      recruitersTitle: "Screening resumes shouldn't take all day.",
+      recruitersSub: "Resemy evaluates each candidate against the job you're hiring for — so you spend less time reading resumes and more time talking to the right people.",
     },
     about: {
       label: 'About us', title: 'Why we built Resemy',
@@ -71,7 +73,7 @@ export const CONTENT = {
   },
 
   ar: {
-    nav: { about: 'من نحن', services: 'خدماتنا', pricing: 'الأسعار', help: 'المساعدة', contact: 'اتصل بنا', getStarted: 'ابدأ الآن' },
+    nav: { about: 'من نحن', services: 'خدماتنا', pricing: 'الأسعار', help: 'المساعدة', contact: 'اتصل بنا', getStarted: 'ابدأ الآن', forRecruiters: 'للموارد البشرية' },
     footer: {
       tagline: 'تجاوز برامج الفرز. تواصل مباشرة مع البشر.',
       product: 'المنتج', services: 'الخدمات', pricing: 'الأسعار', tryFree: 'جرّبه مجانًا',
@@ -109,6 +111,8 @@ export const CONTENT = {
       finalTitle: 'توقف عن أن تُستبعد.', finalSub: 'مجاني للبدء. لا حاجة إلى بطاقة ائتمان.', finalCta: 'ابدأ مجانًا',
       globalTitle: 'صُنع في كندا، ومصمم للعالم كله.',
       globalSub: 'سواء كنت تتقدم لوظيفة قريبة منك أو في الجهة الأخرى من العالم، يعمل Resemy بنفس الطريقة الصادقة مع الجميع — أينما كانت وجهتك القادمة.',
+      recruitersTitle: 'فرز السير الذاتية لا يجب أن يستغرق اليوم كله.',
+      recruitersSub: 'يقيّم Resemy كل مرشح مقابل الوظيفة التي توظف لها — لتقضي وقتًا أقل في قراءة السير الذاتية ووقتًا أكثر في التحدث مع الأشخاص المناسبين.',
     },
     about: {
       label: 'من نحن', title: 'لماذا أنشأنا Resemy',
@@ -142,7 +146,7 @@ export const CONTENT = {
   },
 
   fr: {
-    nav: { about: 'À propos', services: 'Services', pricing: 'Tarifs', help: 'Aide', contact: 'Contact', getStarted: 'Commencer' },
+    nav: { about: 'À propos', services: 'Services', pricing: 'Tarifs', help: 'Aide', contact: 'Contact', getStarted: 'Commencer', forRecruiters: 'Recruteurs' },
     footer: {
       tagline: 'Passez les bots. Parlez aux humains.',
       product: 'Produit', services: 'Services', pricing: 'Tarifs', tryFree: 'Essayer gratuitement',
@@ -180,6 +184,8 @@ export const CONTENT = {
       finalTitle: 'Ne soyez plus jamais filtré.', finalSub: 'Gratuit pour commencer. Aucune carte bancaire requise.', finalCta: 'Commencer gratuitement',
       globalTitle: 'Conçu au Canada. Fait pour le monde entier.',
       globalSub: "Que vous postuliez tout près de chez vous ou à l'autre bout du monde, Resemy fonctionne de la même façon honnête pour tout le monde — où que vous alliez ensuite.",
+      recruitersTitle: "Trier les CV ne devrait pas prendre toute la journée.",
+      recruitersSub: "Resemy évalue chaque candidat par rapport au poste que vous recrutez — pour que vous passiez moins de temps à lire des CV et plus de temps à parler aux bonnes personnes.",
     },
     about: {
       label: 'À propos', title: 'Pourquoi nous avons créé Resemy',
@@ -213,7 +219,7 @@ export const CONTENT = {
   },
 
   es: {
-    nav: { about: 'Sobre nosotros', services: 'Servicios', pricing: 'Precios', help: 'Ayuda', contact: 'Contacto', getStarted: 'Comenzar' },
+    nav: { about: 'Sobre nosotros', services: 'Servicios', pricing: 'Precios', help: 'Ayuda', contact: 'Contacto', getStarted: 'Comenzar', forRecruiters: 'Reclutadores' },
     footer: {
       tagline: 'Supera a los robots. Llega a los humanos.',
       product: 'Producto', services: 'Servicios', pricing: 'Precios', tryFree: 'Pruébalo gratis',
@@ -251,6 +257,8 @@ export const CONTENT = {
       finalTitle: 'Deja de ser filtrado.', finalSub: 'Gratis para empezar. No se requiere tarjeta de crédito.', finalCta: 'Comenzar gratis',
       globalTitle: 'Hecho en Canadá. Creado para el mundo.',
       globalSub: 'Ya sea que estés postulando cerca de casa o al otro lado del mundo, Resemy funciona de la misma forma honesta para todos — sin importar hacia dónde te dirijas después.',
+      recruitersTitle: 'Filtrar currículums no debería tomar todo el día.',
+      recruitersSub: 'Resemy evalúa a cada candidato frente al puesto que estás contratando, para que dediques menos tiempo a leer currículums y más tiempo a hablar con las personas adecuadas.',
     },
     about: {
       label: 'Sobre nosotros', title: 'Por qué creamos Resemy',
@@ -284,7 +292,7 @@ export const CONTENT = {
   },
 
   pa: {
-    nav: { about: 'ਸਾਡੇ ਬਾਰੇ', services: 'ਸੇਵਾਵਾਂ', pricing: 'ਕੀਮਤਾਂ', help: 'ਮਦਦ', contact: 'ਸੰਪਰਕ ਕਰੋ', getStarted: 'ਸ਼ੁਰੂ ਕਰੋ' },
+    nav: { about: 'ਸਾਡੇ ਬਾਰੇ', services: 'ਸੇਵਾਵਾਂ', pricing: 'ਕੀਮਤਾਂ', help: 'ਮਦਦ', contact: 'ਸੰਪਰਕ ਕਰੋ', getStarted: 'ਸ਼ੁਰੂ ਕਰੋ', forRecruiters: 'ਭਰਤੀਕਾਰਾਂ ਲਈ' },
     footer: {
       tagline: 'ਬੌਟਸ ਨੂੰ ਪਾਰ ਕਰੋ। ਸਿੱਧੇ ਮਨੁੱਖਾਂ ਤੱਕ ਪਹੁੰਚੋ।',
       product: 'ਉਤਪਾਦ', services: 'ਸੇਵਾਵਾਂ', pricing: 'ਕੀਮਤਾਂ', tryFree: 'ਮੁਫ਼ਤ ਅਜ਼ਮਾਓ',
@@ -322,6 +330,8 @@ export const CONTENT = {
       finalTitle: 'ਫਿਲਟਰ ਹੋਣਾ ਬੰਦ ਕਰੋ।', finalSub: 'ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਮੁਫ਼ਤ। ਕਿਸੇ ਕ੍ਰੈਡਿਟ ਕਾਰਡ ਦੀ ਲੋੜ ਨਹੀਂ।', finalCta: 'ਮੁਫ਼ਤ ਸ਼ੁਰੂ ਕਰੋ',
       globalTitle: 'ਕੈਨੇਡਾ ਵਿੱਚ ਬਣਾਇਆ। ਪੂਰੀ ਦੁਨੀਆ ਲਈ ਤਿਆਰ ਕੀਤਾ।',
       globalSub: 'ਭਾਵੇਂ ਤੁਸੀਂ ਆਪਣੇ ਨੇੜੇ ਅਰਜ਼ੀ ਦੇ ਰਹੇ ਹੋ ਜਾਂ ਦੁਨੀਆ ਦੇ ਦੂਜੇ ਪਾਸੇ, Resemy ਹਰ ਕਿਸੇ ਲਈ ਉਸੇ ਇਮਾਨਦਾਰ ਤਰੀਕੇ ਨਾਲ ਕੰਮ ਕਰਦਾ ਹੈ — ਭਾਵੇਂ ਤੁਸੀਂ ਅੱਗੇ ਕਿਤੇ ਵੀ ਜਾ ਰਹੇ ਹੋਵੋ।',
+      recruitersTitle: 'ਰੈਜ਼ਿਊਮੇ ਛਾਂਟਣ ਵਿੱਚ ਪੂਰਾ ਦਿਨ ਨਹੀਂ ਲੱਗਣਾ ਚਾਹੀਦਾ।',
+      recruitersSub: 'Resemy ਹਰ ਉਮੀਦਵਾਰ ਦਾ ਮੁਲਾਂਕਣ ਉਸ ਨੌਕਰੀ ਦੇ ਮੁਕਾਬਲੇ ਕਰਦਾ ਹੈ ਜਿਸ ਲਈ ਤੁਸੀਂ ਭਰਤੀ ਕਰ ਰਹੇ ਹੋ — ਤਾਂ ਜੋ ਤੁਸੀਂ ਰੈਜ਼ਿਊਮੇ ਪੜ੍ਹਨ ਵਿੱਚ ਘੱਟ ਸਮਾਂ ਅਤੇ ਸਹੀ ਲੋਕਾਂ ਨਾਲ ਗੱਲ ਕਰਨ ਵਿੱਚ ਵੱਧ ਸਮਾਂ ਬਿਤਾਓ।',
     },
     about: {
       label: 'ਸਾਡੇ ਬਾਰੇ', title: 'ਅਸੀਂ Resemy ਕਿਉਂ ਬਣਾਇਆ',
@@ -355,7 +365,7 @@ export const CONTENT = {
   },
 
   zh: {
-    nav: { about: '关于我们', services: '我们的服务', pricing: '价格', help: '帮助', contact: '联系我们', getStarted: '立即开始' },
+    nav: { about: '关于我们', services: '我们的服务', pricing: '价格', help: '帮助', contact: '联系我们', getStarted: '立即开始', forRecruiters: '招聘方' },
     footer: {
       tagline: '跳过筛选机器人，直接触达真人招聘者。',
       product: '产品', services: '服务', pricing: '价格', tryFree: '免费试用',
@@ -393,6 +403,8 @@ export const CONTENT = {
       finalTitle: '不要再被系统过滤掉了。', finalSub: '免费开始，无需信用卡。', finalCta: '免费开始',
       globalTitle: '源自加拿大，为全世界而生。',
       globalSub: '无论您是在家门口求职，还是申请远在地球另一端的职位，Resemy 都以同样诚实的方式为每一个人服务——无论您的下一站在哪里。',
+      recruitersTitle: '筛选简历不该占用一整天。',
+      recruitersSub: 'Resemy 会根据您要招聘的职位对每位候选人进行评估——让您少花时间阅读简历，多花时间与合适的人交流。',
     },
     about: {
       label: '关于我们', title: '我们为什么创办 Resemy',
