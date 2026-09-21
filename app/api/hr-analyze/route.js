@@ -13,8 +13,12 @@ export async function POST(req) {
     }
 
     const supabase = createServerClient()
-    const { data: profile } = await supabase.from('profiles').select('plan').eq('id', user.id).single()
-    if (profile?.plan !== 'hr') {
+    const { data: profile } = await supabase.from('profiles').select('plan, hr_trial_started, hr_trial_used').eq('id', user.id).single()
+
+    const hasFullAccess = profile?.plan === 'hr'
+    const hasTrialAccess = profile?.hr_trial_started && !profile?.hr_trial_used
+
+    if (!hasFullAccess && !hasTrialAccess) {
       return NextResponse.json({ error: 'This feature requires the HR / Recruiter plan.' }, { status: 402 })
     }
 
@@ -52,6 +56,10 @@ export async function POST(req) {
     }).select().single()
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+
+    if (!hasFullAccess && hasTrialAccess) {
+      await supabase.from('profiles').update({ hr_trial_used: true }).eq('id', user.id)
+    }
 
     return NextResponse.json({ evaluationId: data.id })
   } catch (err) {

@@ -52,20 +52,34 @@ export default function HRPage() {
   const [jobDescription, setJobDescription] = useState('')
   const [resumeFile, setResumeFile] = useState(null)
   const [coverLetterFile, setCoverLetterFile] = useState(null)
-  const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
+  const [trialUsed, setTrialUsed] = useState(false)
+  const [startingTrial, setStartingTrial] = useState(false)
 
   useEffect(() => {
     async function check() {
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) { setChecking(false); return }
       setLoggedIn(true)
-      const { data: profile } = await supabase.from('profiles').select('plan').eq('id', user.id).single()
-      setHasAccess(profile?.plan === 'hr')
+      const { data: profile } = await supabase.from('profiles').select('plan, hr_trial_started, hr_trial_used').eq('id', user.id).single()
+      const hasFullAccess = profile?.plan === 'hr'
+      const hasTrialAccess = profile?.hr_trial_started && !profile?.hr_trial_used
+      setHasAccess(hasFullAccess || hasTrialAccess)
+      setTrialUsed(profile?.hr_trial_started && profile?.hr_trial_used)
       setChecking(false)
     }
     check()
   }, [])
+
+  async function startTrial() {
+    setStartingTrial(true)
+    const res = await fetch('/api/start-hr-trial', { method: 'POST' })
+    const data = await res.json()
+    setStartingTrial(false)
+    if (!res.ok) { setErrorMsg(data.error || 'Could not start your free trial.'); return }
+    setHasAccess(true)
+  }
 
   async function handleAnalyze() {
     setLoading(true)
@@ -108,7 +122,7 @@ export default function HRPage() {
     )
   }
 
-  if (!hasAccess) {
+    if (!hasAccess) {
     return (
       <div className="flex">
         <Sidebar />
@@ -119,7 +133,20 @@ export default function HRPage() {
             Screen candidates against a job posting in seconds — ATS score, manager-fit score, strengths, weaknesses,
             missing requirements, and a downloadable assessment report. This is included with the HR / Recruiter plan.
           </p>
-          <Button onClick={() => router.push('/account/plans')}>View the HR / Recruiter plan</Button>
+          {errorMsg && <p className="text-red-600 text-sm mb-4">{errorMsg}</p>}
+          {trialUsed ? (
+            <>
+              <p className="text-sm text-gray-600 mb-4">You've used your free evaluation. Subscribe to keep evaluating candidates.</p>
+              <Button onClick={() => router.push('/account/plans')}>View the HR / Recruiter plan</Button>
+            </>
+          ) : (
+            <div className="flex gap-3">
+              <Button onClick={startTrial} disabled={startingTrial}>
+                {startingTrial ? 'Starting…' : 'Try 1 evaluation free'}
+              </Button>
+              <Button onClick={() => router.push('/account/plans')}>View the HR / Recruiter plan</Button>
+            </div>
+          )}
         </main>
       </div>
     )
