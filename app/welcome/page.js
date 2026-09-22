@@ -171,7 +171,7 @@ export default function WelcomePage() {
               <p className="text-sm text-gray-300">{tHr.h3d}</p>
             </div>
           </div>
-          <Link href="/account/plans" className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-medium text-ink bg-white hover:bg-gray-100 transition-all">
+            <Link href="/hr" className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-medium text-ink bg-white hover:bg-gray-100 transition-all">
             {tHr.cta} →
           </Link>
         </div>
