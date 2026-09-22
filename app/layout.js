@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
 import { Analytics } from '@vercel/analytics/next'
 import Script from 'next/script'
+import VersionBadge from '@/components/VersionBadge'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +29,8 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}
+        <body className="min-h-full flex flex-col">{children}
+        <VersionBadge />
         <Analytics />
                 <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-S6XY4Y1J22"
