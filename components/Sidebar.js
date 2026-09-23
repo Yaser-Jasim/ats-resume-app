@@ -114,7 +114,9 @@ function AccountMenu() {
 
   const email = user?.email
   const photoUrl = user?.user_metadata?.avatar_url || user?.user_metadata?.picture
-  const name = user?.user_metadata?.full_name
+  const firstName = user?.user_metadata?.first_name
+  const lastName = user?.user_metadata?.last_name
+  const name = user?.user_metadata?.full_name || [firstName, lastName].filter(Boolean).join(' ') || null
 
   return (
     <div className="relative border-t border-gray-100 pt-3" ref={menuRef}>
@@ -126,8 +128,11 @@ function AccountMenu() {
       </button>
       {open && (
         <div className="absolute bottom-14 left-0 bg-white border border-gray-100 rounded-xl shadow-[0_8px_24px_-8px_rgba(20,36,61,0.2)] w-52 py-1.5 text-sm z-10">
-          {email ? (
+            {email ? (
             <>
+              {name && (
+                <div className="px-3.5 py-2 text-sm font-semibold text-ink border-b border-gray-100 mb-1 truncate">{name}</div>
+              )}
               <a href="/account" className="block px-3.5 py-2 hover:bg-mist rounded-lg mx-1.5">Account Information</a>
               <a href="/account/plans" className="block px-3.5 py-2 hover:bg-mist rounded-lg mx-1.5">Subscription Plans</a>
               <a href="/account#location" className="block px-3.5 py-2 hover:bg-mist rounded-lg mx-1.5">Location (Address)</a>

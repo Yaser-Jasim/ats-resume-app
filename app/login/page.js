@@ -5,7 +5,9 @@ import { createClient } from '@/lib/supabaseClient'
 import ResemyLogo from '@/components/ui/ResemyLogo'
 
 export default function LoginPage() {
-  const [mode, setMode] = useState('signup')
+    const [mode, setMode] = useState('signup')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [agreed, setAgreed] = useState(false)
@@ -16,6 +18,7 @@ export default function LoginPage() {
   const router = useRouter()
 
   const needsAgreement = mode === 'signup'
+  const missingName = mode === 'signup' && (!firstName.trim() || !lastName.trim())
 
   async function signInWithGoogle() {
     if (needsAgreement && !agreed) return
@@ -28,14 +31,18 @@ export default function LoginPage() {
   async function handleEmailSubmit() {
     setError('')
     setMessage('')
-    if (needsAgreement && !agreed) return
+        if (needsAgreement && !agreed) return
+    if (missingName) { setError('Please enter your first and last name.'); return }
     setLoading(true)
 
     if (mode === 'signup') {
       const { error } = await supabase.auth.signUp({
         email,
         password,
-        options: { emailRedirectTo: `${window.location.origin}/app` },
+        options: {
+          emailRedirectTo: `${window.location.origin}/app`,
+          data: { first_name: firstName.trim(), last_name: lastName.trim() },
+        },
       })
       setLoading(false)
       if (error) setError(error.message)
@@ -48,8 +55,8 @@ export default function LoginPage() {
     }
   }
 
-  return (
-    <div className="max-w-sm mx-auto mt-24 space-y-4">
+    return (
+    <div className="max-w-sm mx-auto mt-24 px-4 space-y-4">
       <div className="flex items-center justify-center gap-2 mb-2">
         <ResemyLogo size={40} />
         <span className="font-display text-2xl font-medium text-ink">Resemy</span>
@@ -70,6 +77,12 @@ export default function LoginPage() {
         </button>
       </div>
 
+            {mode === 'signup' && (
+        <div className="flex gap-3">
+          <input className="border p-2 w-full rounded" placeholder="First name" value={firstName} onChange={e => setFirstName(e.target.value)} />
+          <input className="border p-2 w-full rounded" placeholder="Last name" value={lastName} onChange={e => setLastName(e.target.value)} />
+        </div>
+      )}
       <input className="border p-2 w-full rounded" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
       <input className="border p-2 w-full rounded" placeholder="Password" type="password" value={password} onChange={e => setPassword(e.target.value)} />
 
@@ -93,7 +106,7 @@ export default function LoginPage() {
       {error && <p className="text-red-600 text-sm">{error}</p>}
       {message && <p className="text-green-700 text-sm">{message}</p>}
 
-      <button onClick={handleEmailSubmit} disabled={(needsAgreement && !agreed) || loading}
+        <button onClick={handleEmailSubmit} disabled={(needsAgreement && !agreed) || missingName || loading}
               className="w-full inline-flex items-center justify-center gap-2 rounded-xl py-2.5 text-sm font-medium text-white bg-gradient-to-b from-navy-light to-brand shadow-[inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-2px_0_rgba(0,0,0,0.15),0_6px_14px_-4px_rgba(20,36,61,0.5)] hover:from-brand hover:to-navy-dark active:translate-y-px transition-all disabled:opacity-40 disabled:cursor-not-allowed">
         {loading ? 'Please wait…' : mode === 'signup' ? 'Create account' : 'Log in'}
       </button>
