@@ -39,7 +39,7 @@ export default function LoginPage() {
       })
       setLoading(false)
       if (error) setError(error.message)
-      else setMessage('Check your email to confirm your account.')
+      else setMessage('Check your email to confirm your account — if you don\'t see it in a minute, check your spam or junk folder.')
     } else {
       const { error } = await supabase.auth.signInWithPassword({ email, password })
       setLoading(false)
