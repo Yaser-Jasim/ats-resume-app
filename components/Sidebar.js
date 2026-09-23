@@ -44,7 +44,7 @@ export default function Sidebar() {
       )}
 
       <aside
-        className={`fixed md:relative top-0 md:top-auto left-0 md:left-auto h-screen w-64 md:w-60 z-50 md:z-0
+          className={`fixed md:relative top-0 md:top-auto left-0 md:left-auto h-dvh w-64 md:w-60 z-50 md:z-0
           border-r border-gray-100 bg-paper p-4 flex flex-col justify-between
           transform transition-transform duration-300 ease-in-out
           ${mobileOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
