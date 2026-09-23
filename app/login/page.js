@@ -36,7 +36,7 @@ export default function LoginPage() {
     setLoading(true)
 
     if (mode === 'signup') {
-      const { error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
@@ -45,8 +45,13 @@ export default function LoginPage() {
         },
       })
       setLoading(false)
-      if (error) setError(error.message)
-      else setMessage('Check your email to confirm your account — if you don\'t see it in a minute, check your spam or junk folder.')
+      if (error) {
+        setError(error.message)
+      } else if (data?.user?.identities?.length === 0) {
+        setError('An account with this email already exists. Try logging in instead.')
+      } else {
+        setMessage('Check your email to confirm your account — if you don\'t see it in a minute, check your spam or junk folder.')
+      }
     } else {
       const { error } = await supabase.auth.signInWithPassword({ email, password })
       setLoading(false)
