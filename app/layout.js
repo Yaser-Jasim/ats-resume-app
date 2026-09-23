@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import Script from 'next/script'
 import VersionBadge from '@/components/VersionBadge'
 
@@ -32,6 +33,8 @@ export default function RootLayout({ children }) {
         <body className="min-h-full flex flex-col">{children}
         <VersionBadge />
         <Analytics />
+        
+        <SpeedInsights />
                 <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-S6XY4Y1J22"
           strategy="afterInteractive"
