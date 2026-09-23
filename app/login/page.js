@@ -112,7 +112,7 @@ export default function LoginPage() {
       {message && <p className="text-green-700 text-sm">{message}</p>}
 
         <button onClick={handleEmailSubmit} disabled={(needsAgreement && !agreed) || missingName || loading}
-              className="w-full inline-flex items-center justify-center gap-2 rounded-xl py-2.5 text-sm font-medium text-white bg-gradient-to-b from-navy-light to-brand shadow-[inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-2px_0_rgba(0,0,0,0.15),0_6px_14px_-4px_rgba(20,36,61,0.5)] hover:from-brand hover:to-navy-dark active:translate-y-px transition-all disabled:opacity-40 disabled:cursor-not-allowed">
+              className="w-full inline-flex items-center justify-center gap-2 rounded-xl py-2.5 text-sm font-medium text-white bg-gradient-to-b from-orange-400 to-orange-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-2px_0_rgba(0,0,0,0.15),0_6px_14px_-4px_rgba(234,88,12,0.5)] hover:from-orange-500 hover:to-orange-700 active:translate-y-px active:shadow-[inset_0_1px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(0,0,0,0.15),0_2px_6px_-2px_rgba(234,88,12,0.5)] transition-all disabled:opacity-40 disabled:cursor-not-allowed">
         {loading ? 'Please wait…' : mode === 'signup' ? 'Create account' : 'Log in'}
       </button>
       <button onClick={signInWithGoogle} disabled={needsAgreement && !agreed}
