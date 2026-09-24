@@ -7,6 +7,7 @@ import DownloadButton from '@/components/DownloadButton'
 import ApplicationEmailButton from '@/components/ApplicationEmailButton'
 import ReferenceLetterButton from '@/components/ReferenceLetterButton'
 import InterviewPrepView from '@/components/InterviewPrepView'
+import RefineResumeButton from '@/components/RefineResumeButton'
 
 export default async function ResultPage({ params }) {
   const { generationId } = await params
@@ -91,7 +92,11 @@ export default async function ResultPage({ params }) {
                 {r.missing_keywords?.length > 0 && (
                   <p><span className="font-medium text-amber-700">Still missing: </span>{r.missing_keywords.join(', ')}</p>
                 )}
-              </div>
+                            </div>
+            )}
+
+            {r.missing_keywords?.length > 0 && (
+              <RefineResumeButton generationId={gen.id} missingKeywords={r.missing_keywords} />
             )}
 
             <div className="pt-2">
