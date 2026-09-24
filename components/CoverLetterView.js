@@ -7,21 +7,30 @@ export default function CoverLetterView({ generationId, initialCoverLetter }) {
   const [loading, setLoading] = useState(!initialCoverLetter)
   const [error, setError] = useState('')
 
-  useEffect(() => {
-    if (initialCoverLetter) return
+    useEffect(() => {
+    setCoverLetter(initialCoverLetter || '')
+    if (initialCoverLetter) {
+      setLoading(false)
+      return
+    }
     generate()
-  }, [])
+  }, [generationId, initialCoverLetter])
 
   async function generate() {
     setLoading(true)
     setError('')
     try {
-      const res = await fetch('/api/generate-cover-letter', {
+            const res = await fetch('/api/generate-cover-letter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ generationId }),
       })
-      const data = await res.json()
+      let data
+      try {
+        data = await res.json()
+      } catch {
+        throw new Error('Connection error — please try again.')
+      }
       if (!res.ok) throw new Error(data.error || 'Failed to generate cover letter.')
       setCoverLetter(data.coverLetter)
     } catch (err) {

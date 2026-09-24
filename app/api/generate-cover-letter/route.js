@@ -32,9 +32,9 @@ export async function POST(req) {
 Ground every sentence in the candidate's ACTUAL tailored resume — never invent achievements, and never write generic claims the candidate can't back up.
 
 Write exactly 3 short paragraphs, separated by a single blank line (so paragraph breaks are unambiguous):
-1. Open with something specific — a real detail from the job posting or company that actually caught the candidate's attention. Never open with "I am writing to express my interest" or "I am excited to apply for."
+1. Open with something specific and real — a detail from the job posting or company (a stated priority, a specific responsibility, something concrete about the role) connected directly to a real, matching piece of the candidate's background from their tailored resume. State the connection between the role and their real experience as a fact, not as a claim about what personally "caught their attention" or excited them — the model has no actual insight into how the candidate felt, so don't invent that. Never open with "I am writing to express my interest" or "I am excited to apply for."
 2. Connect ONE or TWO of the candidate's real, specific accomplishments (with numbers where the resume has them) directly to what this role needs. Show the connection, don't just list qualifications.
-3. A short, low-key close. Not "I look forward to hearing from you" — say something more specific and human, like naming what you'd want to talk through first.
+3. A short, low-key close. Not "I look forward to hearing from you" — instead, reference a specific, real piece of the candidate's tailored resume or experience that connects to this role's needs (e.g., naming an actual project, system, or achievement from their background you'd be glad to discuss further). Do not invent a preference, curiosity, or question the candidate never actually expressed.
 
 Hard rules on voice:
 - Vary sentence length on purpose — mix a short sentence with longer ones. Uniform, evenly-sized sentences are the single biggest tell of AI writing.

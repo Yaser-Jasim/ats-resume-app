@@ -39,12 +39,16 @@ export async function POST(req) {
       additionalCandidateNotes,
     })
 
-    const { error: updateError } = await supabase
+      const { error: updateError } = await supabase
       .from('generations')
       .update({
         tailored_json: tailored,
         ats_score: tailored.ats_score,
         manager_score: tailored.manager_score,
+        cover_letter: null,
+        application_email: null,
+        reference_letter: null,
+        interview_prep: null,
       })
       .eq('id', generationId)
 

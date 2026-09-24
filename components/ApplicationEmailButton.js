@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function ApplicationEmailButton({ generationId, initialEmail, locked }) {
   const [email, setEmail] = useState(initialEmail || null)
@@ -7,16 +7,25 @@ export default function ApplicationEmailButton({ generationId, initialEmail, loc
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
 
+  useEffect(() => {
+  setEmail(initialEmail || null)
+}, [generationId, initialEmail])
+
   async function generate() {
     setLoading(true)
     setError('')
     try {
-      const res = await fetch('/api/generate-application-email', {
+            const res = await fetch('/api/generate-application-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ generationId }),
       })
-      const data = await res.json()
+      let data
+      try {
+        data = await res.json()
+      } catch {
+        throw new Error('Connection error — please try again.')
+      }
       if (!res.ok) throw new Error(data.error || 'Failed to generate email.')
       setEmail(data.email)
     } catch (err) {

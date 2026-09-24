@@ -1,21 +1,30 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function ReferenceLetterButton({ generationId, initialLetter, locked }) {
   const [ready, setReady] = useState(!!initialLetter)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
+  useEffect(() => {
+  setReady(!!initialLetter)
+}, [generationId, initialLetter])
+
   async function generate() {
     setLoading(true)
     setError('')
     try {
-      const res = await fetch('/api/generate-reference-letter', {
+            const res = await fetch('/api/generate-reference-letter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ generationId }),
       })
-      const data = await res.json()
+      let data
+      try {
+        data = await res.json()
+      } catch {
+        throw new Error('Connection error — please try again.')
+      }
       if (!res.ok) throw new Error(data.error || 'Failed to generate letter.')
       setReady(true)
     } catch (err) {

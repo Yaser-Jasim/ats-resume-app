@@ -1,21 +1,30 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function InterviewPrepView({ generationId, initialPrep, locked }) {
   const [ready, setReady] = useState(!!initialPrep)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
+  useEffect(() => {
+  setReady(!!initialPrep)
+}, [generationId, initialPrep])
+
   async function generate() {
     setLoading(true)
     setError('')
     try {
-      const res = await fetch('/api/generate-interview-prep', {
+            const res = await fetch('/api/generate-interview-prep', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ generationId }),
       })
-      const data = await res.json()
+      let data
+      try {
+        data = await res.json()
+      } catch {
+        throw new Error('Connection error — please try again.')
+      }
       if (!res.ok) throw new Error(data.error || 'Failed to generate interview prep.')
       setReady(true)
     } catch (err) {
