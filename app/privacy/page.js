@@ -5,7 +5,7 @@ export default function PrivacyPage() {
       <p className="text-sm text-gray-500 mb-8">Last updated: September/2026 </p>
 
       <p className="mb-4">
-        This Privacy Policy explains how Resemy ("we," "us," "our") collects, uses, and shares
+        This Privacy Policy explains how Resemy Solutions ("we," "us," "our") collects, uses, and shares
         information when you use Resemy (the "Service").
       </p>
 

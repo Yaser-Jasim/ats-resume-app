@@ -6,7 +6,7 @@ export default function TermsPage() {
 
       <p className="mb-4">
         These Terms of Service ("Terms") govern your access to and use of Resemy
-        (the "Service"), operated by Resemy ("we," "us," "our").
+        (the "Service"), operated by Resemy Solutions ("we," "us," "our").
         By creating an account or using the Service, you agree to these Terms. If you do not agree, do not use the Service.
       </p>
 
