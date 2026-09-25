@@ -1,10 +1,49 @@
 'use client'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import ResemyLogo from '@/components/ui/ResemyLogo'
-import { Menu, X, Languages } from 'lucide-react'
+import { Menu, X, Languages, ChevronDown } from 'lucide-react'
 import { useLanguage, LANGUAGES } from './LanguageContext'
 import { CONTENT } from './marketingContent'
+
+function ContactDropdown({ contactLabel, feedbackLabel, dir }) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-1 text-sm text-gray-600 hover:text-ink transition-colors"
+      >
+        {contactLabel}
+        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+      {open && (
+        <div
+          className={`absolute top-full mt-2 ${dir === 'rtl' ? 'right-0' : 'left-0'} bg-white border border-gray-100 rounded-xl shadow-[0_8px_24px_-8px_rgba(20,36,61,0.2)] w-44 py-1.5 text-sm z-50`}
+        >
+          <Link href="/welcome/contact" onClick={() => setOpen(false)} className="block px-3.5 py-2 hover:bg-mist rounded-lg mx-1.5">
+            {contactLabel}
+          </Link>
+          <Link href="/feedback" onClick={() => setOpen(false)} className="block px-3.5 py-2 hover:bg-mist rounded-lg mx-1.5">
+            {feedbackLabel}
+          </Link>
+        </div>
+      )}
+    </div>
+  )
+}
 
 export default function MarketingNav() {
   const [open, setOpen] = useState(false)
@@ -17,7 +56,6 @@ export default function MarketingNav() {
     { label: t.forRecruiters, href: '/welcome#recruiters' },
     { label: t.pricing, href: '/account/plans' },
     { label: t.help, href: '/help' },
-    { label: t.contact, href: '/welcome/contact' },
   ]
 
   return (
@@ -34,6 +72,7 @@ export default function MarketingNav() {
               {l.label}
             </Link>
           ))}
+          <ContactDropdown contactLabel={t.contact} feedbackLabel={t.feedback} dir={dir} />
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
@@ -68,6 +107,12 @@ export default function MarketingNav() {
               {l.label}
             </Link>
           ))}
+          <Link href="/welcome/contact" onClick={() => setOpen(false)} className="block text-sm text-gray-700">
+            {t.contact}
+          </Link>
+          <Link href="/feedback" onClick={() => setOpen(false)} className="block text-sm text-gray-700">
+            {t.feedback}
+          </Link>
           <select
             value={lang}
             onChange={e => setLang(e.target.value)}
