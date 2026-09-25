@@ -29,7 +29,7 @@ export default function MarketingFooter() {
           <p className="text-sm text-gray-400">
             Email: <a href="mailto:info@getresemy.com" className="hover:text-white">info@getresemy.com</a>
           </p>
-          <p className="text-xs text-gray-500 mt-3">Resemy Solutions (Resemy) is a BC registered company.</p>
+          <p className="text-xs text-gray-500 mt-3">Resemy Solutions (Resemy) is a registered business in British Columbia, Canada.</p>
         </div>
 
         <div>
