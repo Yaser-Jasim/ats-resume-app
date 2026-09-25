@@ -69,7 +69,10 @@ export default function Sidebar() {
             ))}
           </nav>
         </div>
-        <AccountMenu />
+          <div>
+          <AccountMenu />
+          <p className="text-[10px] text-gray-400 text-center mt-2 px-2">Resemy Solutions (Resemy) is a BC registered company.</p>
+        </div>
       </aside>
     </>
   )

@@ -20,12 +20,16 @@ export default function MarketingFooter() {
   return (
     <footer dir={dir} className="bg-ink text-gray-300">
       <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-4 gap-10">
-        <div>
+          <div>
           <div className="flex items-center gap-2 mb-3">
             <ResemyLogo size={28} />
             <span className="font-display text-lg text-white">Resemy</span>
           </div>
-          <p className="text-sm text-gray-400">{t.tagline}</p>
+          <p className="text-sm text-gray-400 mb-3">{t.tagline}</p>
+          <p className="text-sm text-gray-400">
+            Email: <a href="mailto:info@getresemy.com" className="hover:text-white">info@getresemy.com</a>
+          </p>
+          <p className="text-xs text-gray-500 mt-3">Resemy Solutions (Resemy) is a BC registered company.</p>
         </div>
 
         <div>
