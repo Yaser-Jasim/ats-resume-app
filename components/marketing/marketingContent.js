@@ -41,11 +41,11 @@ export const CONTENT = {
       recruitersTitle: "Screening resumes shouldn't take all day.",
       recruitersSub: "Resemy evaluates each candidate against the job you're hiring for — so you spend less time reading resumes and more time talking to the right people.",
     },
-    about: {
-      label: 'About us', title: 'Why we built Resemy',
-      p1: "Somewhere between sending an application and never hearing back, a real, qualified person gets filtered out by software they never even knew was reading their résumé. That gap — between being capable and being seen — is what Resemy exists to close.",
-      p2: "We started Resemy because too many strong candidates were being turned away not for lack of skill, but for lack of the exact words a piece of filtering software happened to be looking for. We believed that gap was worth closing — honestly, without ever inventing experience someone doesn't have.",
-      p3: "Every rewrite Resemy produces is grounded in what's actually on your résumé — never fabricated achievements, never invented scope. We'd rather show you an honest gap than a dishonest score.",
+        about: {
+      label: 'About us', title: 'About Resemy',
+      p1: "Resemy Solutions is a new company, registered in British Columbia, Canada. We started with a pattern we kept seeing in job searches: talented people either stuff their resume with keywords they can't back up to get past the ATS, or they don't tailor it at all and get filtered out anyway. Neither one works.",
+      p2: "Resemy, our first product, takes a different approach. It rewrites your resume to genuinely match a job description — using your real experience, reworded and reorganized around what the posting actually asks for — without inventing a skill, employer, or achievement that isn't yours. You can see it working: your match score improves from your original resume to the tailored one, honestly.",
+      p3: "This is our starting point, not the finish line — we're actively building the next set of tools on the same principle: help you present your real experience in the strongest possible light, never a fabricated one. If Resemy helps you land an interview, we'd love to hear about it — we're small enough right now that your feedback shapes what we build next.",
     },
     services: {
       label: 'Our services', title: 'One tool, two sides of hiring',
@@ -114,11 +114,11 @@ export const CONTENT = {
       recruitersTitle: 'فرز السير الذاتية لا يجب أن يستغرق اليوم كله.',
       recruitersSub: 'يقيّم Resemy كل مرشح مقابل الوظيفة التي توظف لها — لتقضي وقتًا أقل في قراءة السير الذاتية ووقتًا أكثر في التحدث مع الأشخاص المناسبين.',
     },
-    about: {
-      label: 'من نحن', title: 'لماذا أنشأنا Resemy',
-      p1: 'في مكان ما بين إرسال طلب التوظيف وعدم تلقي أي رد، يُستبعد شخص مؤهل فعليًا بواسطة برنامج لم يكن يعلم حتى أنه يقرأ سيرته الذاتية. هذه الفجوة — بين أن تكون كفؤًا وأن تُرى فعلاً — هي ما وُجد Resemy لسدّها.',
-      p2: 'أنشأنا Resemy لأن الكثير من المرشحين الأكفاء كانوا يُستبعدون ليس بسبب نقص المهارة، بل بسبب عدم وجود الكلمات الدقيقة التي كان برنامج الفرز يبحث عنها. رأينا أن هذه الفجوة تستحق أن تُسدّ — بصدق، دون اختلاق أي خبرة لا يملكها الشخص.',
-      p3: 'كل إعادة كتابة ينتجها Resemy مبنية على ما هو موجود فعليًا في سيرتك الذاتية — لا إنجازات مُختلَقة أبدًا، ولا نطاق عمل مُبالَغ فيه. نُفضّل أن نُظهر لك فجوة صادقة على أن نمنحك درجة غير صادقة.',
+        about: {
+      label: 'من نحن', title: 'عن Resemy',
+      p1: 'شركة Resemy Solutions هي شركة جديدة، مسجّلة في مقاطعة كولومبيا البريطانية، كندا. بدأنا لأننا لاحظنا نمطًا متكررًا في عمليات البحث عن عمل: فإما أن يحشو المرشحون المؤهلون سيرهم الذاتية بكلمات مفتاحية لا يملكون خبرة حقيقية تدعمها لتجاوز أنظمة تتبع المتقدمين (ATS)، أو لا يخصصون سيرهم الذاتية على الإطلاق فيتم استبعادهم على أي حال. لا يُجدي أي من الخيارين نفعًا.',
+      p2: 'يتّبع Resemy، منتجنا الأول، نهجًا مختلفًا. فهو يعيد كتابة سيرتك الذاتية لتطابق إعلانًا وظيفيًا معينًا بصدق — باستخدام خبرتك الحقيقية، معاد صياغتها وتنظيمها وفق ما يطلبه الإعلان فعليًا — دون اختلاق مهارة أو جهة عمل أو إنجاز لا تملكه. ويمكنك أن ترى ذلك بنفسك: تتحسن درجة التطابق من سيرتك الذاتية الأصلية إلى النسخة المخصصة، بصدق تام.',
+      p3: 'هذه نقطة انطلاقنا، لا خط النهاية — فنحن نعمل بنشاط على تطوير مجموعة أدوات جديدة تقوم على المبدأ نفسه: مساعدتك على عرض خبرتك الحقيقية بأقوى صورة ممكنة، دون اختلاق أي شيء أبدًا. وإذا ساعدك Resemy في الحصول على مقابلة عمل، يسعدنا أن نسمع ذلك منك — فنحن لا نزال صغيرين بما يكفي ليُشكّل رأيك ما سنبنيه لاحقًا.',
     },
     services: {
       label: 'خدماتنا', title: 'أداة واحدة، لوجهي التوظيف',
@@ -187,11 +187,11 @@ export const CONTENT = {
       recruitersTitle: "Trier les CV ne devrait pas prendre toute la journée.",
       recruitersSub: "Resemy évalue chaque candidat par rapport au poste que vous recrutez — pour que vous passiez moins de temps à lire des CV et plus de temps à parler aux bonnes personnes.",
     },
-    about: {
-      label: 'À propos', title: 'Pourquoi nous avons créé Resemy',
-      p1: "Entre l'envoi d'une candidature et l'absence de réponse, une personne réellement qualifiée se fait souvent filtrer par un logiciel dont elle ignorait même l'existence. C'est cet écart — entre être compétent et être vu — que Resemy existe pour combler.",
-      p2: "Nous avons créé Resemy parce que trop de bons candidats étaient écartés non par manque de compétences, mais par manque des mots précis qu'un logiciel de filtrage recherchait. Nous avons estimé que cet écart valait la peine d'être comblé — honnêtement, sans jamais inventer une expérience que quelqu'un n'a pas.",
-      p3: "Chaque réécriture produite par Resemy est fondée sur ce qui figure réellement dans votre CV — jamais de réalisations fabriquées, jamais d'expérience inventée. Nous préférons vous montrer un écart honnête plutôt qu'un score malhonnête.",
+        about: {
+      label: 'À propos', title: 'À propos de Resemy',
+      p1: "Resemy Solutions est une nouvelle entreprise, enregistrée en Colombie-Britannique, au Canada. Nous avons commencé en observant un schéma récurrent dans la recherche d'emploi : les candidats compétents surchargent leur CV de mots-clés qu'ils ne peuvent pas justifier pour passer les ATS, ou bien ils ne l'adaptent pas du tout et se font filtrer quand même. Aucune des deux approches ne fonctionne.",
+      p2: "Resemy, notre premier produit, adopte une approche différente. Il réécrit votre CV pour qu'il corresponde réellement à une offre d'emploi — en utilisant votre véritable expérience, reformulée et réorganisée autour de ce que l'offre demande concrètement — sans jamais inventer une compétence, un employeur ou une réalisation que vous n'avez pas. Vous pouvez le constater : votre score de correspondance s'améliore, honnêtement, entre votre CV original et la version adaptée.",
+      p3: "C'est notre point de départ, pas notre aboutissement — nous développons activement une nouvelle série d'outils fondés sur le même principe : vous aider à présenter votre véritable expérience sous son meilleur jour, jamais une expérience inventée. Si Resemy vous aide à décrocher un entretien, nous serions ravis de le savoir — nous sommes encore assez petits pour que vos retours façonnent ce que nous construisons ensuite.",
     },
     services: {
       label: 'Nos services', title: "Un seul outil, deux facettes du recrutement",
@@ -260,11 +260,11 @@ export const CONTENT = {
       recruitersTitle: 'Filtrar currículums no debería tomar todo el día.',
       recruitersSub: 'Resemy evalúa a cada candidato frente al puesto que estás contratando, para que dediques menos tiempo a leer currículums y más tiempo a hablar con las personas adecuadas.',
     },
-    about: {
-      label: 'Sobre nosotros', title: 'Por qué creamos Resemy',
-      p1: 'En algún punto entre enviar una solicitud y no volver a saber nada, una persona real y calificada queda filtrada por un software que ni siquiera sabía que estaba leyendo su currículum. Esa brecha — entre ser capaz y ser visto — es lo que Resemy existe para cerrar.',
-      p2: 'Creamos Resemy porque demasiados buenos candidatos eran rechazados no por falta de habilidad, sino por falta de las palabras exactas que un software de filtrado estaba buscando. Creímos que valía la pena cerrar esa brecha — de forma honesta, sin inventar jamás una experiencia que alguien no tiene.',
-      p3: 'Cada reescritura que produce Resemy se basa en lo que realmente hay en tu currículum — nunca logros inventados, nunca alcance fabricado. Preferimos mostrarte una brecha honesta antes que una puntuación deshonesta.',
+        about: {
+      label: 'Sobre nosotros', title: 'Sobre Resemy',
+      p1: 'Resemy Solutions es una empresa nueva, registrada en Columbia Británica, Canadá. Empezamos al notar un patrón recurrente en la búsqueda de empleo: los candidatos capacitados llenan su currículum de palabras clave que no pueden respaldar para superar el ATS, o no lo adaptan en absoluto y terminan siendo filtrados de todos modos. Ninguna de las dos opciones funciona.',
+      p2: 'Resemy, nuestro primer producto, adopta un enfoque distinto. Reescribe tu currículum para que coincida genuinamente con una oferta de empleo — usando tu experiencia real, reformulada y reorganizada según lo que la oferta realmente pide — sin inventar jamás una habilidad, un empleador o un logro que no sea tuyo. Puedes verlo funcionar: tu puntuación de coincidencia mejora, de forma honesta, desde tu currículum original hasta la versión adaptada.',
+      p3: 'Este es nuestro punto de partida, no la meta final — estamos construyendo activamente el siguiente conjunto de herramientas bajo el mismo principio: ayudarte a mostrar tu experiencia real de la mejor manera posible, nunca una inventada. Si Resemy te ayuda a conseguir una entrevista, nos encantaría saberlo — todavía somos lo bastante pequeños como para que tu opinión moldee lo que construimos después.',
     },
     services: {
       label: 'Nuestros servicios', title: 'Una herramienta, dos lados de la contratación',
@@ -333,11 +333,11 @@ export const CONTENT = {
       recruitersTitle: 'ਰੈਜ਼ਿਊਮੇ ਛਾਂਟਣ ਵਿੱਚ ਪੂਰਾ ਦਿਨ ਨਹੀਂ ਲੱਗਣਾ ਚਾਹੀਦਾ।',
       recruitersSub: 'Resemy ਹਰ ਉਮੀਦਵਾਰ ਦਾ ਮੁਲਾਂਕਣ ਉਸ ਨੌਕਰੀ ਦੇ ਮੁਕਾਬਲੇ ਕਰਦਾ ਹੈ ਜਿਸ ਲਈ ਤੁਸੀਂ ਭਰਤੀ ਕਰ ਰਹੇ ਹੋ — ਤਾਂ ਜੋ ਤੁਸੀਂ ਰੈਜ਼ਿਊਮੇ ਪੜ੍ਹਨ ਵਿੱਚ ਘੱਟ ਸਮਾਂ ਅਤੇ ਸਹੀ ਲੋਕਾਂ ਨਾਲ ਗੱਲ ਕਰਨ ਵਿੱਚ ਵੱਧ ਸਮਾਂ ਬਿਤਾਓ।',
     },
-    about: {
-      label: 'ਸਾਡੇ ਬਾਰੇ', title: 'ਅਸੀਂ Resemy ਕਿਉਂ ਬਣਾਇਆ',
-      p1: 'ਇੱਕ ਅਰਜ਼ੀ ਭੇਜਣ ਅਤੇ ਕਦੇ ਜਵਾਬ ਨਾ ਮਿਲਣ ਦੇ ਵਿਚਕਾਰ ਕਿਤੇ, ਇੱਕ ਅਸਲ, ਯੋਗ ਵਿਅਕਤੀ ਉਸ ਸਾਫਟਵੇਅਰ ਦੁਆਰਾ ਫਿਲਟਰ ਹੋ ਜਾਂਦਾ ਹੈ ਜਿਸ ਬਾਰੇ ਉਹਨਾਂ ਨੂੰ ਇਹ ਵੀ ਨਹੀਂ ਪਤਾ ਸੀ ਕਿ ਇਹ ਉਹਨਾਂ ਦਾ ਰੈਜ਼ਿਊਮੇ ਪੜ੍ਹ ਰਿਹਾ ਸੀ। ਇਹ ਪਾੜਾ — ਯੋਗ ਹੋਣ ਅਤੇ ਦੇਖੇ ਜਾਣ ਦੇ ਵਿਚਕਾਰ — ਉਹ ਹੈ ਜਿਸਨੂੰ ਭਰਨ ਲਈ Resemy ਮੌਜੂਦ ਹੈ।',
-      p2: 'ਅਸੀਂ Resemy ਇਸ ਲਈ ਸ਼ੁਰੂ ਕੀਤਾ ਕਿਉਂਕਿ ਬਹੁਤ ਸਾਰੇ ਮਜ਼ਬੂਤ ਉਮੀਦਵਾਰਾਂ ਨੂੰ ਹੁਨਰ ਦੀ ਘਾਟ ਕਾਰਨ ਨਹੀਂ, ਸਗੋਂ ਉਹਨਾਂ ਸਹੀ ਸ਼ਬਦਾਂ ਦੀ ਘਾਟ ਕਾਰਨ ਰੱਦ ਕੀਤਾ ਜਾ ਰਿਹਾ ਸੀ ਜੋ ਇੱਕ ਫਿਲਟਰਿੰਗ ਸਾਫਟਵੇਅਰ ਲੱਭ ਰਿਹਾ ਸੀ। ਸਾਨੂੰ ਲੱਗਿਆ ਕਿ ਇਹ ਪਾੜਾ ਭਰਨ ਯੋਗ ਸੀ — ਇਮਾਨਦਾਰੀ ਨਾਲ, ਕਦੇ ਵੀ ਅਜਿਹਾ ਤਜਰਬਾ ਘੜੇ ਬਿਨਾਂ ਜੋ ਕਿਸੇ ਕੋਲ ਨਹੀਂ ਹੈ।',
-      p3: 'Resemy ਦੁਆਰਾ ਤਿਆਰ ਕੀਤੀ ਹਰ ਦੁਬਾਰਾ-ਲਿਖਤ ਤੁਹਾਡੇ ਰੈਜ਼ਿਊਮੇ ਵਿੱਚ ਅਸਲ ਵਿੱਚ ਮੌਜੂਦ ਚੀਜ਼ਾਂ \'ਤੇ ਆਧਾਰਿਤ ਹੁੰਦੀ ਹੈ — ਕਦੇ ਵੀ ਘੜੀਆਂ ਪ੍ਰਾਪਤੀਆਂ ਨਹੀਂ, ਕਦੇ ਵੀ ਘੜਿਆ ਹੋਇਆ ਦਾਇਰਾ ਨਹੀਂ। ਅਸੀਂ ਤੁਹਾਨੂੰ ਇੱਕ ਝੂਠੇ ਸਕੋਰ ਦੀ ਬਜਾਏ ਇੱਕ ਇਮਾਨਦਾਰ ਕਮੀ ਦਿਖਾਉਣੀ ਪਸੰਦ ਕਰਾਂਗੇ।',
+        about: {
+      label: 'ਸਾਡੇ ਬਾਰੇ', title: 'Resemy ਬਾਰੇ',
+      p1: "Resemy Solutions ਇੱਕ ਨਵੀਂ ਕੰਪਨੀ ਹੈ, ਜੋ ਬ੍ਰਿਟਿਸ਼ ਕੋਲੰਬੀਆ, ਕੈਨੇਡਾ ਵਿੱਚ ਰਜਿਸਟਰਡ ਹੈ। ਅਸੀਂ ਨੌਕਰੀ ਦੀ ਭਾਲ ਵਿੱਚ ਇੱਕ ਦੁਹਰਾਈ ਜਾਂਦੀ ਸਮੱਸਿਆ ਦੇਖ ਕੇ ਸ਼ੁਰੂਆਤ ਕੀਤੀ: ਯੋਗ ਉਮੀਦਵਾਰ ਜਾਂ ਤਾਂ ATS ਨੂੰ ਪਾਰ ਕਰਨ ਲਈ ਆਪਣੇ ਰੈਜ਼ਿਊਮੇ ਵਿੱਚ ਅਜਿਹੇ ਕੀਵਰਡ ਭਰ ਦਿੰਦੇ ਹਨ ਜਿਨ੍ਹਾਂ ਦੀ ਉਹਨਾਂ ਕੋਲ ਅਸਲ ਵਿੱਚ ਕੋਈ ਪੁਸ਼ਟੀ ਨਹੀਂ ਹੁੰਦੀ, ਜਾਂ ਬਿਲਕੁਲ ਵੀ ਢਾਲਦੇ ਨਹੀਂ ਅਤੇ ਫਿਰ ਵੀ ਫਿਲਟਰ ਹੋ ਜਾਂਦੇ ਹਨ। ਦੋਵੇਂ ਤਰੀਕੇ ਕੰਮ ਨਹੀਂ ਕਰਦੇ।",
+      p2: "Resemy, ਸਾਡਾ ਪਹਿਲਾ ਉਤਪਾਦ, ਇੱਕ ਵੱਖਰਾ ਤਰੀਕਾ ਅਪਣਾਉਂਦਾ ਹੈ। ਇਹ ਤੁਹਾਡੇ ਰੈਜ਼ਿਊਮੇ ਨੂੰ ਸੱਚਮੁੱਚ ਨੌਕਰੀ ਦੀ ਪੋਸਟਿੰਗ ਨਾਲ ਮੇਲ ਖਾਣ ਲਈ ਦੁਬਾਰਾ ਲਿਖਦਾ ਹੈ — ਤੁਹਾਡੇ ਅਸਲ ਤਜਰਬੇ ਨੂੰ ਵਰਤਦੇ ਹੋਏ, ਪੋਸਟਿੰਗ ਦੀਆਂ ਅਸਲ ਲੋੜਾਂ ਮੁਤਾਬਕ ਮੁੜ-ਸ਼ਬਦਬੱਧ ਅਤੇ ਮੁੜ-ਵਿਵਸਥਿਤ ਕਰਕੇ — ਬਿਨਾਂ ਕਿਸੇ ਅਜਿਹੇ ਹੁਨਰ, ਰੁਜ਼ਗਾਰਦਾਤਾ, ਜਾਂ ਪ੍ਰਾਪਤੀ ਨੂੰ ਘੜੇ ਜੋ ਤੁਹਾਡੀ ਨਹੀਂ ਹੈ। ਤੁਸੀਂ ਇਸਨੂੰ ਕੰਮ ਕਰਦੇ ਦੇਖ ਸਕਦੇ ਹੋ: ਤੁਹਾਡਾ ਮੇਲ ਸਕੋਰ ਤੁਹਾਡੇ ਅਸਲੀ ਰੈਜ਼ਿਊਮੇ ਤੋਂ ਢਾਲੇ ਹੋਏ ਸੰਸਕਰਣ ਤੱਕ, ਇਮਾਨਦਾਰੀ ਨਾਲ ਸੁਧਰਦਾ ਹੈ।",
+      p3: "ਇਹ ਸਾਡੀ ਸ਼ੁਰੂਆਤ ਹੈ, ਅੰਤ ਨਹੀਂ — ਅਸੀਂ ਉਸੇ ਸਿਧਾਂਤ 'ਤੇ ਅਧਾਰਿਤ ਅਗਲੇ ਟੂਲਾਂ ਦਾ ਸੈੱਟ ਸਰਗਰਮੀ ਨਾਲ ਬਣਾ ਰਹੇ ਹਾਂ: ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਅਸਲ ਤਜਰਬੇ ਨੂੰ ਸਭ ਤੋਂ ਵਧੀਆ ਢੰਗ ਨਾਲ ਪੇਸ਼ ਕਰਨ ਵਿੱਚ ਮਦਦ ਕਰਨਾ, ਕਦੇ ਵੀ ਘੜਿਆ ਹੋਇਆ ਨਹੀਂ। ਜੇ Resemy ਤੁਹਾਨੂੰ ਇੰਟਰਵਿਊ ਦਿਵਾਉਣ ਵਿੱਚ ਮਦਦ ਕਰਦਾ ਹੈ, ਤਾਂ ਅਸੀਂ ਇਹ ਸੁਣ ਕੇ ਖੁਸ਼ ਹੋਵਾਂਗੇ — ਅਸੀਂ ਹਾਲੇ ਇੰਨੇ ਛੋਟੇ ਹਾਂ ਕਿ ਤੁਹਾਡੀ ਫੀਡਬੈਕ ਇਹ ਤੈਅ ਕਰਦੀ ਹੈ ਕਿ ਅਸੀਂ ਅੱਗੇ ਕੀ ਬਣਾਵਾਂਗੇ।",
     },
     services: {
       label: 'ਸਾਡੀਆਂ ਸੇਵਾਵਾਂ', title: 'ਇੱਕ ਟੂਲ, ਭਰਤੀ ਦੇ ਦੋ ਪਾਸੇ',
@@ -406,11 +406,11 @@ export const CONTENT = {
       recruitersTitle: '筛选简历不该占用一整天。',
       recruitersSub: 'Resemy 会根据您要招聘的职位对每位候选人进行评估——让您少花时间阅读简历，多花时间与合适的人交流。',
     },
-    about: {
-      label: '关于我们', title: '我们为什么创办 Resemy',
-      p1: '在投出申请和从未收到回复之间的某个环节，一位真正有能力、有资格的人，被一个他们甚至不知道正在读取自己简历的软件筛掉了。Resemy 的存在，正是为了弥合这道差距——在有能力和被看见之间的差距。',
-      p2: '我们创办 Resemy，是因为太多优秀的候选人被拒之门外，不是因为缺乏能力，而是因为缺少筛选软件正在寻找的那些确切词汇。我们相信这道差距值得被弥合——诚实地弥合，绝不虚构任何人并不具备的经历。',
-      p3: 'Resemy 生成的每一次重写，都基于您简历中真实存在的内容——绝不编造成就，绝不夸大职责范围。比起给您一个不诚实的高分，我们更愿意如实告诉您真正的差距在哪里。',
+        about: {
+      label: '关于我们', title: '关于 Resemy',
+      p1: 'Resemy Solutions 是一家新公司，注册于加拿大不列颠哥伦比亚省。我们注意到求职过程中反复出现的一个问题：有能力的候选人要么在简历里堆砌自己无法佐证的关键词以通过 ATS 筛选，要么完全不做定制，结果同样被筛掉。这两种做法都行不通。',
+      p2: '我们的第一款产品 Resemy 采取了不同的方式。它会真正根据职位描述重写您的简历——使用您真实的经历，围绕职位实际要求重新表述和组织——绝不虚构您没有的技能、雇主或成就。您可以亲眼看到效果：从原始简历到定制版本，匹配分数会诚实地提升。',
+      p3: '这只是我们的起点，而不是终点——我们正在积极开发基于同一原则的下一批工具：帮助您以最真实、最有力的方式展示自己的经历，绝不虚构。如果 Resemy 帮您获得了面试机会，我们很想听您分享——我们现在的规模还小，您的反馈会直接影响我们接下来要打造的东西。',
     },
     services: {
       label: '我们的服务', title: '一个工具，覆盖招聘的两端',
