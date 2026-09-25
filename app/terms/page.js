@@ -1,6 +1,9 @@
+import BackButton from '@/components/ui/BackButton'
+
 export default function TermsPage() {
   return (
       <div className="max-w-3xl mx-auto px-6 py-16 prose-sm text-justify">
+      <BackButton />
       <h1 className="text-3xl font-semibold mb-2">Terms of Service</h1>
       <p className="text-sm text-gray-500 mb-8">Last updated: September/2026 </p>
 
@@ -18,7 +21,7 @@ export default function TermsPage() {
             <h2 className="text-xl font-semibold mt-8 mb-2">2. What the Service Does</h2>
       <p className="mb-4">
         The Service is powered by a large language model (LLM). Every resume
-        rewrite, cover letter, application email, score, and evaluation you receive from the Service is generated
+        rewrite, cover letter, application email, interview preparation content, reference letter draft, score, and evaluation you receive from the Service is generated
         by this AI — it is not written, reviewed, or verified by a human at Resemy before it
         reaches you.
       </p>

@@ -1,6 +1,9 @@
+import BackButton from '@/components/ui/BackButton'
+
 export default function PrivacyPage() {
   return (
       <div className="max-w-3xl mx-auto px-6 py-16 prose-sm text-justify">
+      <BackButton />
       <h1 className="text-3xl font-semibold mb-2">Privacy Policy</h1>
       <p className="text-sm text-gray-500 mb-8">Last updated: September/2026 </p>
 
@@ -22,7 +25,7 @@ export default function PrivacyPage() {
       </p>
 
       <p className="mb-2 font-medium">Generated content</p>
-      <p className="mb-4">Tailored resumes, cover letters, application emails, scores, and evaluation results we generate for you, which we store so you can access your history.</p>
+      <p className="mb-4">Tailored resumes, cover letters, application emails, interview preparation content, reference letter drafts, scores, and evaluation results we generate for you, which we store so you can access your history.</p>
 
       <p className="mb-2 font-medium">Billing information</p>
       <p className="mb-4">
@@ -35,7 +38,7 @@ export default function PrivacyPage() {
 
       <h2 className="text-xl font-semibold mt-8 mb-2">2. How We Use Information</h2>
       <ul className="list-disc ml-6 mb-4 space-y-1">
-        <li>To provide, operate, and maintain the Service, including generating tailored resumes, cover letters, emails, and evaluations;</li>
+        <li>To provide, operate, and maintain the Service, including generating tailored resumes, cover letters, emails, interview preparation content, reference letter drafts, and evaluations;</li>
         <li>To process payments and manage subscriptions;</li>
         <li>To communicate with you about your account or the Service;</li>
         <li>To maintain security and prevent abuse of free-tier usage;</li>
@@ -53,12 +56,12 @@ export default function PrivacyPage() {
 
       <h2 className="text-xl font-semibold mt-8 mb-2">4. Service Providers We Use</h2>
       <p className="mb-4">We share information with the following service providers, solely to operate the Service:</p>
-      <ul className="list-disc ml-6 mb-4 space-y-1">
+        <ul className="list-disc ml-6 mb-4 space-y-1">
         <li><strong>Supabase</strong> — database, authentication, and file storage;</li>
         <li><strong>Anthropic</strong> — AI processing of submitted resume, cover letter, and job description text;</li>
         <li><strong>Stripe</strong> — payment processing and subscription billing;</li>
-        <li><strong>Google</strong> — optional sign-in authentication, if you choose to use "Continue with Google";</li>
-        <li><strong>Vercel</strong> — application hosting.</li>
+        <li><strong>Google</strong> — optional sign-in authentication, if you choose to use "Continue with Google," and Google Analytics for website usage analytics;</li>
+        <li><strong>Vercel</strong> — application hosting, and Vercel Analytics / Speed Insights for website usage and performance analytics.</li>
       </ul>
 
       <h2 className="text-xl font-semibold mt-8 mb-2">5. If You Are a Candidate Evaluated by an HR User</h2>
@@ -73,7 +76,7 @@ export default function PrivacyPage() {
       <h2 className="text-xl font-semibold mt-8 mb-2">6. Data Retention</h2>
       <p className="mb-4">
         We retain your account information and generation history for as long as your account is active, so you
-        can access your past resumes, cover letters, and evaluations. You can request deletion of your account and
+        can access your past resumes, cover letters, interview preparation content, reference letter drafts, and evaluations. You can request deletion of your account and
         associated data at any time by contacting us at info@getresemy.com.
       </p>
 
@@ -87,8 +90,9 @@ export default function PrivacyPage() {
       <h2 className="text-xl font-semibold mt-8 mb-2">8. Cookies</h2>
       <p className="mb-4">
         We use essential cookies required for login and core functionality (managed through Supabase
-        authentication). If we add analytics or marketing cookies in the future, we will update this policy
-        accordingly.
+        authentication). We also use Google Analytics and Vercel Analytics to understand how visitors use the
+        Service and to monitor site performance. These analytics tools may set cookies or use similar tracking
+        technologies. If we add marketing cookies in the future, we will update this policy accordingly.
       </p>
 
       <h2 className="text-xl font-semibold mt-8 mb-2">9. Children's Privacy</h2>
