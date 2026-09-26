@@ -1,6 +1,42 @@
 export const CONTENT = {
   en: {
     nav: { about: 'About Us', missionVision: 'Mission & Vision', ourTeam: 'Our Team', services: 'Services', pricing: 'Pricing', help: 'Help', contact: 'Contact', feedback: 'Feedback', getStarted: 'Get Started', forRecruiters: 'For Recruiters' },
+    missionVision: {
+      title: 'Mission & Vision',
+      subtitle: "What we're building, and why.",
+      missionTitle: 'Our Mission',
+      missionText: "Somewhere between hitting \"apply\" and never hearing back, a real person who could do the job gets filtered out by software that never really looked at them. We built Resemy to close that gap, not by gaming the system, but by helping you say what's true about you in the language the system is actually listening for.",
+      visionTitle: 'Our Vision',
+      visionText: "We believe in a future where no qualified person goes unseen, where the résumé that gets read is the honest one, not just the optimized one. Good people keep getting missed over formatting and phrasing, and we don't accept that as the cost of hiring. We're betting on transparency to fix it, not tricks.",
+      objectiveTitle: 'Our Objective',
+      objectiveText: "Right now, that means one thing: every résumé, cover letter, and application that goes through Resemy should leave you more visible to a hiring manager than you were before without a single invented skill, job, or achievement in it. We measure ourselves by your before-and-after score, not by promises. If we can't honestly close a gap, we'll tell you it's still open.",
+      valuesTitle: 'Our Values',
+      values: [
+        { title: 'Honesty', desc: "We'll show you a real gap before we'll give you a fake score." },
+        { title: 'Authenticity', desc: "We rewrite what's true about you. We never invent what isn't." },
+        { title: 'Transparency', desc: 'You see exactly what changed and why. Nothing is a black box.' },
+        { title: 'Empathy', desc: 'Passing the ATS matters because a human being is waiting on the other side of it.' },
+      ],
+    },
+    team: {
+      title: 'Our Team',
+      subtitle: 'The people behind Resemy.',
+      bioLabel: 'Bio',
+      members: [
+        {
+          name: 'Yaser Jasim',
+          title: 'Owner and Founder of Resemy Solutions',
+          linkedinLabel: 'LinkedIn',
+          scholarLabel: 'Google Scholar',
+          bio: [
+            "Yaser Jasim holds a Master of Software Engineering from Mosul University and a Master of Administrative Science, specializing in Human Resources Administration, from Fairleigh Dickinson University in Canada. Born in Iraq and raised in Bangor, North Wales, he has lived, studied, and traveled across several countries before settling in Vancouver, Canada.",
+            "Throughout his career, Yaser has taken on diverse roles including University Lecturer, Instructor, Associate Director, Interim Director, Recruiter, and Researcher, building experience across technology, education, administration, human resources, business, and research. He has also published more than 30 research papers in areas including artificial intelligence, computer science, and business.",
+            "Today, Yaser is the Owner and Founder of Resemy Solutions, a British Columbia-based software publishing company focused on creating practical software-as-a-service tools that solve real-world problems. Resemy is the company's first software tool, with more innovative products planned for the future.",
+            "Yaser combines his technical background, academic experience, and understanding of people and business to turn ideas into useful technology. His philosophy is simple: build technology that is practical, accessible, easier, and valuable to the people who use it.",
+          ],
+        },
+      ],
+    },
     footer: {
       tagline: 'Get past the bots. Get in front of the humans.',
       product: 'Product', services: 'Services', pricing: 'Pricing', tryFree: 'Try it free',
@@ -74,6 +110,42 @@ export const CONTENT = {
 
   ar: {
       nav: { about: 'من نحن', missionVision: 'الرسالة والرؤية', ourTeam: 'فريقنا', services: 'خدماتنا', pricing: 'الأسعار', help: 'المساعدة', contact: 'اتصل بنا', feedback: 'ملاحظات', getStarted: 'ابدأ الآن', forRecruiters: 'للموارد البشرية' },
+    missionVision: {
+      title: 'الرسالة والرؤية',
+      subtitle: 'ماذا نبني، ولماذا.',
+      missionTitle: 'رسالتنا',
+      missionText: 'في مكان ما بين الضغط على "تقديم الطلب" وعدم تلقي أي رد أبدًا، يُستبعد شخص مؤهل فعلاً بواسطة برنامج لم ينظر إليه حقًا. أنشأنا Resemy لسد هذه الفجوة، ليس عن طريق خداع النظام، بل بمساعدتك على قول ما هو صحيح عنك باللغة التي يستمع إليها النظام فعليًا.',
+      visionTitle: 'رؤيتنا',
+      visionText: 'نؤمن بمستقبل لا يُغفل فيه أي شخص مؤهل، حيث تكون السيرة الذاتية التي تُقرأ هي الصادقة، وليست فقط المُحسَّنة. يستمر الأشخاص الجيدون في أن يُستبعدوا بسبب التنسيق والصياغة، ولا نقبل ذلك كثمن للتوظيف. نراهن على الشفافية لحل هذه المشكلة، لا على الحيل.',
+      objectiveTitle: 'هدفنا',
+      objectiveText: 'الآن، هذا يعني شيئًا واحدًا: يجب أن تجعلك كل سيرة ذاتية وخطاب تقديم وطلب توظيف يمر عبر Resemy أكثر وضوحًا أمام مسؤول التوظيف مما كنت عليه من قبل، دون اختلاق أي مهارة أو وظيفة أو إنجاز. نقيس أنفسنا من خلال درجتك قبل وبعد، لا من خلال الوعود. إذا لم نتمكن من سد فجوة بصدق، سنخبرك أنها ما زالت قائمة.',
+      valuesTitle: 'قيمنا',
+      values: [
+        { title: 'الصدق', desc: 'سنُظهر لك فجوة حقيقية قبل أن نمنحك درجة زائفة.' },
+        { title: 'الأصالة', desc: 'نعيد كتابة ما هو صحيح عنك. لا نختلق أبدًا ما ليس كذلك.' },
+        { title: 'الشفافية', desc: 'ترى بالضبط ما تغيّر ولماذا. لا شيء مخفي.' },
+        { title: 'التعاطف', desc: 'اجتياز أنظمة تتبع المتقدمين (ATS) مهم لأن إنسانًا حقيقيًا ينتظر في الجانب الآخر.' },
+      ],
+    },
+    team: {
+      title: 'فريقنا',
+      subtitle: 'الأشخاص وراء Resemy.',
+      bioLabel: 'نبذة',
+      members: [
+        {
+          name: 'Yaser Jasim',
+          title: 'المالك والمؤسس لشركة Resemy Solutions',
+          linkedinLabel: 'LinkedIn',
+          scholarLabel: 'Google Scholar',
+          bio: [
+            'حصل ياسر جاسم على درجة الماجستير في هندسة البرمجيات من جامعة الموصل، وماجستير في العلوم الإدارية تخصص إدارة الموارد البشرية من جامعة فيرلي ديكنسون في كندا. وُلد في العراق ونشأ في بانغور، شمال ويلز، وعاش ودرس وسافر عبر عدة دول قبل أن يستقر في فانكوفر، كندا.',
+            'على مدار مسيرته المهنية، شغل ياسر أدوارًا متنوعة شملت محاضرًا جامعيًا، ومدرّبًا، ونائب مدير، ومديرًا بالإنابة، ومسؤول توظيف، وباحثًا، مكتسبًا خبرة في التكنولوجيا والتعليم والإدارة والموارد البشرية والأعمال والبحث العلمي. كما نشر أكثر من 30 ورقة بحثية في مجالات تشمل الذكاء الاصطناعي وعلوم الحاسوب والأعمال.',
+            'اليوم، ياسر هو المالك والمؤسس لشركة Resemy Solutions، وهي شركة لنشر البرمجيات مقرها بريتيش كولومبيا تركز على إنشاء أدوات برمجية كخدمة (SaaS) عملية تحل مشكلات حقيقية. Resemy هي أول أداة برمجية للشركة، مع خطط لمنتجات مبتكرة أخرى في المستقبل.',
+            'يجمع ياسر بين خلفيته التقنية وخبرته الأكاديمية وفهمه للناس والأعمال لتحويل الأفكار إلى تقنية مفيدة. فلسفته بسيطة: بناء تقنية عملية، وسهلة الوصول، وأسهل استخدامًا، وذات قيمة للأشخاص الذين يستخدمونها.',
+          ],
+        },
+      ],
+    },
     footer: {
       tagline: 'تجاوز برامج الفرز. تواصل مباشرة مع البشر.',
       product: 'المنتج', services: 'الخدمات', pricing: 'الأسعار', tryFree: 'جرّبه مجانًا',
@@ -147,6 +219,42 @@ export const CONTENT = {
 
   fr: {
         nav: { about: 'À propos', missionVision: 'Mission et vision', ourTeam: 'Notre équipe', services: 'Services', pricing: 'Tarifs', help: 'Aide', contact: 'Contact', feedback: 'Commentaires', getStarted: 'Commencer', forRecruiters: 'Recruteurs' },
+    missionVision: {
+      title: 'Mission et vision',
+      subtitle: 'Ce que nous construisons, et pourquoi.',
+      missionTitle: 'Notre mission',
+      missionText: "Quelque part entre l'envoi d'une candidature et l'absence de réponse, une personne réellement qualifiée pour le poste se fait filtrer par un logiciel qui ne l'a jamais vraiment regardée. Nous avons créé Resemy pour combler cet écart, non pas en trichant avec le système, mais en vous aidant à dire ce qui est vrai à votre sujet dans le langage que le système écoute réellement.",
+      visionTitle: 'Notre vision',
+      visionText: "Nous croyons en un avenir où aucune personne qualifiée ne passe inaperçue, où le CV qui est lu est celui qui est honnête, pas seulement celui qui est optimisé. De bonnes personnes continuent d'être écartées à cause de la mise en forme et de la formulation, et nous n'acceptons pas cela comme le prix du recrutement. Nous misons sur la transparence pour résoudre ce problème, pas sur des astuces.",
+      objectiveTitle: 'Notre objectif',
+      objectiveText: "Pour l'instant, cela signifie une chose : chaque CV, lettre de motivation et candidature qui passe par Resemy doit vous rendre plus visible auprès d'un recruteur qu'auparavant, sans la moindre compétence, emploi ou réalisation inventée. Nous nous mesurons à votre score avant/après, pas à des promesses. Si nous ne pouvons pas combler honnêtement un écart, nous vous dirons qu'il est toujours ouvert.",
+      valuesTitle: 'Nos valeurs',
+      values: [
+        { title: 'Honnêteté', desc: 'Nous vous montrerons un vrai écart plutôt que de vous donner un faux score.' },
+        { title: 'Authenticité', desc: "Nous réécrivons ce qui est vrai à votre sujet. Nous n'inventons jamais ce qui ne l'est pas." },
+        { title: 'Transparence', desc: "Vous voyez exactement ce qui a changé et pourquoi. Rien n'est une boîte noire." },
+        { title: 'Empathie', desc: "Passer l'ATS compte parce qu'un être humain attend de l'autre côté." },
+      ],
+    },
+    team: {
+      title: 'Notre équipe',
+      subtitle: 'Les personnes derrière Resemy.',
+      bioLabel: 'Biographie',
+      members: [
+        {
+          name: 'Yaser Jasim',
+          title: 'Propriétaire et fondateur de Resemy Solutions',
+          linkedinLabel: 'LinkedIn',
+          scholarLabel: 'Google Scholar',
+          bio: [
+            "Yaser Jasim est titulaire d'une maîtrise en génie logiciel de l'Université de Mossoul et d'une maîtrise en sciences administratives, spécialisée en gestion des ressources humaines, de l'Université Fairleigh Dickinson au Canada. Né en Irak et élevé à Bangor, dans le nord du Pays de Galles, il a vécu, étudié et voyagé dans plusieurs pays avant de s'installer à Vancouver, au Canada.",
+            "Tout au long de sa carrière, Yaser a occupé divers postes, notamment chargé de cours universitaire, instructeur, directeur associé, directeur par intérim, recruteur et chercheur, acquérant une expérience dans la technologie, l'éducation, l'administration, les ressources humaines, les affaires et la recherche. Il a également publié plus de 30 articles de recherche dans des domaines tels que l'intelligence artificielle, l'informatique et les affaires.",
+            "Aujourd'hui, Yaser est le propriétaire et fondateur de Resemy Solutions, une entreprise d'édition de logiciels basée en Colombie-Britannique, spécialisée dans la création d'outils SaaS pratiques qui résolvent des problèmes concrets. Resemy est le premier outil logiciel de l'entreprise, avec d'autres produits innovants prévus pour l'avenir.",
+            "Yaser combine son bagage technique, son expérience académique et sa compréhension des gens et des affaires pour transformer des idées en technologie utile. Sa philosophie est simple : créer une technologie pratique, accessible, plus simple et utile pour ceux qui l'utilisent.",
+          ],
+        },
+      ],
+    },
     footer: {
       tagline: 'Passez les bots. Parlez aux humains.',
       product: 'Produit', services: 'Services', pricing: 'Tarifs', tryFree: 'Essayer gratuitement',
@@ -220,6 +328,42 @@ export const CONTENT = {
 
   es: {
         nav: { about: 'Sobre nosotros', missionVision: 'Misión y visión', ourTeam: 'Nuestro equipo', services: 'Servicios', pricing: 'Precios', help: 'Ayuda', contact: 'Contacto', feedback: 'Comentarios', getStarted: 'Comenzar', forRecruiters: 'Reclutadores' },
+    missionVision: {
+      title: 'Misión y visión',
+      subtitle: 'Lo que estamos construyendo, y por qué.',
+      missionTitle: 'Nuestra misión',
+      missionText: 'En algún punto entre enviar una solicitud y no volver a saber nada, una persona realmente calificada para el puesto queda filtrada por un software que nunca la miró de verdad. Creamos Resemy para cerrar esa brecha, no haciendo trampa al sistema, sino ayudándote a decir lo que es verdad sobre ti en el lenguaje que el sistema realmente está escuchando.',
+      visionTitle: 'Nuestra visión',
+      visionText: "Creemos en un futuro en el que ninguna persona calificada pase desapercibida, donde el currículum que se lee es el honesto, no solo el optimizado. Las buenas personas siguen siendo filtradas por el formato y la redacción, y no aceptamos eso como el costo de contratar. Apostamos por la transparencia para solucionarlo, no por trucos.",
+      objectiveTitle: 'Nuestro objetivo',
+      objectiveText: 'Por ahora, eso significa una cosa: cada currículum, carta de presentación y solicitud que pase por Resemy debe dejarte más visible ante un reclutador de lo que estabas antes, sin una sola habilidad, empleo o logro inventado. Nos medimos por tu puntuación antes y después, no por promesas. Si no podemos cerrar una brecha honestamente, te diremos que sigue abierta.',
+      valuesTitle: 'Nuestros valores',
+      values: [
+        { title: 'Honestidad', desc: 'Te mostraremos una brecha real antes de darte una puntuación falsa.' },
+        { title: 'Autenticidad', desc: 'Reescribimos lo que es verdad sobre ti. Nunca inventamos lo que no lo es.' },
+        { title: 'Transparencia', desc: 'Ves exactamente qué cambió y por qué. Nada es una caja negra.' },
+        { title: 'Empatía', desc: 'Superar el ATS importa porque hay un ser humano esperando del otro lado.' },
+      ],
+    },
+    team: {
+      title: 'Nuestro equipo',
+      subtitle: 'Las personas detrás de Resemy.',
+      bioLabel: 'Biografía',
+      members: [
+        {
+          name: 'Yaser Jasim',
+          title: 'Propietario y fundador de Resemy Solutions',
+          linkedinLabel: 'LinkedIn',
+          scholarLabel: 'Google Scholar',
+          bio: [
+            'Yaser Jasim tiene una Maestría en Ingeniería de Software de la Universidad de Mosul y una Maestría en Ciencias Administrativas, especializada en Administración de Recursos Humanos, de la Universidad Fairleigh Dickinson en Canadá. Nacido en Irak y criado en Bangor, en el norte de Gales, ha vivido, estudiado y viajado por varios países antes de establecerse en Vancouver, Canadá.',
+            'A lo largo de su carrera, Yaser ha asumido diversos roles, incluyendo profesor universitario, instructor, director asociado, director interino, reclutador e investigador, acumulando experiencia en tecnología, educación, administración, recursos humanos, negocios e investigación. También ha publicado más de 30 artículos de investigación en áreas como inteligencia artificial, ciencias de la computación y negocios.',
+            'Hoy, Yaser es el propietario y fundador de Resemy Solutions, una empresa de publicación de software con sede en Columbia Británica, enfocada en crear herramientas prácticas de software como servicio (SaaS) que resuelven problemas reales. Resemy es la primera herramienta de software de la empresa, con más productos innovadores planeados para el futuro.',
+            'Yaser combina su formación técnica, experiencia académica y comprensión de las personas y los negocios para convertir ideas en tecnología útil. Su filosofía es simple: crear tecnología que sea práctica, accesible, más sencilla y valiosa para quienes la usan.',
+          ],
+        },
+      ],
+    },
     footer: {
       tagline: 'Supera a los robots. Llega a los humanos.',
       product: 'Producto', services: 'Servicios', pricing: 'Precios', tryFree: 'Pruébalo gratis',
@@ -293,6 +437,42 @@ export const CONTENT = {
 
   pa: {
         nav: { about: 'ਸਾਡੇ ਬਾਰੇ', missionVision: 'ਮਿਸ਼ਨ ਅਤੇ ਦ੍ਰਿਸ਼ਟੀ', ourTeam: 'ਸਾਡੀ ਟੀਮ', services: 'ਸੇਵਾਵਾਂ', pricing: 'ਕੀਮਤਾਂ', help: 'ਮਦਦ', contact: 'ਸੰਪਰਕ ਕਰੋ', feedback: 'ਫੀਡਬੈਕ', getStarted: 'ਸ਼ੁਰੂ ਕਰੋ', forRecruiters: 'ਭਰਤੀਕਾਰਾਂ ਲਈ' },
+    missionVision: {
+      title: 'ਮਿਸ਼ਨ ਅਤੇ ਦ੍ਰਿਸ਼ਟੀ',
+      subtitle: 'ਅਸੀਂ ਕੀ ਬਣਾ ਰਹੇ ਹਾਂ, ਅਤੇ ਕਿਉਂ।',
+      missionTitle: 'ਸਾਡਾ ਮਿਸ਼ਨ',
+      missionText: '"ਅਪਲਾਈ" ਕਰਨ ਅਤੇ ਕਦੇ ਜਵਾਬ ਨਾ ਮਿਲਣ ਦੇ ਵਿਚਕਾਰ ਕਿਤੇ, ਇੱਕ ਅਸਲੀ ਵਿਅਕਤੀ ਜੋ ਇਹ ਕੰਮ ਕਰ ਸਕਦਾ ਸੀ, ਉਸ ਸਾਫਟਵੇਅਰ ਦੁਆਰਾ ਫਿਲਟਰ ਹੋ ਜਾਂਦਾ ਹੈ ਜਿਸਨੇ ਉਸਨੂੰ ਕਦੇ ਸੱਚਮੁੱਚ ਦੇਖਿਆ ਹੀ ਨਹੀਂ। ਅਸੀਂ Resemy ਇਸ ਪਾੜੇ ਨੂੰ ਭਰਨ ਲਈ ਬਣਾਇਆ, ਸਿਸਟਮ ਨੂੰ ਧੋਖਾ ਦੇ ਕੇ ਨਹੀਂ, ਸਗੋਂ ਤੁਹਾਨੂੰ ਉਸ ਭਾਸ਼ਾ ਵਿੱਚ ਆਪਣੇ ਬਾਰੇ ਸੱਚ ਕਹਿਣ ਵਿੱਚ ਮਦਦ ਕਰਕੇ ਜੋ ਸਿਸਟਮ ਅਸਲ ਵਿੱਚ ਸੁਣ ਰਿਹਾ ਹੈ।',
+      visionTitle: 'ਸਾਡੀ ਦ੍ਰਿਸ਼ਟੀ',
+      visionText: "ਅਸੀਂ ਇੱਕ ਅਜਿਹੇ ਭਵਿੱਖ ਵਿੱਚ ਵਿਸ਼ਵਾਸ ਰੱਖਦੇ ਹਾਂ ਜਿੱਥੇ ਕੋਈ ਵੀ ਯੋਗ ਵਿਅਕਤੀ ਅਣਦੇਖਿਆ ਨਾ ਰਹੇ, ਜਿੱਥੇ ਪੜ੍ਹਿਆ ਜਾਣ ਵਾਲਾ ਰੈਜ਼ਿਊਮੇ ਇਮਾਨਦਾਰ ਹੋਵੇ, ਸਿਰਫ਼ ਢਾਲਿਆ ਹੋਇਆ ਨਾ ਹੋਵੇ। ਚੰਗੇ ਲੋਕ ਫਾਰਮੈਟਿੰਗ ਅਤੇ ਸ਼ਬਦਾਵਲੀ ਕਾਰਨ ਲਗਾਤਾਰ ਖੁੰਝ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਅਸੀਂ ਇਸਨੂੰ ਭਰਤੀ ਦੀ ਕੀਮਤ ਵਜੋਂ ਸਵੀਕਾਰ ਨਹੀਂ ਕਰਦੇ। ਅਸੀਂ ਇਸਨੂੰ ਠੀਕ ਕਰਨ ਲਈ ਪਾਰਦਰਸ਼ਤਾ 'ਤੇ ਦਾਅ ਲਗਾ ਰਹੇ ਹਾਂ, ਚਾਲਾਂ 'ਤੇ ਨਹੀਂ।",
+      objectiveTitle: 'ਸਾਡਾ ਉਦੇਸ਼',
+      objectiveText: 'ਹੁਣੇ, ਇਸਦਾ ਮਤਲਬ ਹੈ ਇੱਕ ਗੱਲ: Resemy ਰਾਹੀਂ ਲੰਘਣ ਵਾਲਾ ਹਰ ਰੈਜ਼ਿਊਮੇ, ਕਵਰ ਲੈਟਰ, ਅਤੇ ਅਰਜ਼ੀ ਤੁਹਾਨੂੰ ਪਹਿਲਾਂ ਨਾਲੋਂ ਭਰਤੀਕਾਰ ਸਾਹਮਣੇ ਵਧੇਰੇ ਦਿੱਖਣਯੋਗ ਬਣਾਏ, ਬਿਨਾਂ ਕਿਸੇ ਘੜੇ ਹੋਏ ਹੁਨਰ, ਨੌਕਰੀ, ਜਾਂ ਪ੍ਰਾਪਤੀ ਦੇ। ਅਸੀਂ ਆਪਣੇ ਆਪ ਨੂੰ ਤੁਹਾਡੇ ਪਹਿਲਾਂ-ਅਤੇ-ਬਾਅਦ ਦੇ ਸਕੋਰ ਨਾਲ ਮਾਪਦੇ ਹਾਂ, ਵਾਅਦਿਆਂ ਨਾਲ ਨਹੀਂ। ਜੇ ਅਸੀਂ ਇਮਾਨਦਾਰੀ ਨਾਲ ਕੋਈ ਪਾੜਾ ਭਰ ਨਹੀਂ ਸਕਦੇ, ਅਸੀਂ ਤੁਹਾਨੂੰ ਦੱਸਾਂਗੇ ਕਿ ਇਹ ਅਜੇ ਵੀ ਖੁੱਲ੍ਹਾ ਹੈ।',
+      valuesTitle: 'ਸਾਡੀਆਂ ਕਦਰਾਂ-ਕੀਮਤਾਂ',
+      values: [
+        { title: 'ਇਮਾਨਦਾਰੀ', desc: 'ਅਸੀਂ ਤੁਹਾਨੂੰ ਝੂਠਾ ਸਕੋਰ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ ਇੱਕ ਅਸਲੀ ਕਮੀ ਦਿਖਾਵਾਂਗੇ।' },
+        { title: 'ਅਸਲੀਅਤ', desc: 'ਅਸੀਂ ਉਹੀ ਦੁਬਾਰਾ ਲਿਖਦੇ ਹਾਂ ਜੋ ਤੁਹਾਡੇ ਬਾਰੇ ਸੱਚ ਹੈ। ਅਸੀਂ ਕਦੇ ਵੀ ਉਹ ਨਹੀਂ ਘੜਦੇ ਜੋ ਸੱਚ ਨਹੀਂ ਹੈ।' },
+        { title: 'ਪਾਰਦਰਸ਼ਤਾ', desc: 'ਤੁਸੀਂ ਬਿਲਕੁਲ ਦੇਖਦੇ ਹੋ ਕਿ ਕੀ ਬਦਲਿਆ ਅਤੇ ਕਿਉਂ। ਕੁਝ ਵੀ ਲੁਕਿਆ ਨਹੀਂ।' },
+        { title: 'ਹਮਦਰਦੀ', desc: 'ATS ਪਾਰ ਕਰਨਾ ਮਾਇਨੇ ਰੱਖਦਾ ਹੈ ਕਿਉਂਕਿ ਦੂਜੇ ਪਾਸੇ ਇੱਕ ਅਸਲੀ ਮਨੁੱਖ ਉਡੀਕ ਕਰ ਰਿਹਾ ਹੈ।' },
+      ],
+    },
+    team: {
+      title: 'ਸਾਡੀ ਟੀਮ',
+      subtitle: 'Resemy ਦੇ ਪਿੱਛੇ ਲੋਕ।',
+      bioLabel: 'ਜੀਵਨੀ',
+      members: [
+        {
+          name: 'Yaser Jasim',
+          title: 'Resemy Solutions ਦੇ ਮਾਲਕ ਅਤੇ ਸੰਸਥਾਪਕ',
+          linkedinLabel: 'LinkedIn',
+          scholarLabel: 'Google Scholar',
+          bio: [
+            'ਯਾਸਰ ਜਾਸਿਮ ਨੇ ਮੋਸੁਲ ਯੂਨੀਵਰਸਿਟੀ ਤੋਂ ਸਾਫਟਵੇਅਰ ਇੰਜੀਨੀਅਰਿੰਗ ਵਿੱਚ ਮਾਸਟਰ ਡਿਗਰੀ ਅਤੇ ਕੈਨੇਡਾ ਦੀ ਫੇਅਰਲੇ ਡਿਕਿਨਸਨ ਯੂਨੀਵਰਸਿਟੀ ਤੋਂ ਮਨੁੱਖੀ ਸਰੋਤ ਪ੍ਰਸ਼ਾਸਨ ਵਿੱਚ ਮੁਹਾਰਤ ਵਾਲੀ ਪ੍ਰਸ਼ਾਸਕੀ ਵਿਗਿਆਨ ਵਿੱਚ ਮਾਸਟਰ ਡਿਗਰੀ ਹਾਸਲ ਕੀਤੀ ਹੈ। ਇਰਾਕ ਵਿੱਚ ਜਨਮੇ ਅਤੇ ਉੱਤਰੀ ਵੇਲਜ਼ ਦੇ ਬੈਂਗਰ ਵਿੱਚ ਪਲੇ, ਉਹ ਵੈਨਕੂਵਰ, ਕੈਨੇਡਾ ਵਿੱਚ ਵਸਣ ਤੋਂ ਪਹਿਲਾਂ ਕਈ ਦੇਸ਼ਾਂ ਵਿੱਚ ਰਹਿ ਚੁੱਕੇ, ਪੜ੍ਹ ਚੁੱਕੇ, ਅਤੇ ਯਾਤਰਾ ਕਰ ਚੁੱਕੇ ਹਨ।',
+            'ਆਪਣੇ ਕਰੀਅਰ ਦੌਰਾਨ, ਯਾਸਰ ਨੇ ਯੂਨੀਵਰਸਿਟੀ ਲੈਕਚਰਾਰ, ਇੰਸਟ੍ਰਕਟਰ, ਐਸੋਸੀਏਟ ਡਾਇਰੈਕਟਰ, ਇੰਟਰਿਮ ਡਾਇਰੈਕਟਰ, ਭਰਤੀਕਾਰ, ਅਤੇ ਖੋਜਕਰਤਾ ਸਮੇਤ ਵੱਖ-ਵੱਖ ਭੂਮਿਕਾਵਾਂ ਨਿਭਾਈਆਂ ਹਨ, ਤਕਨਾਲੋਜੀ, ਸਿੱਖਿਆ, ਪ੍ਰਸ਼ਾਸਨ, ਮਨੁੱਖੀ ਸਰੋਤ, ਵਪਾਰ, ਅਤੇ ਖੋਜ ਵਿੱਚ ਤਜਰਬਾ ਬਣਾਇਆ ਹੈ। ਉਸਨੇ ਆਰਟੀਫੀਸ਼ੀਅਲ ਇੰਟੈਲੀਜੈਂਸ, ਕੰਪਿਊਟਰ ਸਾਇੰਸ, ਅਤੇ ਵਪਾਰ ਵਰਗੇ ਖੇਤਰਾਂ ਵਿੱਚ 30 ਤੋਂ ਵੱਧ ਖੋਜ ਪੱਤਰ ਵੀ ਪ੍ਰਕਾਸ਼ਿਤ ਕੀਤੇ ਹਨ।',
+            "ਅੱਜ, ਯਾਸਰ Resemy Solutions ਦੇ ਮਾਲਕ ਅਤੇ ਸੰਸਥਾਪਕ ਹਨ, ਜੋ ਬ੍ਰਿਟਿਸ਼ ਕੋਲੰਬੀਆ-ਅਧਾਰਿਤ ਸਾਫਟਵੇਅਰ ਪ੍ਰਕਾਸ਼ਨ ਕੰਪਨੀ ਹੈ ਜੋ ਅਸਲ-ਸੰਸਾਰ ਦੀਆਂ ਸਮੱਸਿਆਵਾਂ ਹੱਲ ਕਰਨ ਵਾਲੇ ਵਿਹਾਰਕ ਸਾਫਟਵੇਅਰ-ਏਜ਼-ਏ-ਸਰਵਿਸ ਟੂਲ ਬਣਾਉਣ 'ਤੇ ਕੇਂਦਰਿਤ ਹੈ। Resemy ਕੰਪਨੀ ਦਾ ਪਹਿਲਾ ਸਾਫਟਵੇਅਰ ਟੂਲ ਹੈ, ਭਵਿੱਖ ਲਈ ਹੋਰ ਨਵੀਨਤਾਕਾਰੀ ਉਤਪਾਦਾਂ ਦੀ ਯੋਜਨਾ ਦੇ ਨਾਲ।",
+            'ਯਾਸਰ ਆਪਣੇ ਤਕਨੀਕੀ ਪਿਛੋਕੜ, ਅਕਾਦਮਿਕ ਤਜਰਬੇ, ਅਤੇ ਲੋਕਾਂ ਅਤੇ ਵਪਾਰ ਦੀ ਸਮਝ ਨੂੰ ਜੋੜ ਕੇ ਵਿਚਾਰਾਂ ਨੂੰ ਲਾਭਦਾਇਕ ਤਕਨਾਲੋਜੀ ਵਿੱਚ ਬਦਲਦੇ ਹਨ। ਉਹਨਾਂ ਦਾ ਫ਼ਲਸਫ਼ਾ ਸਧਾਰਨ ਹੈ: ਅਜਿਹੀ ਤਕਨਾਲੋਜੀ ਬਣਾਓ ਜੋ ਵਿਹਾਰਕ, ਪਹੁੰਚਯੋਗ, ਸੌਖੀ, ਅਤੇ ਇਸਨੂੰ ਵਰਤਣ ਵਾਲਿਆਂ ਲਈ ਕੀਮਤੀ ਹੋਵੇ।',
+          ],
+        },
+      ],
+    },
     footer: {
       tagline: 'ਬੌਟਸ ਨੂੰ ਪਾਰ ਕਰੋ। ਸਿੱਧੇ ਮਨੁੱਖਾਂ ਤੱਕ ਪਹੁੰਚੋ।',
       product: 'ਉਤਪਾਦ', services: 'ਸੇਵਾਵਾਂ', pricing: 'ਕੀਮਤਾਂ', tryFree: 'ਮੁਫ਼ਤ ਅਜ਼ਮਾਓ',
@@ -366,6 +546,42 @@ export const CONTENT = {
 
   zh: {
         nav: { about: '关于我们', missionVision: '使命与愿景', ourTeam: '我们的团队', services: '我们的服务', pricing: '价格', help: '帮助', contact: '联系我们', feedback: '反馈', getStarted: '立即开始', forRecruiters: '招聘方' },
+    missionVision: {
+      title: '使命与愿景',
+      subtitle: '我们正在打造什么，以及为什么。',
+      missionTitle: '我们的使命',
+      missionText: '在点击"申请"和从此杳无音信之间，一个真正能胜任这份工作的人，被从未真正了解过他们的软件筛选掉了。我们创建 Resemy，正是为了弥合这一差距——不是通过钻系统的空子，而是帮助你用系统真正在意的语言，说出关于你自己的真实情况。',
+      visionTitle: '我们的愿景',
+      visionText: '我们相信这样一个未来：没有任何一位合格的人才会被忽视，被阅读的简历是诚实的那一份，而不仅仅是被优化过的那一份。优秀的人才因为格式和措辞问题不断被漏掉，我们不认为这应该是招聘必须付出的代价。我们押注于透明度来解决这个问题，而不是花招。',
+      objectiveTitle: '我们的目标',
+      objectiveText: '目前，这意味着一件事：每一份通过 Resemy 生成的简历、求职信和申请，都应该让你在招聘经理面前比以前更容易被看到——同时没有任何一项虚构的技能、职位或成就。我们以您修改前后的分数来衡量自己，而不是靠承诺。如果我们无法诚实地弥合某个差距，我们会告诉您它依然存在。',
+      valuesTitle: '我们的价值观',
+      values: [
+        { title: '诚实', desc: '在给您一个虚假的分数之前，我们会先向您展示真实的差距。' },
+        { title: '真实', desc: '我们只重写关于您的真实内容，绝不虚构不存在的东西。' },
+        { title: '透明', desc: '您可以准确看到发生了什么改变，以及原因。没有任何隐藏的黑箱。' },
+        { title: '同理心', desc: '通过 ATS 筛选之所以重要，是因为另一端等待的是一个真实的人。' },
+      ],
+    },
+    team: {
+      title: '我们的团队',
+      subtitle: 'Resemy 背后的团队成员。',
+      bioLabel: '简介',
+      members: [
+        {
+          name: 'Yaser Jasim',
+          title: 'Resemy Solutions 的所有者兼创始人',
+          linkedinLabel: 'LinkedIn',
+          scholarLabel: 'Google Scholar',
+          bio: [
+            'Yaser Jasim 持有摩苏尔大学的软件工程硕士学位，以及加拿大费尔莱狄更森大学的行政科学硕士学位，专业方向为人力资源管理。他出生于伊拉克，在北威尔士的班戈长大，在最终定居加拿大温哥华之前，曾在多个国家生活、学习和旅行。',
+            'Yaser 曾担任大学讲师、教员、副主任、临时主任、招聘专员和研究员等多种角色，积累了横跨技术、教育、行政管理、人力资源、商业和研究等领域的丰富经验。他还在人工智能、计算机科学和商业等领域发表了30多篇研究论文。',
+            '如今，Yaser 是 Resemy Solutions 的所有者兼创始人，这是一家总部位于不列颠哥伦比亚省的软件发行公司，专注于打造能解决实际问题的实用型软件即服务（SaaS）工具。Resemy 是公司推出的第一款软件工具，未来还计划推出更多创新产品。',
+            'Yaser 将自己的技术背景、学术经验以及对人和商业的理解结合起来，把想法转化为有用的技术。他的理念很简单：打造实用、易于使用、更简单，并且对使用者真正有价值的技术。',
+          ],
+        },
+      ],
+    },
     footer: {
       tagline: '跳过筛选机器人，直接触达真人招聘者。',
       product: '产品', services: '服务', pricing: '价格', tryFree: '免费试用',

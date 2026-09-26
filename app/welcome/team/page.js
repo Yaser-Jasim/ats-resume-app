@@ -1,25 +1,20 @@
-import BackButton from '@/components/ui/BackButton'
+'use client'
+import MarketingNav from '@/components/marketing/MarketingNav'
+import MarketingFooter from '@/components/marketing/MarketingFooter'
+import FadeIn from '@/components/marketing/FadeIn'
+import { useLanguage } from '@/components/marketing/LanguageContext'
+import { CONTENT } from '@/components/marketing/marketingContent'
 import { ExternalLink, GraduationCap } from 'lucide-react'
 
-// Add teammates here. Replace `photo: null` with an image path once you send it
-// (e.g. '/team/yaser.jpg' in your /public folder), and fill in `bio` and `links`.
-const TEAM = [
+// Non-text data that doesn't need translating (photo, email, links). Order must
+// match the order of `team.members` in marketingContent.js for each language.
+const TEAM_META = [
   {
-    name: 'Yaser Jasim',
-    title: 'Owner and Founder of Resemy Solutions',
     company: 'Resemy',
-    email: 'admin@resemysolutions.com', // update if this isn't the right address
+    email: 'admin@resemysolutions.com',
     photo: '/team/yaser.jpg',
-    bio: [
-      "Yaser Jasim holds a Master of Software Engineering from Mosul University and a Master of Administrative Science, specializing in Human Resources Administration, from Fairleigh Dickinson University in Canada. Born in Iraq and raised in Bangor, North Wales, he has lived, studied, and traveled across several countries before settling in Vancouver, Canada.",
-      "Throughout his career, Yaser has taken on diverse roles including University Lecturer, Instructor, Associate Director, Interim Director, Recruiter, and Researcher, building experience across technology, education, administration, human resources, business, and research. He has also published more than 30 research papers in areas including artificial intelligence, computer science, and business.",
-      "Today, Yaser is the Owner and Founder of Resemy Solutions, a British Columbia-based software publishing company focused on creating practical software-as-a-service tools that solve real-world problems. Resemy is the company's first software tool, with more innovative products planned for the future.",
-      "Yaser combines his technical background, academic experience, and understanding of people and business to turn ideas into useful technology. His philosophy is simple: build technology that is practical, accessible, easier, and valuable to the people who use it.",
-    ],
-    links: [
-      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/yaser-jasim/?isSelfProfile=true', icon: 'linkedin' },
-      { label: 'Google Scholar', href: 'https://scholar.google.ca/citations?user=5hjp1DoAAAAJ&hl=en', icon: 'scholar' },
-    ],
+    linkedinHref: 'https://www.linkedin.com/in/yaser-jasim/?isSelfProfile=true',
+    scholarHref: 'https://scholar.google.ca/citations?user=5hjp1DoAAAAJ&hl=en',
   },
 ]
 
@@ -29,74 +24,89 @@ function LinkIcon({ icon }) {
 }
 
 export default function TeamPage() {
+  const { lang, dir } = useLanguage()
+  const t = CONTENT[lang].team
+
   return (
-    <div className="max-w-4xl mx-auto px-6 py-16">
-      <BackButton />
-      <h1 className="font-display text-3xl font-semibold text-ink mb-2">Our Team</h1>
-      <p className="text-sm text-gray-500 mb-10">The people behind Resemy.</p>
+    <div className="bg-paper" dir={dir}>
+      <MarketingNav />
+      <section className="max-w-4xl mx-auto px-6 py-20">
+        <FadeIn>
+          <h1 className="font-display text-3xl font-semibold text-ink mb-2">{t.title}</h1>
+          <p className="text-sm text-gray-500 mb-10">{t.subtitle}</p>
 
-      <div className="space-y-8">
-        {TEAM.map(member => (
-          <div key={member.name} className="flex flex-col sm:flex-row gap-8 border border-gray-100 rounded-2xl p-8">
-            <div className="sm:w-80 flex-shrink-0">
-              <div className="w-44 h-44 rounded-xl bg-mist flex items-center justify-center overflow-hidden">
-                {member.photo ? (
-                  <img src={member.photo} alt={member.name} className="w-full h-full object-cover object-top" />
-                ) : (
-                  <span className="text-gray-400 text-sm">Photo</span>
-                )}
-              </div>
-              <div className="mt-4">
-                <p className="font-display text-lg font-medium text-ink">{member.name}</p>
-                <p className="text-sm text-gray-600 whitespace-nowrap">{member.title}</p>
-                <p className="text-sm text-gray-500 mt-1">{member.company}</p>
-                <a href={`mailto:${member.email}`} className="text-sm text-brand hover:underline mt-1 inline-block whitespace-nowrap">
-                  {member.email}
-                </a>
-                <div className="mt-4 flex items-center gap-3">
-                  <img src="/team/resemy-logo.png" alt="Resemy" className="h-8 w-auto" />
-                  <img src="/team/resemy-solutions-seal.png" alt="Resemy Solutions" className="h-12 w-auto" />
-                </div>
-              </div>
-            </div>
+          <div className="space-y-8">
+            {t.members.map((member, idx) => {
+              const meta = TEAM_META[idx]
+              return (
+                <div key={member.name} className="flex flex-col sm:flex-row gap-8 border border-gray-100 rounded-2xl p-8">
+                  <div className="sm:w-80 flex-shrink-0">
+                    <div className="w-44 h-44 rounded-xl bg-mist flex items-center justify-center overflow-hidden">
+                      {meta.photo ? (
+                        <img src={meta.photo} alt={member.name} className="w-full h-full object-cover object-top" />
+                      ) : (
+                        <span className="text-gray-400 text-sm">Photo</span>
+                      )}
+                    </div>
+                    <div className="mt-4">
+                      <p className="font-display text-lg font-medium text-ink">{member.name}</p>
+                      <p className="text-sm text-gray-600 whitespace-nowrap">{member.title}</p>
+                      <p className="text-sm text-gray-500 mt-1">{meta.company}</p>
+                      <a href={`mailto:${meta.email}`} className="text-sm text-brand hover:underline mt-1 inline-block whitespace-nowrap">
+                        {meta.email}
+                      </a>
+                      <div className="mt-4 flex items-center gap-3">
+                        <img src="/team/resemy-logo.png" alt="Resemy" className="h-8 w-auto" />
+                        <img src="/team/resemy-solutions-seal.png" alt="Resemy Solutions" className="h-12 w-auto" />
+                      </div>
+                    </div>
+                  </div>
 
-            <div className="flex-1">
-              <div>
-                <p className="text-sm font-medium text-black uppercase tracking-wide mb-1">Bio</p>
-                <div className="space-y-3">
-                  {member.bio.map((paragraph, i) => (
-                    <p
-                      key={i}
-                      className={`text-base text-gray-600 leading-relaxed text-justify ${
-                        paragraph.includes('His philosophy is simple') ? 'font-bold' : ''
-                      }`}
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </div>
+                  <div className="flex-1">
+                    <div>
+                      <p className="text-sm font-medium text-black uppercase tracking-wide mb-1">{t.bioLabel}</p>
+                      <div className="space-y-3">
+                        {member.bio.map((paragraph, i) => (
+                          <p
+                            key={i}
+                            className={`text-base text-gray-600 leading-relaxed text-justify ${
+                              i === member.bio.length - 1 ? 'font-bold' : ''
+                            }`}
+                          >
+                            {paragraph}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
 
-              {member.links?.length > 0 && (
-                <div className="mt-4 flex gap-4">
-                  {member.links.map(l => (
-                    <a
-                      key={l.label}
-                      href={l.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-gray-600 hover:text-ink flex items-center gap-1.5"
-                    >
-                      <LinkIcon icon={l.icon} />
-                      {l.label}
-                    </a>
-                  ))}
+                    <div className="mt-4 flex gap-4">
+                      <a
+                        href={meta.linkedinHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-gray-600 hover:text-ink flex items-center gap-1.5"
+                      >
+                        <LinkIcon icon="linkedin" />
+                        {member.linkedinLabel}
+                      </a>
+                      <a
+                        href={meta.scholarHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-gray-600 hover:text-ink flex items-center gap-1.5"
+                      >
+                        <LinkIcon icon="scholar" />
+                        {member.scholarLabel}
+                      </a>
+                    </div>
+                  </div>
                 </div>
-              )}
-            </div>
+              )
+            })}
           </div>
-        ))}
-      </div>
+        </FadeIn>
+      </section>
+      <MarketingFooter />
     </div>
   )
 }
