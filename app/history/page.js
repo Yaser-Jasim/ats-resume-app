@@ -60,7 +60,12 @@ export default function HistoryPage() {
   const filteredGenerations = useMemo(() => {
     const q = search.trim().toLowerCase()
     const base = q
-      ? generations.filter(g => (g.tailored_json?.candidate_name || '').toLowerCase().includes(q))
+      ? generations.filter(g => {
+          const name = (g.tailored_json?.candidate_name || '').toLowerCase()
+          const title = (g.position_title || '').toLowerCase()
+          const employer = (g.organization_name || '').toLowerCase()
+          return name.includes(q) || title.includes(q) || employer.includes(q)
+        })
       : generations
     return sortItems(base, g => (g.tailored_json?.candidate_name || '').toLowerCase())
   }, [generations, search, sortBy])
@@ -68,7 +73,12 @@ export default function HistoryPage() {
   const filteredEvaluations = useMemo(() => {
     const q = search.trim().toLowerCase()
     const base = q
-      ? evaluations.filter(e => (e.candidate_name || '').toLowerCase().includes(q))
+      ? evaluations.filter(e => {
+          const name = (e.candidate_name || '').toLowerCase()
+          const title = (e.job_title || '').toLowerCase()
+          const employer = (e.organization_name || '').toLowerCase()
+          return name.includes(q) || title.includes(q) || employer.includes(q)
+        })
       : evaluations
     return sortItems(base, e => (e.candidate_name || '').toLowerCase())
   }, [evaluations, search, sortBy])
@@ -92,7 +102,7 @@ export default function HistoryPage() {
             </Select>
           </div>
                     <div className="flex-1">
-            <Input placeholder="Search by candidate name…" value={search} onChange={e => setSearch(e.target.value)} />
+            <Input placeholder="Search by name, job title, or employer…" value={search} onChange={e => setSearch(e.target.value)} />
           </div>
           <div className="w-48">
             <Select value={sortBy} onChange={e => setSortBy(e.target.value)}>
