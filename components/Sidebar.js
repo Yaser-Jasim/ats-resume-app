@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabaseClient'
 import Avatar from '@/components/ui/Avatar'
 import ResemyLogo from '@/components/ui/ResemyLogo'
-import { ChevronDown, Menu, X } from 'lucide-react'
+import { ChevronDown, Menu, X, Home, PanelLeftClose, PanelLeftOpen } from 'lucide-react'
 
 const items = [
   { label: 'New', href: '/app' },
@@ -16,13 +16,43 @@ const items = [
   { label: 'Help', href: '/help' },
 ]
 
+// Where "Home" in the sidebar takes you — the marketing site, not the app.
+const MAIN_SITE_HREF = '/welcome'
+
+// Desktop-only collapse state, remembered across visits until the user
+// shows the sidebar again. Mobile is unaffected — it keeps its existing
+// open/close drawer behavior regardless of this.
+const COLLAPSE_STORAGE_KEY = 'resemy_sidebar_collapsed'
+
 export default function Sidebar() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [collapsed, setCollapsed] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
     setMobileOpen(false)
   }, [pathname])
+
+  useEffect(() => {
+    try {
+      if (localStorage.getItem(COLLAPSE_STORAGE_KEY) === 'true') setCollapsed(true)
+    } catch {
+      // localStorage unavailable (private browsing, blocked storage, etc.) —
+      // fall back to always-expanded rather than breaking the sidebar.
+    }
+  }, [])
+
+  function toggleCollapsed() {
+    setCollapsed(prev => {
+      const next = !prev
+      try {
+        localStorage.setItem(COLLAPSE_STORAGE_KEY, String(next))
+      } catch {
+        // Ignore — state still updates for this session even if it can't persist.
+      }
+      return next
+    })
+  }
 
   return (
     <>
@@ -44,22 +74,48 @@ export default function Sidebar() {
       )}
 
       <aside
-          className={`fixed md:relative top-0 md:top-auto left-0 md:left-auto h-dvh w-64 md:w-60 z-50 md:z-0
+        className={`fixed md:relative top-0 md:top-auto left-0 md:left-auto h-dvh z-50 md:z-0
           border-r border-gray-100 bg-paper p-4 flex flex-col justify-between
-          transform transition-transform duration-300 ease-in-out
-          ${mobileOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
+          transform transition-all duration-300 ease-in-out
+          ${mobileOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0
+          ${collapsed ? 'w-64 md:w-16' : 'w-64 md:w-60'}`}
       >
         <div>
-          <div className="flex items-center justify-between mb-8 px-2">
-          <Link href="/welcome" className="flex items-center gap-2">
-          <ResemyLogo size={26} />
-          <span className="font-display text-lg font-medium text-ink">Resemy</span>
-          </Link>
-            <button onClick={() => setMobileOpen(false)} className="md:hidden text-gray-400 hover:text-ink">
-              <X className="w-5 h-5" />
-            </button>
+          <div
+            className={`flex items-center mb-8 px-2 gap-2
+              ${collapsed ? 'md:flex-col md:items-center' : 'justify-between'}`}
+          >
+            <Link href="/welcome" className="flex items-center gap-2" aria-label="Resemy">
+              <ResemyLogo size={26} />
+              <span className={`font-display text-lg font-medium text-ink ${collapsed ? 'md:hidden' : ''}`}>
+                Resemy
+              </span>
+            </Link>
+
+            <div className={`flex items-center gap-1 ${collapsed ? 'md:flex-col' : ''}`}>
+              <Link
+                href={MAIN_SITE_HREF}
+                title="Go to main website"
+                aria-label="Go to main website"
+                className="flex items-center justify-center text-gray-400 hover:text-ink hover:bg-mist rounded-lg p-1.5 transition-colors"
+              >
+                <Home className="w-4 h-4" />
+              </Link>
+              <button
+                onClick={toggleCollapsed}
+                title={collapsed ? 'Show sidebar' : 'Hide sidebar'}
+                aria-label={collapsed ? 'Show sidebar' : 'Hide sidebar'}
+                className="hidden md:flex items-center justify-center text-gray-400 hover:text-ink hover:bg-mist rounded-lg p-1.5 transition-colors"
+              >
+                {collapsed ? <PanelLeftOpen className="w-4 h-4" /> : <PanelLeftClose className="w-4 h-4" />}
+              </button>
+              <button onClick={() => setMobileOpen(false)} className="md:hidden text-gray-400 hover:text-ink">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
           </div>
-          <nav className="space-y-1">
+
+          <nav className={`space-y-1 ${collapsed ? 'md:hidden' : ''}`}>
             {items.map(i => (
               <Link key={i.href} href={i.href}
                     onClick={() => setMobileOpen(false)}
@@ -69,7 +125,7 @@ export default function Sidebar() {
             ))}
           </nav>
         </div>
-          <div>
+        <div className={collapsed ? 'md:hidden' : ''}>
           <AccountMenu />
           <p className="text-[10px] text-gray-400 text-center mt-2 px-2">Resemy Solutions (Resemy) is a registered business in British Columbia, Canada.</p>
         </div>
@@ -85,7 +141,7 @@ function AccountMenu() {
   const supabase = createClient()
   const menuRef = useRef(null)
 
-    useEffect(() => {
+  useEffect(() => {
     supabase.auth.getUser().then(({ data }) => setUser(data.user ?? null))
     const { data: listener } = supabase.auth.onAuthStateChange(async (_event, session) => {
       setUser(session?.user ?? null)
@@ -131,7 +187,7 @@ function AccountMenu() {
       </button>
       {open && (
         <div className="absolute bottom-14 left-0 bg-white border border-gray-100 rounded-xl shadow-[0_8px_24px_-8px_rgba(20,36,61,0.2)] w-52 py-1.5 text-sm z-10">
-            {email ? (
+          {email ? (
             <>
               {name && (
                 <div className="px-3.5 py-2 text-sm font-semibold text-ink border-b border-gray-100 mb-1 truncate">{name}</div>
