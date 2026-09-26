@@ -10,6 +10,7 @@ export default function HistoryPage() {
   const [loading, setLoading] = useState(true)
   const [view, setView] = useState('candidates')
   const [search, setSearch] = useState('')
+  const [sortBy, setSortBy] = useState('date-desc')
   const [generations, setGenerations] = useState([])
   const [evaluations, setEvaluations] = useState([])
   const supabase = createClient()
@@ -42,17 +43,35 @@ export default function HistoryPage() {
     if (res.ok) setEvaluations(prev => prev.filter(e => e.id !== id))
   }
 
+    function sortItems(items, getName) {
+    const sorted = [...items]
+    if (sortBy === 'name-asc') {
+      sorted.sort((a, b) => getName(a).localeCompare(getName(b)))
+    } else if (sortBy === 'name-desc') {
+      sorted.sort((a, b) => getName(b).localeCompare(getName(a)))
+    } else if (sortBy === 'date-asc') {
+      sorted.sort((a, b) => new Date(a.created_at) - new Date(b.created_at))
+    } else {
+      sorted.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+    }
+    return sorted
+  }
+
   const filteredGenerations = useMemo(() => {
-    if (!search.trim()) return generations
-    const q = search.toLowerCase()
-    return generations.filter(g => (g.tailored_json?.candidate_name || '').toLowerCase().includes(q))
-  }, [generations, search])
+    const q = search.trim().toLowerCase()
+    const base = q
+      ? generations.filter(g => (g.tailored_json?.candidate_name || '').toLowerCase().includes(q))
+      : generations
+    return sortItems(base, g => (g.tailored_json?.candidate_name || '').toLowerCase())
+  }, [generations, search, sortBy])
 
   const filteredEvaluations = useMemo(() => {
-    if (!search.trim()) return evaluations
-    const q = search.toLowerCase()
-    return evaluations.filter(e => (e.candidate_name || '').toLowerCase().includes(q))
-  }, [evaluations, search])
+    const q = search.trim().toLowerCase()
+    const base = q
+      ? evaluations.filter(e => (e.candidate_name || '').toLowerCase().includes(q))
+      : evaluations
+    return sortItems(base, e => (e.candidate_name || '').toLowerCase())
+  }, [evaluations, search, sortBy])
 
   if (loading) {
     return <div className="flex"><Sidebar /><main className="p-8"><BackButton /><p className="text-sm text-gray-500">Loading…</p></main></div>
@@ -72,8 +91,16 @@ export default function HistoryPage() {
               <option value="hr">HR Assessments</option>
             </Select>
           </div>
-          <div className="flex-1">
+                    <div className="flex-1">
             <Input placeholder="Search by candidate name…" value={search} onChange={e => setSearch(e.target.value)} />
+          </div>
+          <div className="w-48">
+            <Select value={sortBy} onChange={e => setSortBy(e.target.value)}>
+              <option value="date-desc">Date (newest first)</option>
+              <option value="date-asc">Date (oldest first)</option>
+              <option value="name-asc">Name (A-Z)</option>
+              <option value="name-desc">Name (Z-A)</option>
+            </Select>
           </div>
         </div>
 
@@ -85,7 +112,7 @@ export default function HistoryPage() {
                 <div>
                   <p className="font-medium text-ink">{g.tailored_json?.candidate_name || 'Unnamed candidate'}</p>
                   <p className="text-sm text-gray-500">{g.position_title} — {g.organization_name}</p>
-                  <p className="text-xs text-gray-400">{new Date(g.created_at).toLocaleDateString()}</p>
+                  <p className="text-xs text-gray-400">{new Date(g.created_at).toLocaleDateString()} · {new Date(g.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
                 </div>
                 <div className="flex gap-3 text-sm flex-shrink-0">
                   <a href={`/result/${g.id}`} className="text-brand font-medium hover:underline">View</a>
@@ -102,7 +129,7 @@ export default function HistoryPage() {
                 <div>
                   <p className="font-medium text-ink">{e.candidate_name || 'Unnamed candidate'}</p>
                   <p className="text-sm text-gray-500">{e.job_title} — {e.organization_name}</p>
-                  <p className="text-xs text-gray-400">{new Date(e.created_at).toLocaleDateString()}</p>
+                  <p className="text-xs text-gray-400">{new Date(e.created_at).toLocaleDateString()} · {new Date(e.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
                 </div>
                 <div className="flex gap-3 text-sm flex-shrink-0">
                   <a href={`/hr/result/${e.id}`} className="text-brand font-medium hover:underline">View</a>
