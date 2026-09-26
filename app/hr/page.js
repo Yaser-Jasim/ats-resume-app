@@ -7,6 +7,8 @@ import BackButton from '@/components/ui/BackButton'
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import Textarea from '@/components/ui/Textarea'
+import HrConsentSection from '@/components/HrConsentSection'
+import RoleLocationField from '@/components/RoleLocationField'
 import { createClient } from '@/lib/supabaseClient'
 import { UploadCloud, FileText } from 'lucide-react'
 
@@ -52,10 +54,15 @@ export default function HRPage() {
   const [jobDescription, setJobDescription] = useState('')
   const [resumeFile, setResumeFile] = useState(null)
   const [coverLetterFile, setCoverLetterFile] = useState(null)
-    const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   const [trialUsed, setTrialUsed] = useState(false)
   const [startingTrial, setStartingTrial] = useState(false)
+
+  // --- Compliance fields ---------------------------------------------
+  const [roleLocation, setRoleLocation] = useState({ country: '', state: '', isNYC: false })
+  const [consent, setConsent] = useState({ lawfulBasisConfirmed: false, candidateOptedOut: false, canSubmit: false })
+  // ---------------------------------------------------------------------
 
   useEffect(() => {
     async function check() {
@@ -91,12 +98,31 @@ export default function HRPage() {
       return
     }
 
+    // --- Compliance checks (also re-checked server-side — see route.js) ---
+    if (!consent.lawfulBasisConfirmed) {
+      setErrorMsg("Please confirm you have this candidate's consent or a lawful basis before continuing.")
+      setLoading(false)
+      return
+    }
+
+    if (consent.candidateOptedOut) {
+      setErrorMsg('This candidate opted out of AI-assisted screening, so this has not been sent for AI analysis. Please evaluate them manually instead.')
+      setLoading(false)
+      return
+    }
+    // -----------------------------------------------------------------------
+
     const formData = new FormData()
     formData.append('jobTitle', jobTitle)
     formData.append('orgName', orgName)
     formData.append('jobDescription', jobDescription)
     formData.append('resumeFile', resumeFile)
     if (coverLetterFile) formData.append('coverLetterFile', coverLetterFile)
+    formData.append('lawfulBasisConfirmed', String(consent.lawfulBasisConfirmed))
+    formData.append('candidateOptedOut', String(consent.candidateOptedOut))
+    formData.append('roleCountry', roleLocation.country || '')
+    formData.append('roleState', roleLocation.state || '')
+    formData.append('roleIsNYC', String(!!roleLocation.isNYC))
 
     const res = await fetch('/api/hr-analyze', { method: 'POST', body: formData })
     const data = await res.json()
@@ -122,7 +148,7 @@ export default function HRPage() {
     )
   }
 
-    if (!hasAccess) {
+  if (!hasAccess) {
     return (
       <div className="flex">
         <Sidebar />
@@ -165,6 +191,10 @@ export default function HRPage() {
           <Input placeholder="Organization name" value={orgName} onChange={e => setOrgName(e.target.value)} />
         </div>
 
+        <div className="mb-6">
+          <RoleLocationField value={roleLocation} onChange={setRoleLocation} />
+        </div>
+
         <label className="text-sm font-medium text-ink">Job description / requirements</label>
         <Textarea className="h-32 mt-1.5 mb-6" value={jobDescription} onChange={e => setJobDescription(e.target.value)} />
 
@@ -176,9 +206,13 @@ export default function HRPage() {
           <FileDrop label="Candidate's cover letter (optional)" file={coverLetterFile} setFile={setCoverLetterFile} />
         </div>
 
+        <div className="mb-6">
+          <HrConsentSection onChange={setConsent} />
+        </div>
+
         {errorMsg && <p className="text-red-600 text-sm mb-2">{errorMsg}</p>}
         <div className="flex justify-end">
-          <Button onClick={handleAnalyze} disabled={loading}>
+          <Button onClick={handleAnalyze} disabled={loading || !consent.canSubmit}>
             {loading ? 'Analyzing…' : 'Analyze Candidate'}
           </Button>
         </div>
