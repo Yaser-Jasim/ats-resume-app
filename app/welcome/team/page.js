@@ -11,8 +11,8 @@ const TEAM = [
     email: 'admin@resemysolutions.com', // update if this isn't the right address
     photo: '/team/yaser.jpg',
     bio: [
-      "Yaser Jasim holds a Master of Software Engineering from Mosul University and a Master of Administrative Science, specializing in Human Resources Administration, from Fairleigh Dickinson University in Canada.",
-      "Throughout his career, Yaser has taken on diverse roles including University Lecturer, Instructor, Associate Director, Interim Director, Recruiter, and Researcher, building experience across technology, education, administration, human resources, business, and research.",
+      "Yaser Jasim holds a Master of Software Engineering from Mosul University and a Master of Administrative Science, specializing in Human Resources Administration, from Fairleigh Dickinson University in Canada. Born in Iraq and raised in Bangor, North Wales, he has lived, studied, and traveled across several countries before settling in Vancouver, Canada.",
+      "Throughout his career, Yaser has taken on diverse roles including University Lecturer, Instructor, Associate Director, Interim Director, Recruiter, and Researcher, building experience across technology, education, administration, human resources, business, and research. He has also published more than 30 research papers in areas including artificial intelligence, computer science, and business.",
       "Today, Yaser is the Owner and Founder of Resemy Solutions, a British Columbia-based software publishing company focused on creating practical software-as-a-service tools that solve real-world problems. Resemy is the company's first software tool, with more innovative products planned for the future.",
       "Yaser combines his technical background, academic experience, and understanding of people and business to turn ideas into useful technology. His philosophy is simple: build technology that is practical, accessible, easier, and valuable to the people who use it.",
     ],
