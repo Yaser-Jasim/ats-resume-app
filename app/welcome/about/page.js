@@ -16,9 +16,9 @@ export default function AboutPage() {
         <FadeIn>
           <p className="text-xs font-semibold text-brand uppercase tracking-wide mb-2">{t.label}</p>
           <h1 className="font-display text-4xl text-ink mb-6">{t.title}</h1>
-          <p className="text-gray-700 mb-4 leading-relaxed">{t.p1}</p>
-          <p className="text-gray-700 mb-4 leading-relaxed">{t.p2}</p>
-          <p className="text-gray-700 leading-relaxed">{t.p3}</p>
+          <p className="text-gray-700 mb-4 leading-relaxed text-justify">{t.p1}</p>
+          <p className="text-gray-700 mb-4 leading-relaxed text-justify">{t.p2}</p>
+          <p className="text-gray-700 leading-relaxed text-justify">{t.p3}</p>
         </FadeIn>
       </section>
       <MarketingFooter />

@@ -45,14 +45,61 @@ function ContactDropdown({ contactLabel, feedbackLabel, dir }) {
   )
 }
 
+function AboutDropdown({ label, items, dir }) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-1 text-sm text-gray-600 hover:text-ink transition-colors"
+      >
+        {label}
+        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+      {open && (
+        <div
+          className={`absolute top-full mt-2 ${dir === 'rtl' ? 'right-0' : 'left-0'} bg-white border border-gray-100 rounded-xl shadow-[0_8px_24px_-8px_rgba(20,36,61,0.2)] w-48 py-1.5 text-sm z-50`}
+        >
+          {items.map(i => (
+            <Link key={i.href} href={i.href} onClick={() => setOpen(false)} className="block px-3.5 py-2 hover:bg-mist rounded-lg mx-1.5">
+              {i.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 export default function MarketingNav() {
   const [open, setOpen] = useState(false)
   const [contactOpen, setContactOpen] = useState(false)
+  const [aboutOpen, setAboutOpen] = useState(false)
   const { lang, setLang, dir } = useLanguage()
   const t = CONTENT[lang].nav
+  const footerT = CONTENT[lang].footer
+
+  const aboutItems = [
+    { label: t.about, href: '/welcome/about' },
+    { label: t.missionVision, href: '/welcome/mission-vision' },
+    { label: t.ourTeam, href: '/welcome/team' },
+    { label: footerT.terms, href: '/terms' },
+    { label: footerT.privacy, href: '/privacy' },
+  ]
 
   const links = [
-    { label: t.about, href: '/welcome/about' },
     { label: t.services, href: '/welcome/services' },
     { label: t.forRecruiters, href: '/welcome#recruiters' },
     { label: t.pricing, href: '/account/plans' },
@@ -68,6 +115,7 @@ export default function MarketingNav() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
+          <AboutDropdown label={t.about} items={aboutItems} dir={dir} />
           {links.map(l => (
             <Link key={l.href} href={l.href} className="text-sm text-gray-600 hover:text-ink transition-colors">
               {l.label}
@@ -96,19 +144,37 @@ export default function MarketingNav() {
           </Link>
         </div>
 
-          <button onClick={() => { setOpen(!open); setContactOpen(false) }} className="md:hidden text-ink">
+        <button onClick={() => { setOpen(!open); setContactOpen(false); setAboutOpen(false) }} className="md:hidden text-ink">
           {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
       {open && (
         <div className="md:hidden border-t border-gray-100 px-6 py-4 space-y-3 bg-white">
+          <div>
+            <button
+              onClick={() => setAboutOpen(!aboutOpen)}
+              className="flex items-center justify-between w-full text-sm text-gray-700"
+            >
+              {t.about}
+              <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${aboutOpen ? 'rotate-180' : ''}`} />
+            </button>
+            {aboutOpen && (
+              <div className="mt-2 ms-3 space-y-2">
+                {aboutItems.map(i => (
+                  <Link key={i.href} href={i.href} onClick={() => setOpen(false)} className="block text-sm text-gray-600">
+                    {i.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
           {links.map(l => (
             <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="block text-sm text-gray-700">
               {l.label}
             </Link>
           ))}
-                    <div>
+          <div>
             <button
               onClick={() => setContactOpen(!contactOpen)}
               className="flex items-center justify-between w-full text-sm text-gray-700"

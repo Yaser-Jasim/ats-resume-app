@@ -1,6 +1,6 @@
 export const CONTENT = {
   en: {
-    nav: { about: 'About Us', services: 'Services', pricing: 'Pricing', help: 'Help', contact: 'Contact', feedback: 'Feedback', getStarted: 'Get Started', forRecruiters: 'For Recruiters' },
+    nav: { about: 'About Us', missionVision: 'Mission & Vision', ourTeam: 'Our Team', services: 'Services', pricing: 'Pricing', help: 'Help', contact: 'Contact', feedback: 'Feedback', getStarted: 'Get Started', forRecruiters: 'For Recruiters' },
     footer: {
       tagline: 'Get past the bots. Get in front of the humans.',
       product: 'Product', services: 'Services', pricing: 'Pricing', tryFree: 'Try it free',
