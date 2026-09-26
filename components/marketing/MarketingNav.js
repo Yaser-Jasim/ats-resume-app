@@ -47,6 +47,7 @@ function ContactDropdown({ contactLabel, feedbackLabel, dir }) {
 
 export default function MarketingNav() {
   const [open, setOpen] = useState(false)
+  const [contactOpen, setContactOpen] = useState(false)
   const { lang, setLang, dir } = useLanguage()
   const t = CONTENT[lang].nav
 
@@ -95,7 +96,7 @@ export default function MarketingNav() {
           </Link>
         </div>
 
-        <button onClick={() => setOpen(!open)} className="md:hidden text-ink">
+          <button onClick={() => { setOpen(!open); setContactOpen(false) }} className="md:hidden text-ink">
           {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
@@ -107,12 +108,25 @@ export default function MarketingNav() {
               {l.label}
             </Link>
           ))}
-          <Link href="/welcome/contact" onClick={() => setOpen(false)} className="block text-sm text-gray-700">
-            {t.contact}
-          </Link>
-          <Link href="/feedback" onClick={() => setOpen(false)} className="block text-sm text-gray-700">
-            {t.feedback}
-          </Link>
+                    <div>
+            <button
+              onClick={() => setContactOpen(!contactOpen)}
+              className="flex items-center justify-between w-full text-sm text-gray-700"
+            >
+              {t.contact}
+              <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${contactOpen ? 'rotate-180' : ''}`} />
+            </button>
+            {contactOpen && (
+              <div className="mt-2 ms-3 space-y-2">
+                <Link href="/welcome/contact" onClick={() => setOpen(false)} className="block text-sm text-gray-600">
+                  {t.contact}
+                </Link>
+                <Link href="/feedback" onClick={() => setOpen(false)} className="block text-sm text-gray-600">
+                  {t.feedback}
+                </Link>
+              </div>
+            )}
+          </div>
           <select
             value={lang}
             onChange={e => setLang(e.target.value)}
