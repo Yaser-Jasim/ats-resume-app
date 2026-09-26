@@ -1,10 +1,12 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import ResemyLogo from '@/components/ui/ResemyLogo'
 import { Menu, X, Languages, ChevronDown } from 'lucide-react'
 import { useLanguage, LANGUAGES } from './LanguageContext'
 import { CONTENT } from './marketingContent'
+import { createClient } from '@/lib/supabaseClient'
 
 function ContactDropdown({ contactLabel, feedbackLabel, dir }) {
   const [open, setOpen] = useState(false)
@@ -91,6 +93,26 @@ export default function MarketingNav() {
   const t = CONTENT[lang].nav
   const footerT = CONTENT[lang].footer
 
+  // --- Auth state, for the Sign in / Sign out button -------------------
+  const router = useRouter()
+  const supabase = createClient()
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => setUser(data.user ?? null))
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null)
+    })
+    return () => listener.subscription.unsubscribe()
+  }, [])
+
+  async function handleSignOut() {
+    await supabase.auth.signOut()
+    setOpen(false)
+    router.push('/welcome')
+  }
+  // -----------------------------------------------------------------------
+
   const aboutItems = [
     { label: t.about, href: '/welcome/about' },
     { label: t.missionVision, href: '/welcome/mission-vision' },
@@ -138,6 +160,20 @@ export default function MarketingNav() {
               ))}
             </select>
           </div>
+
+          {user ? (
+            <button
+              onClick={handleSignOut}
+              className="text-sm text-gray-600 hover:text-ink transition-colors"
+            >
+              Sign out
+            </button>
+          ) : (
+            <Link href="/login" className="text-sm text-gray-600 hover:text-ink transition-colors">
+              Sign in
+            </Link>
+          )}
+
             <Link href="/app"
             className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-b from-orange-400 to-orange-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-2px_0_rgba(0,0,0,0.15),0_6px_14px_-4px_rgba(234,88,12,0.5)] hover:from-orange-500 hover:to-orange-700 active:translate-y-px active:shadow-[inset_0_1px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(0,0,0,0.15),0_2px_6px_-2px_rgba(234,88,12,0.5)] transition-all">
             {t.getStarted}
@@ -203,6 +239,24 @@ export default function MarketingNav() {
               <option key={l.code} value={l.code}>{l.label}</option>
             ))}
           </select>
+
+          {user ? (
+            <button
+              onClick={handleSignOut}
+              className="block w-full text-center border border-gray-200 rounded-xl py-2.5 text-sm font-medium text-ink hover:bg-mist transition-colors"
+            >
+              Sign out
+            </button>
+          ) : (
+            <Link
+              href="/login"
+              onClick={() => setOpen(false)}
+              className="block text-center border border-gray-200 rounded-xl py-2.5 text-sm font-medium text-ink hover:bg-mist transition-colors"
+            >
+              Sign in
+            </Link>
+          )}
+
           <Link href="/" className="block text-center bg-brand text-white rounded-xl py-2.5 text-sm font-medium">
             {t.getStarted}
           </Link>
