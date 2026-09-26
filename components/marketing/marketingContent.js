@@ -73,7 +73,7 @@ export const CONTENT = {
   },
 
   ar: {
-      nav: { about: 'من نحن', services: 'خدماتنا', pricing: 'الأسعار', help: 'المساعدة', contact: 'اتصل بنا', feedback: 'ملاحظات', getStarted: 'ابدأ الآن', forRecruiters: 'للموارد البشرية' },
+      nav: { about: 'من نحن', missionVision: 'الرسالة والرؤية', ourTeam: 'فريقنا', services: 'خدماتنا', pricing: 'الأسعار', help: 'المساعدة', contact: 'اتصل بنا', feedback: 'ملاحظات', getStarted: 'ابدأ الآن', forRecruiters: 'للموارد البشرية' },
     footer: {
       tagline: 'تجاوز برامج الفرز. تواصل مباشرة مع البشر.',
       product: 'المنتج', services: 'الخدمات', pricing: 'الأسعار', tryFree: 'جرّبه مجانًا',
@@ -146,7 +146,7 @@ export const CONTENT = {
   },
 
   fr: {
-        nav: { about: 'À propos', services: 'Services', pricing: 'Tarifs', help: 'Aide', contact: 'Contact', feedback: 'Commentaires', getStarted: 'Commencer', forRecruiters: 'Recruteurs' },
+        nav: { about: 'À propos', missionVision: 'Mission et vision', ourTeam: 'Notre équipe', services: 'Services', pricing: 'Tarifs', help: 'Aide', contact: 'Contact', feedback: 'Commentaires', getStarted: 'Commencer', forRecruiters: 'Recruteurs' },
     footer: {
       tagline: 'Passez les bots. Parlez aux humains.',
       product: 'Produit', services: 'Services', pricing: 'Tarifs', tryFree: 'Essayer gratuitement',
@@ -219,7 +219,7 @@ export const CONTENT = {
   },
 
   es: {
-        nav: { about: 'Sobre nosotros', services: 'Servicios', pricing: 'Precios', help: 'Ayuda', contact: 'Contacto', feedback: 'Comentarios', getStarted: 'Comenzar', forRecruiters: 'Reclutadores' },
+        nav: { about: 'Sobre nosotros', missionVision: 'Misión y visión', ourTeam: 'Nuestro equipo', services: 'Servicios', pricing: 'Precios', help: 'Ayuda', contact: 'Contacto', feedback: 'Comentarios', getStarted: 'Comenzar', forRecruiters: 'Reclutadores' },
     footer: {
       tagline: 'Supera a los robots. Llega a los humanos.',
       product: 'Producto', services: 'Servicios', pricing: 'Precios', tryFree: 'Pruébalo gratis',
@@ -292,7 +292,7 @@ export const CONTENT = {
   },
 
   pa: {
-        nav: { about: 'ਸਾਡੇ ਬਾਰੇ', services: 'ਸੇਵਾਵਾਂ', pricing: 'ਕੀਮਤਾਂ', help: 'ਮਦਦ', contact: 'ਸੰਪਰਕ ਕਰੋ', feedback: 'ਫੀਡਬੈਕ', getStarted: 'ਸ਼ੁਰੂ ਕਰੋ', forRecruiters: 'ਭਰਤੀਕਾਰਾਂ ਲਈ' },
+        nav: { about: 'ਸਾਡੇ ਬਾਰੇ', missionVision: 'ਮਿਸ਼ਨ ਅਤੇ ਦ੍ਰਿਸ਼ਟੀ', ourTeam: 'ਸਾਡੀ ਟੀਮ', services: 'ਸੇਵਾਵਾਂ', pricing: 'ਕੀਮਤਾਂ', help: 'ਮਦਦ', contact: 'ਸੰਪਰਕ ਕਰੋ', feedback: 'ਫੀਡਬੈਕ', getStarted: 'ਸ਼ੁਰੂ ਕਰੋ', forRecruiters: 'ਭਰਤੀਕਾਰਾਂ ਲਈ' },
     footer: {
       tagline: 'ਬੌਟਸ ਨੂੰ ਪਾਰ ਕਰੋ। ਸਿੱਧੇ ਮਨੁੱਖਾਂ ਤੱਕ ਪਹੁੰਚੋ।',
       product: 'ਉਤਪਾਦ', services: 'ਸੇਵਾਵਾਂ', pricing: 'ਕੀਮਤਾਂ', tryFree: 'ਮੁਫ਼ਤ ਅਜ਼ਮਾਓ',
@@ -365,7 +365,7 @@ export const CONTENT = {
   },
 
   zh: {
-        nav: { about: '关于我们', services: '我们的服务', pricing: '价格', help: '帮助', contact: '联系我们', feedback: '反馈', getStarted: '立即开始', forRecruiters: '招聘方' },
+        nav: { about: '关于我们', missionVision: '使命与愿景', ourTeam: '我们的团队', services: '我们的服务', pricing: '价格', help: '帮助', contact: '联系我们', feedback: '反馈', getStarted: '立即开始', forRecruiters: '招聘方' },
     footer: {
       tagline: '跳过筛选机器人，直接触达真人招聘者。',
       product: '产品', services: '服务', pricing: '价格', tryFree: '免费试用',
