@@ -1,5 +1,5 @@
 'use client'
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef, forwardRef, useImperativeHandle } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { useRouter } from 'next/navigation'
 import Sidebar from '@/components/Sidebar'
@@ -9,9 +9,11 @@ import Input from '@/components/ui/Input'
 import Textarea from '@/components/ui/Textarea'
 import { UploadCloud, FileText } from 'lucide-react'
 
-function FileDropZone({ file, setFile, accept, hint }) {
+const FileDropZone = forwardRef(function FileDropZone({ file, setFile, accept, hint }, ref) {
   const onDrop = useCallback(files => setFile(files[0]), [setFile])
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept, maxFiles: 1 })
+  const { getRootProps, getInputProps, isDragActive, open } = useDropzone({ onDrop, accept, maxFiles: 1 })
+  // Lets a parent-rendered "Upload" button trigger this same dropzone's file picker.
+  useImperativeHandle(ref, () => ({ open }), [open])
   return (
     <div {...getRootProps()}
          className={`mt-1.5 mb-4 border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors
@@ -30,7 +32,7 @@ function FileDropZone({ file, setFile, accept, hint }) {
       )}
     </div>
   )
-}
+})
 
 const RESUME_ACCEPT = {
   'application/pdf': ['.pdf'],
@@ -46,6 +48,7 @@ const JOB_DESCRIPTION_ACCEPT = {
 
 export default function MainPage() {
   const router = useRouter()
+  const jobDescriptionDropRef = useRef(null)
   const [positionTitle, setPositionTitle] = useState('')
   const [orgName, setOrgName] = useState('')
   const [orgAddress, setOrgAddress] = useState('')
@@ -114,8 +117,14 @@ export default function MainPage() {
           </div>
         </div>
 
-        <label className="text-sm font-medium text-ink">1 — Upload job description (PDF or image)</label>
+        <div className="flex items-center justify-between gap-4">
+          <label className="text-sm font-medium text-ink">1 — Upload job description (PDF or image)</label>
+          <Button type="button" onClick={() => jobDescriptionDropRef.current?.open()}>
+            Upload
+          </Button>
+        </div>
         <FileDropZone
+          ref={jobDescriptionDropRef}
           file={jobDescriptionFile}
           setFile={setJobDescriptionFile}
           accept={JOB_DESCRIPTION_ACCEPT}
