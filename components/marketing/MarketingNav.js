@@ -164,12 +164,15 @@ export default function MarketingNav() {
           {user ? (
             <button
               onClick={handleSignOut}
-              className="text-sm text-gray-600 hover:text-ink transition-colors"
+              className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium text-ink border border-gray-200 bg-white hover:bg-mist transition-colors"
             >
               Sign out
             </button>
           ) : (
-            <Link href="/login" className="text-sm text-gray-600 hover:text-ink transition-colors">
+            <Link
+              href="/login"
+              className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium text-ink border border-gray-200 bg-white hover:bg-mist transition-colors"
+            >
               Sign in
             </Link>
           )}
