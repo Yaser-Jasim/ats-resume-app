@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { extractResumeText } from '@/lib/parseResume'
+import { checkDocumentTypes } from '@/lib/validateDocumentTypes'
 import { generateHRAnalysis } from '@/lib/generateHRAnalysis'
 import { createServerClient } from '@/lib/supabaseServer'
 import { createRouteClient } from '@/lib/supabaseRouteClient'
@@ -77,6 +78,23 @@ export async function POST(req) {
     const coverLetterText = coverLetterFile && coverLetterFile.size > 0
       ? await extractResumeText(coverLetterFile)
       : ''
+
+    // Catch the "wrong document in the wrong box" mistake before evaluating
+    // a candidate on it — e.g. a résumé pasted into the job description
+    // field. Only blocks on a confident mismatch; see validateDocumentTypes.js.
+    const { jobDescriptionLooksLikeResume, resumeLooksLikeJobDescription } =
+      await checkDocumentTypes({ jobDescriptionText: jobDescription, resumeText })
+
+    if (jobDescriptionLooksLikeResume) {
+      return NextResponse.json({
+        error: 'The job description you added looks like a résumé, not a job posting — please check you added the right one.',
+      }, { status: 400 })
+    }
+    if (resumeLooksLikeJobDescription) {
+      return NextResponse.json({
+        error: "The candidate's résumé looks like a job posting, not a résumé — please check you uploaded the right file.",
+      }, { status: 400 })
+    }
 
     const result = await generateHRAnalysis({ resumeText, coverLetterText, jobDescription, jobTitle, orgName })
 
