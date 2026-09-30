@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { extractResumeText, extractTextFromFile } from '@/lib/parseResume'
+import { extractResumeText } from '@/lib/parseResume'
 import { generateTailoredResume } from '@/lib/generateTailoredResume'
 import { createServerClient } from '@/lib/supabaseServer'
 import { createRouteClient } from '@/lib/supabaseRouteClient'
@@ -38,12 +38,11 @@ export async function POST(req) {
       return NextResponse.json({ error: 'Please enter the organization name.' }, { status: 400 })
     }
 
-    // Job description: an uploaded file (PDF or image, OCR'd via Claude's
-    // vision) takes priority over pasted text, same pattern as the résumé
-    // handling below.
+    // Job description: an uploaded PDF/DOCX file takes priority over pasted
+    // text, same pattern as the résumé handling below.
     let jobDescriptionText = jobDescription || ''
     if (jobDescriptionFile && jobDescriptionFile.size > 0) {
-      jobDescriptionText = await extractTextFromFile(jobDescriptionFile)
+      jobDescriptionText = await extractResumeText(jobDescriptionFile)
     }
     if (!jobDescriptionText) {
       return NextResponse.json({ error: 'Please upload or paste the job description.' }, { status: 400 })

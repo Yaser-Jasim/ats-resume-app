@@ -39,9 +39,7 @@ const RESUME_ACCEPT = {
 
 const JOB_DESCRIPTION_ACCEPT = {
   'application/pdf': ['.pdf'],
-  'image/png': ['.png'],
-  'image/jpeg': ['.jpg', '.jpeg'],
-  'image/webp': ['.webp'],
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document': ['.docx'],
 }
 
 export default function MainPage() {
@@ -134,7 +132,7 @@ export default function MainPage() {
         </div>
 
         <div className="flex items-center gap-3 mb-1.5">
-          <label className="text-sm font-medium text-ink">1 — Upload job description (PDF or image)</label>
+          <label className="text-sm font-medium text-ink">1 — Upload job description (PDF or DOCX)</label>
           <Button type="button" onClick={openJobDescriptionPicker}>
             Upload
           </Button>
