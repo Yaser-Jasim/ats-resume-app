@@ -1,7 +1,6 @@
 'use client'
 import Link from 'next/link'
 import ResemyLogo from '@/components/ui/ResemyLogo'
-import PageViewCounter from '@/components/PageViewCounter'
 import { useLanguage } from './LanguageContext'
 import { CONTENT } from './marketingContent'
 
@@ -73,8 +72,6 @@ export default function MarketingFooter() {
       </div>
       <div className="border-t border-white/10 py-6 text-center text-xs text-gray-500">
         © {new Date().getFullYear()} Resemy. {t.rights}
-        <span className="mx-2 text-gray-600">·</span>
-        <PageViewCounter />
       </div>
     </footer>
   )

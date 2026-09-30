@@ -5,7 +5,6 @@ import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabaseClient'
 import Avatar from '@/components/ui/Avatar'
 import ResemyLogo from '@/components/ui/ResemyLogo'
-import PageViewCounter from '@/components/PageViewCounter'
 import { ChevronDown, Menu, X, Home, PanelLeftClose, PanelLeftOpen } from 'lucide-react'
 
 const items = [
@@ -129,9 +128,6 @@ export default function Sidebar() {
         <div className={collapsed ? 'md:hidden' : ''}>
           <AccountMenu />
           <p className="text-[10px] text-gray-400 text-center mt-2 px-2">Resemy Solutions (Resemy) is a registered business in British Columbia, Canada.</p>
-          <p className="text-[10px] text-gray-400 text-center mt-1 px-2">
-            <PageViewCounter />
-          </p>
         </div>
       </aside>
     </>
