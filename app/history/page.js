@@ -94,17 +94,20 @@ export default function HistoryPage() {
         <BackButton />
         <h1 className="font-display text-2xl text-ink mb-6">Search & Downloads</h1>
 
-        <div className="flex gap-3 mb-6">
-          <div className="w-44">
+        <div className="flex flex-col sm:flex-row gap-3 mb-6">
+          <div className="w-full sm:w-44">
+            <label className="block text-sm font-medium text-ink mb-1">View</label>
             <Select value={view} onChange={e => setView(e.target.value)}>
               <option value="candidates">Candidates</option>
               <option value="hr">HR Assessments</option>
             </Select>
           </div>
-                    <div className="flex-1">
+          <div className="w-full sm:flex-1">
+            <label className="block text-sm font-medium text-ink mb-1">Search</label>
             <Input placeholder="Search by name, job title, or employer…" value={search} onChange={e => setSearch(e.target.value)} />
           </div>
-          <div className="w-48">
+          <div className="w-full sm:w-48">
+            <label className="block text-sm font-medium text-ink mb-1">Sort by</label>
             <Select value={sortBy} onChange={e => setSortBy(e.target.value)}>
               <option value="date-desc">Date (newest first)</option>
               <option value="date-asc">Date (oldest first)</option>
