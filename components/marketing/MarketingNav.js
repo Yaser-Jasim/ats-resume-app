@@ -164,16 +164,16 @@ export default function MarketingNav() {
           {user ? (
             <button
               onClick={handleSignOut}
-              className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium text-ink border border-gray-200 bg-white hover:bg-mist transition-colors"
+              className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium text-brand border border-brand hover:bg-brand hover:text-white transition-colors"
             >
-              Sign out
+              {t.signOut}
             </button>
           ) : (
             <Link
               href="/login"
-              className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium text-ink border border-gray-200 bg-white hover:bg-mist transition-colors"
+              className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium text-brand border border-brand hover:bg-brand hover:text-white transition-colors"
             >
-              Sign in
+              {t.signIn}
             </Link>
           )}
 
@@ -246,17 +246,17 @@ export default function MarketingNav() {
           {user ? (
             <button
               onClick={handleSignOut}
-              className="block w-full text-center border border-gray-200 rounded-xl py-2.5 text-sm font-medium text-ink hover:bg-mist transition-colors"
+              className="block w-full text-center border border-brand text-brand rounded-xl py-2.5 text-sm font-medium hover:bg-brand hover:text-white transition-colors"
             >
-              Sign out
+              {t.signOut}
             </button>
           ) : (
             <Link
               href="/login"
               onClick={() => setOpen(false)}
-              className="block text-center border border-gray-200 rounded-xl py-2.5 text-sm font-medium text-ink hover:bg-mist transition-colors"
+              className="block text-center border border-brand text-brand rounded-xl py-2.5 text-sm font-medium hover:bg-brand hover:text-white transition-colors"
             >
-              Sign in
+              {t.signIn}
             </Link>
           )}
 

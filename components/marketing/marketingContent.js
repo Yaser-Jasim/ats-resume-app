@@ -1,6 +1,6 @@
 export const CONTENT = {
   en: {
-    nav: { about: 'About Us', missionVision: 'Mission & Vision', ourTeam: 'Our Team', services: 'Services', pricing: 'Pricing', help: 'Help', contact: 'Contact', feedback: 'Feedback', getStarted: 'Get Started', forRecruiters: 'For Recruiters' },
+    nav: { about: 'About Us', missionVision: 'Mission & Vision', ourTeam: 'Our Team', services: 'Services', pricing: 'Pricing', help: 'Help', contact: 'Contact', feedback: 'Feedback', getStarted: 'Get Started', forRecruiters: 'For Recruiters', signIn: 'Sign in', signOut: 'Sign out' },
     missionVision: {
       title: 'Mission & Vision',
       subtitle: "What we're building, and why.",
@@ -109,7 +109,7 @@ export const CONTENT = {
   },
 
   ar: {
-      nav: { about: 'من نحن', missionVision: 'الرسالة والرؤية', ourTeam: 'فريقنا', services: 'خدماتنا', pricing: 'الأسعار', help: 'المساعدة', contact: 'اتصل بنا', feedback: 'ملاحظات', getStarted: 'ابدأ الآن', forRecruiters: 'للموارد البشرية' },
+      nav: { about: 'من نحن', missionVision: 'الرسالة والرؤية', ourTeam: 'فريقنا', services: 'خدماتنا', pricing: 'الأسعار', help: 'المساعدة', contact: 'اتصل بنا', feedback: 'ملاحظات', getStarted: 'ابدأ الآن', forRecruiters: 'للموارد البشرية', signIn: 'تسجيل الدخول', signOut: 'تسجيل الخروج' },
     missionVision: {
       title: 'الرسالة والرؤية',
       subtitle: 'ماذا نبني، ولماذا.',
@@ -218,7 +218,7 @@ export const CONTENT = {
   },
 
   fr: {
-        nav: { about: 'À propos', missionVision: 'Mission et vision', ourTeam: 'Notre équipe', services: 'Services', pricing: 'Tarifs', help: 'Aide', contact: 'Contact', feedback: 'Commentaires', getStarted: 'Commencer', forRecruiters: 'Recruteurs' },
+        nav: { about: 'À propos', missionVision: 'Mission et vision', ourTeam: 'Notre équipe', services: 'Services', pricing: 'Tarifs', help: 'Aide', contact: 'Contact', feedback: 'Commentaires', getStarted: 'Commencer', forRecruiters: 'Recruteurs', signIn: 'Se connecter', signOut: 'Se déconnecter' },
     missionVision: {
       title: 'Mission et vision',
       subtitle: 'Ce que nous construisons, et pourquoi.',
@@ -327,7 +327,7 @@ export const CONTENT = {
   },
 
   es: {
-        nav: { about: 'Sobre nosotros', missionVision: 'Misión y visión', ourTeam: 'Nuestro equipo', services: 'Servicios', pricing: 'Precios', help: 'Ayuda', contact: 'Contacto', feedback: 'Comentarios', getStarted: 'Comenzar', forRecruiters: 'Reclutadores' },
+        nav: { about: 'Sobre nosotros', missionVision: 'Misión y visión', ourTeam: 'Nuestro equipo', services: 'Servicios', pricing: 'Precios', help: 'Ayuda', contact: 'Contacto', feedback: 'Comentarios', getStarted: 'Comenzar', forRecruiters: 'Reclutadores', signIn: 'Iniciar sesión', signOut: 'Cerrar sesión' },
     missionVision: {
       title: 'Misión y visión',
       subtitle: 'Lo que estamos construyendo, y por qué.',
@@ -436,7 +436,7 @@ export const CONTENT = {
   },
 
   pa: {
-        nav: { about: 'ਸਾਡੇ ਬਾਰੇ', missionVision: 'ਮਿਸ਼ਨ ਅਤੇ ਦ੍ਰਿਸ਼ਟੀ', ourTeam: 'ਸਾਡੀ ਟੀਮ', services: 'ਸੇਵਾਵਾਂ', pricing: 'ਕੀਮਤਾਂ', help: 'ਮਦਦ', contact: 'ਸੰਪਰਕ ਕਰੋ', feedback: 'ਫੀਡਬੈਕ', getStarted: 'ਸ਼ੁਰੂ ਕਰੋ', forRecruiters: 'ਭਰਤੀਕਾਰਾਂ ਲਈ' },
+        nav: { about: 'ਸਾਡੇ ਬਾਰੇ', missionVision: 'ਮਿਸ਼ਨ ਅਤੇ ਦ੍ਰਿਸ਼ਟੀ', ourTeam: 'ਸਾਡੀ ਟੀਮ', services: 'ਸੇਵਾਵਾਂ', pricing: 'ਕੀਮਤਾਂ', help: 'ਮਦਦ', contact: 'ਸੰਪਰਕ ਕਰੋ', feedback: 'ਫੀਡਬੈਕ', getStarted: 'ਸ਼ੁਰੂ ਕਰੋ', forRecruiters: 'ਭਰਤੀਕਾਰਾਂ ਲਈ', signIn: 'ਸਾਈਨ ਇਨ ਕਰੋ', signOut: 'ਸਾਈਨ ਆਊਟ ਕਰੋ' },
     missionVision: {
       title: 'ਮਿਸ਼ਨ ਅਤੇ ਦ੍ਰਿਸ਼ਟੀ',
       subtitle: 'ਅਸੀਂ ਕੀ ਬਣਾ ਰਹੇ ਹਾਂ, ਅਤੇ ਕਿਉਂ।',
@@ -545,7 +545,7 @@ export const CONTENT = {
   },
 
   zh: {
-        nav: { about: '关于我们', missionVision: '使命与愿景', ourTeam: '我们的团队', services: '我们的服务', pricing: '价格', help: '帮助', contact: '联系我们', feedback: '反馈', getStarted: '立即开始', forRecruiters: '招聘方' },
+        nav: { about: '关于我们', missionVision: '使命与愿景', ourTeam: '我们的团队', services: '我们的服务', pricing: '价格', help: '帮助', contact: '联系我们', feedback: '反馈', getStarted: '立即开始', forRecruiters: '招聘方', signIn: '登录', signOut: '退出登录' },
     missionVision: {
       title: '使命与愿景',
       subtitle: '我们正在打造什么，以及为什么。',
