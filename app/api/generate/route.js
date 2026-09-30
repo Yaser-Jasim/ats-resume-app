@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { extractResumeText } from '@/lib/parseResume'
+import { extractResumeText, extractTextFromFile } from '@/lib/parseResume'
 import { generateTailoredResume } from '@/lib/generateTailoredResume'
 import { createServerClient } from '@/lib/supabaseServer'
 import { createRouteClient } from '@/lib/supabaseRouteClient'
@@ -25,8 +25,20 @@ export async function POST(req) {
     const orgName = formData.get('orgName')
     const orgAddress = formData.get('orgAddress')
     const jobDescription = formData.get('jobDescription')
+    const jobDescriptionFile = formData.get('jobDescriptionFile')
     const resumeFile = formData.get('resumeFile')
     const pastedText = formData.get('resumeText')
+
+    // Job description: an uploaded file (PDF or image, OCR'd via Claude's
+    // vision) takes priority over pasted text, same pattern as the résumé
+    // handling below.
+    let jobDescriptionText = jobDescription || ''
+    if (jobDescriptionFile && jobDescriptionFile.size > 0) {
+      jobDescriptionText = await extractTextFromFile(jobDescriptionFile)
+    }
+    if (!jobDescriptionText) {
+      return NextResponse.json({ error: 'Please upload or paste the job description.' }, { status: 400 })
+    }
 
     let resumeText = pastedText || ''
     if (resumeFile && resumeFile.size > 0) {
@@ -36,7 +48,7 @@ export async function POST(req) {
       return NextResponse.json({ error: 'Please upload or paste a resume.' }, { status: 400 })
     }
 
-    const tailored = await generateTailoredResume({ resumeText, jobDescription, positionTitle, orgName })
+    const tailored = await generateTailoredResume({ resumeText, jobDescription: jobDescriptionText, positionTitle, orgName })
 
     if (profile.plan === 'free') {
       await supabase.from('profiles').update({ credits_remaining: profile.credits_remaining - 1 }).eq('id', user.id)
@@ -54,7 +66,7 @@ export async function POST(req) {
       position_title: positionTitle,
       organization_name: orgName,
       organization_address: orgAddress,
-      job_description: jobDescription,
+      job_description: jobDescriptionText,
       original_resume_text: resumeText,
       tailored_json: tailored,
       ats_score: tailored.ats_score,

@@ -9,32 +9,74 @@ import Input from '@/components/ui/Input'
 import Textarea from '@/components/ui/Textarea'
 import { UploadCloud, FileText } from 'lucide-react'
 
+function FileDropZone({ file, setFile, accept, hint }) {
+  const onDrop = useCallback(files => setFile(files[0]), [setFile])
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept, maxFiles: 1 })
+  return (
+    <div {...getRootProps()}
+         className={`mt-1.5 mb-4 border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors
+           ${isDragActive ? 'border-brand bg-mist' : 'border-gray-200 hover:border-gray-300 hover:bg-mist/50'}`}>
+      <input {...getInputProps()} />
+      {file ? (
+        <div className="flex items-center justify-center gap-2 text-ink text-sm">
+          <FileText className="w-4 h-4 text-brand" />
+          {file.name}
+        </div>
+      ) : (
+        <div className="flex flex-col items-center gap-2 text-gray-400">
+          <UploadCloud className="w-6 h-6" />
+          <p className="text-sm">{hint}</p>
+        </div>
+      )}
+    </div>
+  )
+}
+
+const RESUME_ACCEPT = {
+  'application/pdf': ['.pdf'],
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document': ['.docx'],
+}
+
+const JOB_DESCRIPTION_ACCEPT = {
+  'application/pdf': ['.pdf'],
+  'image/png': ['.png'],
+  'image/jpeg': ['.jpg', '.jpeg'],
+  'image/webp': ['.webp'],
+}
+
 export default function MainPage() {
   const router = useRouter()
   const [positionTitle, setPositionTitle] = useState('')
   const [orgName, setOrgName] = useState('')
   const [orgAddress, setOrgAddress] = useState('')
   const [jobDescription, setJobDescription] = useState('')
+  const [jobDescriptionFile, setJobDescriptionFile] = useState(null)
   const [resumeFile, setResumeFile] = useState(null)
   const [resumeText, setResumeText] = useState('')
   const [loading, setLoading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
 
-  const onDrop = useCallback(files => setResumeFile(files[0]), [])
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept: { 'application/pdf': ['.pdf'], 'application/vnd.openxmlformats-officedocument.wordprocessingml.document': ['.docx'] },
-    maxFiles: 1,
-  })
-
   async function handleGenerate() {
     setLoading(true)
     setErrorMsg('')
+
+    if (!jobDescriptionFile && !jobDescription.trim()) {
+      setErrorMsg('Please upload or paste the job description.')
+      setLoading(false)
+      return
+    }
+    if (!resumeFile && !resumeText.trim()) {
+      setErrorMsg('Please upload or paste a résumé.')
+      setLoading(false)
+      return
+    }
+
     const formData = new FormData()
     formData.append('positionTitle', positionTitle)
     formData.append('orgName', orgName)
     formData.append('orgAddress', orgAddress)
     formData.append('jobDescription', jobDescription)
+    if (jobDescriptionFile) formData.append('jobDescriptionFile', jobDescriptionFile)
     if (resumeFile) formData.append('resumeFile', resumeFile)
     if (resumeText) formData.append('resumeText', resumeText)
 
@@ -72,27 +114,27 @@ export default function MainPage() {
           </div>
         </div>
 
-        <label className="text-sm font-medium text-ink">Targeted job description</label>
+        <label className="text-sm font-medium text-ink">1 — Upload job description (PDF or image)</label>
+        <FileDropZone
+          file={jobDescriptionFile}
+          setFile={setJobDescriptionFile}
+          accept={JOB_DESCRIPTION_ACCEPT}
+          hint="Drop a PDF, screenshot, or photo here, or click to browse"
+        />
+
+        <label className="text-sm font-medium text-ink">2 — or / paste job description</label>
         <Textarea className="h-40 mt-1.5 mb-6"
-                  value={jobDescription} onChange={e => setJobDescription(e.target.value)} />
+                  value={jobDescription} onChange={e => setJobDescription(e.target.value)}
+                  disabled={!!jobDescriptionFile}
+                  placeholder="Paste the job posting text here instead" />
 
         <label className="text-sm font-medium text-ink">1 — Upload résumé</label>
-        <div {...getRootProps()}
-             className={`mt-1.5 mb-4 border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors
-               ${isDragActive ? 'border-brand bg-mist' : 'border-gray-200 hover:border-gray-300 hover:bg-mist/50'}`}>
-          <input {...getInputProps()} />
-          {resumeFile ? (
-            <div className="flex items-center justify-center gap-2 text-ink text-sm">
-              <FileText className="w-4 h-4 text-brand" />
-              {resumeFile.name}
-            </div>
-          ) : (
-            <div className="flex flex-col items-center gap-2 text-gray-400">
-              <UploadCloud className="w-6 h-6" />
-              <p className="text-sm">Drop a PDF or DOCX here, or click to browse</p>
-            </div>
-          )}
-        </div>
+        <FileDropZone
+          file={resumeFile}
+          setFile={setResumeFile}
+          accept={RESUME_ACCEPT}
+          hint="Drop a PDF or DOCX here, or click to browse"
+        />
 
         <label className="text-sm font-medium text-ink">2 — or / paste résumé</label>
         <Textarea className="h-32 mt-1.5 mb-6"
