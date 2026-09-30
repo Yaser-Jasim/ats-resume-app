@@ -29,6 +29,15 @@ export async function POST(req) {
     const resumeFile = formData.get('resumeFile')
     const pastedText = formData.get('resumeText')
 
+    // Required fields — enforced here too, not just client-side, since this
+    // route can be called directly (e.g. by a script) bypassing the UI.
+    if (!positionTitle || !positionTitle.trim()) {
+      return NextResponse.json({ error: 'Please enter the position title.' }, { status: 400 })
+    }
+    if (!orgName || !orgName.trim()) {
+      return NextResponse.json({ error: 'Please enter the organization name.' }, { status: 400 })
+    }
+
     // Job description: an uploaded file (PDF or image, OCR'd via Claude's
     // vision) takes priority over pasted text, same pattern as the résumé
     // handling below.

@@ -69,6 +69,16 @@ export default function MainPage() {
     setLoading(true)
     setErrorMsg('')
 
+    if (!positionTitle.trim()) {
+      setErrorMsg('Please enter the position title.')
+      setLoading(false)
+      return
+    }
+    if (!orgName.trim()) {
+      setErrorMsg('Please enter the organization name.')
+      setLoading(false)
+      return
+    }
     if (!jobDescriptionFile && !jobDescription.trim()) {
       setErrorMsg('Please upload or paste the job description.')
       setLoading(false)
@@ -107,14 +117,14 @@ export default function MainPage() {
 
         <div className="flex flex-col sm:flex-row gap-4 mb-4">
           <div className="flex-1">
-            <label className="text-sm font-medium text-ink">Position title</label>
+            <label className="text-sm font-medium text-ink">Position title <span className="text-red-500">*</span></label>
             <Input className="mt-1.5" placeholder="e.g. Senior Product Manager"
-                   value={positionTitle} onChange={e => setPositionTitle(e.target.value)} />
+                   value={positionTitle} onChange={e => setPositionTitle(e.target.value)} required />
           </div>
           <div className="flex-1">
-            <label className="text-sm font-medium text-ink">Organization name</label>
+            <label className="text-sm font-medium text-ink">Organization name <span className="text-red-500">*</span></label>
             <Input className="mt-1.5" placeholder="e.g. Acme Inc."
-                   value={orgName} onChange={e => setOrgName(e.target.value)} />
+                   value={orgName} onChange={e => setOrgName(e.target.value)} required />
           </div>
           <div className="flex-1">
             <label className="text-sm font-medium text-ink">Org. address (optional)</label>
