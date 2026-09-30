@@ -1,5 +1,5 @@
 'use client'
-import { useState, useCallback, useRef, forwardRef, useImperativeHandle } from 'react'
+import { useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { useRouter } from 'next/navigation'
 import Sidebar from '@/components/Sidebar'
@@ -9,11 +9,9 @@ import Input from '@/components/ui/Input'
 import Textarea from '@/components/ui/Textarea'
 import { UploadCloud, FileText } from 'lucide-react'
 
-const FileDropZone = forwardRef(function FileDropZone({ file, setFile, accept, hint }, ref) {
+function FileDropZone({ file, setFile, accept, hint }) {
   const onDrop = useCallback(files => setFile(files[0]), [setFile])
-  const { getRootProps, getInputProps, isDragActive, open } = useDropzone({ onDrop, accept, maxFiles: 1 })
-  // Lets a parent-rendered "Upload" button trigger this same dropzone's file picker.
-  useImperativeHandle(ref, () => ({ open }), [open])
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept, maxFiles: 1 })
   return (
     <div {...getRootProps()}
          className={`mt-1.5 mb-4 border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors
@@ -32,7 +30,7 @@ const FileDropZone = forwardRef(function FileDropZone({ file, setFile, accept, h
       )}
     </div>
   )
-})
+}
 
 const RESUME_ACCEPT = {
   'application/pdf': ['.pdf'],
@@ -48,7 +46,6 @@ const JOB_DESCRIPTION_ACCEPT = {
 
 export default function MainPage() {
   const router = useRouter()
-  const jobDescriptionDropRef = useRef(null)
   const [positionTitle, setPositionTitle] = useState('')
   const [orgName, setOrgName] = useState('')
   const [orgAddress, setOrgAddress] = useState('')
@@ -58,6 +55,15 @@ export default function MainPage() {
   const [resumeText, setResumeText] = useState('')
   const [loading, setLoading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
+
+  const onDropJobDescription = useCallback(files => setJobDescriptionFile(files[0]), [])
+  const { getInputProps: getJobDescriptionInputProps, open: openJobDescriptionPicker } = useDropzone({
+    onDrop: onDropJobDescription,
+    accept: JOB_DESCRIPTION_ACCEPT,
+    maxFiles: 1,
+    noClick: true,
+    noKeyboard: true,
+  })
 
   async function handleGenerate() {
     setLoading(true)
@@ -117,19 +123,19 @@ export default function MainPage() {
           </div>
         </div>
 
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center gap-3 mb-1.5">
           <label className="text-sm font-medium text-ink">1 — Upload job description (PDF or image)</label>
-          <Button type="button" onClick={() => jobDescriptionDropRef.current?.open()}>
+          <Button type="button" onClick={openJobDescriptionPicker}>
             Upload
           </Button>
+          <input {...getJobDescriptionInputProps()} />
         </div>
-        <FileDropZone
-          ref={jobDescriptionDropRef}
-          file={jobDescriptionFile}
-          setFile={setJobDescriptionFile}
-          accept={JOB_DESCRIPTION_ACCEPT}
-          hint="Drop a PDF, screenshot, or photo here, or click to browse"
-        />
+        {jobDescriptionFile && (
+          <div className="flex items-center gap-2 text-ink text-sm mb-4">
+            <FileText className="w-4 h-4 text-brand" />
+            {jobDescriptionFile.name}
+          </div>
+        )}
 
         <label className="text-sm font-medium text-ink">2 — or / paste job description</label>
         <Textarea className="h-40 mt-1.5 mb-6"
