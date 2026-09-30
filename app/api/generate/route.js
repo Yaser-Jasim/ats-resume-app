@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { extractResumeText } from '@/lib/parseResume'
+import { checkDocumentTypes } from '@/lib/validateDocumentTypes'
 import { generateTailoredResume } from '@/lib/generateTailoredResume'
 import { createServerClient } from '@/lib/supabaseServer'
 import { createRouteClient } from '@/lib/supabaseRouteClient'
@@ -54,6 +55,23 @@ export async function POST(req) {
     }
     if (!resumeText) {
       return NextResponse.json({ error: 'Please upload or paste a resume.' }, { status: 400 })
+    }
+
+    // Catch the "wrong document in the wrong box" mistake before scoring
+    // anything — e.g. a résumé pasted into the job description field. Only
+    // blocks on a confident mismatch; see validateDocumentTypes.js.
+    const { jobDescriptionLooksLikeResume, resumeLooksLikeJobDescription } =
+      await checkDocumentTypes({ jobDescriptionText, resumeText })
+
+    if (jobDescriptionLooksLikeResume) {
+      return NextResponse.json({
+        error: 'The job description you added looks like a résumé, not a job posting — please check you added the right one.',
+      }, { status: 400 })
+    }
+    if (resumeLooksLikeJobDescription) {
+      return NextResponse.json({
+        error: 'The résumé you added looks like a job posting, not a résumé — please check you added the right one.',
+      }, { status: 400 })
     }
 
     const tailored = await generateTailoredResume({ resumeText, jobDescription: jobDescriptionText, positionTitle, orgName })
