@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
         <body className="min-h-full flex flex-col">{children}
         <VersionBadge />
         <Analytics />
-        
+
         <SpeedInsights />
                 <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-S6XY4Y1J22"
@@ -45,6 +45,7 @@ export default function RootLayout({ children }) {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-S6XY4Y1J22');
+            gtag('config', 'AW-18456706210');
           `}
         </Script>
       </body>
