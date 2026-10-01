@@ -27,6 +27,7 @@ export async function POST(req) {
     const jobTitle = formData.get('jobTitle')
     const orgName = formData.get('orgName')
     const jobDescription = formData.get('jobDescription')
+    const jobDescriptionFile = formData.get('jobDescriptionFile')
     const resumeFile = formData.get('resumeFile')
     const coverLetterFile = formData.get('coverLetterFile')
 
@@ -42,8 +43,22 @@ export async function POST(req) {
     const roleIsNYC = formData.get('roleIsNYC') === 'true'
     // ---------------------------------------------------------------------
 
-    if (!resumeFile || !jobDescription) {
-      return NextResponse.json({ error: 'Job description and candidate resume are both required.' }, { status: 400 })
+    // Required fields — enforced here too, not just client-side, since this
+    // route can be called directly (e.g. by a script) bypassing the UI.
+    if (!jobTitle || !jobTitle.trim()) {
+      return NextResponse.json({ error: 'Please enter the job title.' }, { status: 400 })
+    }
+    if (!orgName || !orgName.trim()) {
+      return NextResponse.json({ error: 'Please enter the organization name.' }, { status: 400 })
+    }
+    if (!roleCountry) {
+      return NextResponse.json({ error: 'Please select where this role is located.' }, { status: 400 })
+    }
+    if (!resumeFile) {
+      return NextResponse.json({ error: "Please upload the candidate's résumé." }, { status: 400 })
+    }
+    if (!jobDescription && !(jobDescriptionFile && jobDescriptionFile.size > 0)) {
+      return NextResponse.json({ error: 'Please upload or paste the job description.' }, { status: 400 })
     }
 
     if (!lawfulBasisConfirmed) {
@@ -79,11 +94,23 @@ export async function POST(req) {
       ? await extractResumeText(coverLetterFile)
       : ''
 
+    // Job description: an uploaded PDF/DOCX file takes priority over pasted
+    // text, same pattern as the résumé handling above.
+    let jobDescriptionText = jobDescription || ''
+    if (jobDescriptionFile && jobDescriptionFile.size > 0) {
+      jobDescriptionText = await extractResumeText(jobDescriptionFile)
+    }
+
     // Catch the "wrong document in the wrong box" mistake before evaluating
     // a candidate on it — e.g. a résumé pasted into the job description
-    // field. Only blocks on a confident mismatch; see validateDocumentTypes.js.
-    const { jobDescriptionLooksLikeResume, resumeLooksLikeJobDescription } =
-      await checkDocumentTypes({ jobDescriptionText: jobDescription, resumeText })
+    // field, or the résumé and cover letter swapped. Only blocks on a
+    // confident mismatch; see validateDocumentTypes.js.
+    const {
+      jobDescriptionLooksLikeResume,
+      resumeLooksLikeJobDescription,
+      resumeLooksLikeCoverLetter,
+      coverLetterLooksLikeResume,
+    } = await checkDocumentTypes({ jobDescriptionText, resumeText, coverLetterText })
 
     if (jobDescriptionLooksLikeResume) {
       return NextResponse.json({
@@ -95,15 +122,25 @@ export async function POST(req) {
         error: "The candidate's résumé looks like a job posting, not a résumé — please check you uploaded the right file.",
       }, { status: 400 })
     }
+    if (resumeLooksLikeCoverLetter) {
+      return NextResponse.json({
+        error: "The file uploaded as the candidate's résumé looks like a cover letter, not a résumé — please check you uploaded the right file.",
+      }, { status: 400 })
+    }
+    if (coverLetterLooksLikeResume) {
+      return NextResponse.json({
+        error: "The file uploaded as the candidate's cover letter looks like a résumé, not a cover letter — please check you uploaded the right file.",
+      }, { status: 400 })
+    }
 
-    const result = await generateHRAnalysis({ resumeText, coverLetterText, jobDescription, jobTitle, orgName })
+    const result = await generateHRAnalysis({ resumeText, coverLetterText, jobDescription: jobDescriptionText, jobTitle, orgName })
 
     const { data, error } = await supabase.from('hr_evaluations').insert({
       user_id: user.id,
       candidate_name: result.candidate_name,
       job_title: jobTitle,
       organization_name: orgName,
-      job_description: jobDescription,
+      job_description: jobDescriptionText,
       candidate_resume_text: resumeText,
       candidate_cover_letter_text: coverLetterText,
       result_json: result,

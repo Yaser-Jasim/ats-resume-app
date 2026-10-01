@@ -29,7 +29,7 @@ export default function RoleLocationField({ value, onChange }) {
     <div className="space-y-3">
       <div>
         <label className="block text-sm font-medium text-ink mb-1">
-          Where is this role located?
+          Where is this role located? <span className="text-red-500">*</span>
         </label>
         <select
           value={local.country}

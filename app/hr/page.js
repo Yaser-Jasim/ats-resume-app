@@ -12,6 +12,11 @@ import RoleLocationField from '@/components/RoleLocationField'
 import { createClient } from '@/lib/supabaseClient'
 import { UploadCloud, FileText } from 'lucide-react'
 
+const JOB_DESCRIPTION_ACCEPT = {
+  'application/pdf': ['.pdf'],
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document': ['.docx'],
+}
+
 function FileDrop({ label, file, setFile }) {
   const onDrop = useCallback(files => setFile(files[0]), [setFile])
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -52,6 +57,7 @@ export default function HRPage() {
   const [jobTitle, setJobTitle] = useState('')
   const [orgName, setOrgName] = useState('')
   const [jobDescription, setJobDescription] = useState('')
+  const [jobDescriptionFile, setJobDescriptionFile] = useState(null)
   const [resumeFile, setResumeFile] = useState(null)
   const [coverLetterFile, setCoverLetterFile] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -63,6 +69,15 @@ export default function HRPage() {
   const [roleLocation, setRoleLocation] = useState({ country: '', state: '', isNYC: false })
   const [consent, setConsent] = useState({ lawfulBasisConfirmed: false, candidateOptedOut: false, canSubmit: false })
   // ---------------------------------------------------------------------
+
+  const onDropJobDescription = useCallback(files => setJobDescriptionFile(files[0]), [])
+  const { getInputProps: getJobDescriptionInputProps, open: openJobDescriptionPicker } = useDropzone({
+    onDrop: onDropJobDescription,
+    accept: JOB_DESCRIPTION_ACCEPT,
+    maxFiles: 1,
+    noClick: true,
+    noKeyboard: true,
+  })
 
   useEffect(() => {
     async function check() {
@@ -92,8 +107,28 @@ export default function HRPage() {
     setLoading(true)
     setErrorMsg('')
 
-    if (!jobDescription || !resumeFile) {
-      setErrorMsg('Job description and candidate resume are both required.')
+    if (!jobTitle.trim()) {
+      setErrorMsg('Please enter the job title.')
+      setLoading(false)
+      return
+    }
+    if (!orgName.trim()) {
+      setErrorMsg('Please enter the organization name.')
+      setLoading(false)
+      return
+    }
+    if (!roleLocation.country) {
+      setErrorMsg('Please select where this role is located.')
+      setLoading(false)
+      return
+    }
+    if (!resumeFile) {
+      setErrorMsg("Please upload the candidate's résumé.")
+      setLoading(false)
+      return
+    }
+    if (!jobDescriptionFile && !jobDescription.trim()) {
+      setErrorMsg('Please upload or paste the job description.')
       setLoading(false)
       return
     }
@@ -116,6 +151,7 @@ export default function HRPage() {
     formData.append('jobTitle', jobTitle)
     formData.append('orgName', orgName)
     formData.append('jobDescription', jobDescription)
+    if (jobDescriptionFile) formData.append('jobDescriptionFile', jobDescriptionFile)
     formData.append('resumeFile', resumeFile)
     if (coverLetterFile) formData.append('coverLetterFile', coverLetterFile)
     formData.append('lawfulBasisConfirmed', String(consent.lawfulBasisConfirmed))
@@ -186,17 +222,39 @@ export default function HRPage() {
         <h1 className="font-display text-2xl text-ink mb-1">For HR Managers</h1>
         <p className="text-sm text-gray-600 mb-6">Upload a candidate's resume (and cover letter, if you have one) alongside the job posting — you'll get an ATS score, a manager-fit score, and a breakdown of strengths, gaps, and anything worth double-checking before an interview.</p>
 
-        <div className="flex gap-4 mb-4">
-          <Input placeholder="Job title" value={jobTitle} onChange={e => setJobTitle(e.target.value)} />
-          <Input placeholder="Organization name" value={orgName} onChange={e => setOrgName(e.target.value)} />
+        <div className="flex flex-col sm:flex-row gap-4 mb-4">
+          <div className="flex-1">
+            <label className="text-sm font-medium text-ink">Job title <span className="text-red-500">*</span></label>
+            <Input className="mt-1.5" placeholder="e.g. Senior Product Manager"
+                   value={jobTitle} onChange={e => setJobTitle(e.target.value)} required />
+          </div>
+          <div className="flex-1">
+            <label className="text-sm font-medium text-ink">Organization name <span className="text-red-500">*</span></label>
+            <Input className="mt-1.5" placeholder="e.g. Acme Inc."
+                   value={orgName} onChange={e => setOrgName(e.target.value)} required />
+          </div>
         </div>
 
         <div className="mb-6">
           <RoleLocationField value={roleLocation} onChange={setRoleLocation} />
         </div>
 
-        <label className="text-sm font-medium text-ink">Job description / requirements</label>
-        <Textarea className="h-32 mt-1.5 mb-6" value={jobDescription} onChange={e => setJobDescription(e.target.value)} />
+        <div className="flex items-center gap-3 mb-1.5">
+          <label className="text-sm font-medium text-ink">Job description / requirements <span className="text-red-500">*</span></label>
+          <Button type="button" onClick={openJobDescriptionPicker}>
+            Upload
+          </Button>
+          <input {...getJobDescriptionInputProps()} />
+        </div>
+        {jobDescriptionFile && (
+          <div className="flex items-center gap-2 text-ink text-sm mb-1.5">
+            <FileText className="w-4 h-4 text-brand" />
+            {jobDescriptionFile.name}
+          </div>
+        )}
+        <Textarea className="h-32 mt-1.5 mb-6" value={jobDescription} onChange={e => setJobDescription(e.target.value)}
+                  disabled={!!jobDescriptionFile}
+                  placeholder={jobDescriptionFile ? '' : 'Or paste the job posting text here instead'} />
 
         <div className="mb-6">
           <FileDrop label="Candidate's résumé (required)" file={resumeFile} setFile={setResumeFile} />
