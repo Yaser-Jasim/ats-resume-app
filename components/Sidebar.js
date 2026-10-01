@@ -131,14 +131,14 @@ export default function Sidebar() {
         </div>
         <div className={collapsed ? 'md:hidden' : ''}>
           <AccountMenu />
-          <p className="text-[10px] text-gray-400 text-center mt-2 px-2">Resemy Solutions (Resemy) is a registered business in British Columbia, Canada.</p>
+          <p className="text-[10px] text-gray-400 text-left mt-2 px-2">Resemy Solutions (Resemy) is a registered business in British Columbia, Canada.</p>
           <a href={ORGBOOK_URL} target="_blank" rel="noopener noreferrer"
-             className="flex items-center justify-center gap-1 text-[10px] text-gray-400 hover:text-ink mt-1 px-2 transition-colors">
+             className="flex items-center justify-start gap-1 text-[10px] text-gray-400 hover:text-ink mt-1 px-2 transition-colors">
             Verify business registration
             <ExternalLink className="w-2.5 h-2.5" />
           </a>
-          <p className="text-[10px] text-gray-400 text-center mt-2 px-2">© {new Date().getFullYear()} Resemy Solutions. All rights reserved.</p>
-          <p className="text-[10px] text-gray-400 text-center mt-1 px-2">Resemy™ is a product of Resemy Solutions.</p>
+          <p className="text-[10px] text-gray-400 text-left mt-2 px-2">© {new Date().getFullYear()} Resemy Solutions. All rights reserved.</p>
+          <p className="text-[10px] text-gray-400 text-left mt-1 px-2">Resemy™ is a product of Resemy Solutions.</p>
         </div>
       </aside>
     </>
