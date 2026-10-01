@@ -5,7 +5,11 @@ import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabaseClient'
 import Avatar from '@/components/ui/Avatar'
 import ResemyLogo from '@/components/ui/ResemyLogo'
-import { ChevronDown, Menu, X, Home, PanelLeftClose, PanelLeftOpen } from 'lucide-react'
+import { ChevronDown, Menu, X, Home, PanelLeftClose, PanelLeftOpen, ExternalLink } from 'lucide-react'
+
+// Public BC Registries record for Resemy Solutions — linked from the
+// sidebar disclaimer so anyone can verify the registration themselves.
+const ORGBOOK_URL = 'https://orgbook.gov.bc.ca/entity/FM1119584/type/registration.registries.ca'
 
 const items = [
   { label: 'New', href: '/app' },
@@ -128,6 +132,13 @@ export default function Sidebar() {
         <div className={collapsed ? 'md:hidden' : ''}>
           <AccountMenu />
           <p className="text-[10px] text-gray-400 text-center mt-2 px-2">Resemy Solutions (Resemy) is a registered business in British Columbia, Canada.</p>
+          <a href={ORGBOOK_URL} target="_blank" rel="noopener noreferrer"
+             className="flex items-center justify-center gap-1 text-[10px] text-gray-400 hover:text-ink mt-1 px-2 transition-colors">
+            Verify business registration
+            <ExternalLink className="w-2.5 h-2.5" />
+          </a>
+          <p className="text-[10px] text-gray-400 text-center mt-2 px-2">© {new Date().getFullYear()} Resemy Solutions. All rights reserved.</p>
+          <p className="text-[10px] text-gray-400 text-center mt-1 px-2">Resemy™ is a product of Resemy Solutions.</p>
         </div>
       </aside>
     </>
