@@ -24,7 +24,12 @@ export default function LoginPage() {
     if (needsAgreement && !agreed) return
       await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: `${window.location.origin}/auth/callback?next=/app` },
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback?next=/app`,
+        // Always show Google's account picker. Without this, Google silently
+        // reuses whichever account the browser is already signed in with.
+        queryParams: { prompt: 'select_account' },
+      },
     })
   }
 
