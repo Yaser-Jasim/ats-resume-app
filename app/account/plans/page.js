@@ -38,6 +38,7 @@ export default function PlansPage() {
   const [userId, setUserId] = useState(null)
   const [currentPlan, setCurrentPlan] = useState('free')
   const [loadingPlan, setLoadingPlan] = useState(null)
+  const [portalLoading, setPortalLoading] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const supabase = createClient()
 
@@ -56,6 +57,7 @@ export default function PlansPage() {
     function handlePageShow(event) {
       if (event.persisted) {
         setLoadingPlan(null)
+        setPortalLoading(false)
       }
     }
     window.addEventListener('pageshow', handlePageShow)
@@ -75,7 +77,9 @@ export default function PlansPage() {
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId: plan.priceId, userId }),
+        // The server works out who is paying from the login session, so the
+        // user ID is deliberately not sent from here.
+        body: JSON.stringify({ priceId: plan.priceId }),
       })
       const data = await res.json()
       if (!res.ok || !data.url) {
@@ -87,6 +91,25 @@ export default function PlansPage() {
     } catch (err) {
       alert('Something went wrong: ' + err.message)
       setLoadingPlan(null)
+    }
+  }
+
+  // Opens Stripe's billing portal: cancel, update card, download invoices.
+  async function openPortal() {
+    if (!userId) { alert('Please log in first.'); return }
+    setPortalLoading(true)
+    try {
+      const res = await fetch('/api/billing-portal', { method: 'POST' })
+      const data = await res.json()
+      if (!res.ok || !data.url) {
+        alert(data.error || 'Could not open subscription management.')
+        setPortalLoading(false)
+        return
+      }
+      window.location.href = data.url
+    } catch (err) {
+      alert('Something went wrong: ' + err.message)
+      setPortalLoading(false)
     }
   }
 
@@ -144,13 +167,25 @@ export default function PlansPage() {
               ) : (
                 <button onClick={() => subscribe(plan)} disabled={loadingPlan === plan.id}
                   className="inline-flex items-center justify-center gap-2 rounded-xl py-2.5 text-sm font-medium text-white bg-gradient-to-b from-orange-400 to-orange-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-2px_0_rgba(0,0,0,0.15),0_6px_14px_-4px_rgba(234,88,12,0.5)] hover:from-orange-500 hover:to-orange-700 active:translate-y-px active:shadow-[inset_0_1px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(0,0,0,0.15),0_2px_6px_-2px_rgba(234,88,12,0.5)] transition-all disabled:opacity-50">
-                  {loadingPlan === plan.id ? 'Redirecting…' : `Get ${plan.name}`}
+                  {loadingPlan === plan.id
+                    ? 'Redirecting…'
+                    : currentPlan !== 'free' ? `Switch to ${plan.name}` : `Get ${plan.name}`}
                 </button>
               )}
             </div>
           )
         })}
       </div>
+
+      {currentPlan !== 'free' && (
+        <div className="mt-8 text-center">
+          <button onClick={openPortal} disabled={portalLoading}
+            className="rounded-xl border border-gray-200 px-5 py-2.5 text-sm font-medium text-ink hover:bg-mist transition-colors disabled:opacity-50">
+            {portalLoading ? 'Opening…' : 'Manage subscription'}
+          </button>
+          <p className="text-xs text-gray-500 mt-2">Cancel anytime, update your payment method, and download invoices.</p>
+        </div>
+      )}
     </div>
   )
 }
