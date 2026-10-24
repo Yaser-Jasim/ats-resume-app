@@ -11,6 +11,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [agreed, setAgreed] = useState(false)
+  const [agreeError, setAgreeError] = useState(false)
   const [error, setError] = useState('')
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(false)
@@ -20,9 +21,23 @@ export default function LoginPage() {
   const needsAgreement = mode === 'signup'
   const missingName = mode === 'signup' && (!firstName.trim() || !lastName.trim())
 
+  // Signing up still requires agreeing to the Terms. Instead of silently
+  // greying the buttons out, explain what is missing and highlight the box.
+  function requireAgreement() {
+    if (needsAgreement && !agreed) {
+      setAgreeError(true)
+      setMessage('')
+      setError('Please tick the box to agree to the Terms of Service and Privacy Policy to continue.')
+      return false
+    }
+    return true
+  }
+
   async function signInWithGoogle() {
-    if (needsAgreement && !agreed) return
-      await supabase.auth.signInWithOAuth({
+    setError('')
+    setMessage('')
+    if (!requireAgreement()) return
+    await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
         redirectTo: `${window.location.origin}/auth/callback?next=/app`,
@@ -36,7 +51,7 @@ export default function LoginPage() {
   async function handleEmailSubmit() {
     setError('')
     setMessage('')
-        if (needsAgreement && !agreed) return
+    if (!requireAgreement()) return
     if (missingName) { setError('Please enter your first and last name.'); return }
     setLoading(true)
 
@@ -74,13 +89,13 @@ export default function LoginPage() {
 
       <div className="flex rounded-xl border border-gray-200 p-1 bg-mist">
         <button
-          onClick={() => { setMode('signup'); setError(''); setMessage('') }}
+          onClick={() => { setMode('signup'); setError(''); setMessage(''); setAgreeError(false) }}
           className={`flex-1 rounded-lg py-2 text-sm font-medium transition-all ${mode === 'signup' ? 'bg-white shadow text-ink' : 'text-gray-500'}`}
         >
           Sign Up
         </button>
         <button
-          onClick={() => { setMode('login'); setError(''); setMessage('') }}
+          onClick={() => { setMode('login'); setError(''); setMessage(''); setAgreeError(false) }}
           className={`flex-1 rounded-lg py-2 text-sm font-medium transition-all ${mode === 'login' ? 'bg-white shadow text-ink' : 'text-gray-500'}`}
         >
           Log In
@@ -97,11 +112,14 @@ export default function LoginPage() {
       <input className="border p-2 w-full rounded" placeholder="Password" type="password" value={password} onChange={e => setPassword(e.target.value)} />
 
       {needsAgreement && (
-        <label className="flex items-start gap-2 text-xs text-gray-600">
+        <label className={`flex items-start gap-2 text-xs ${agreeError && !agreed ? 'text-red-600' : 'text-gray-600'}`}>
           <input
             type="checkbox"
             checked={agreed}
-            onChange={e => setAgreed(e.target.checked)}
+            onChange={e => {
+              setAgreed(e.target.checked)
+              if (e.target.checked && agreeError) { setAgreeError(false); setError('') }
+            }}
             className="mt-0.5"
           />
           <span>
@@ -116,12 +134,12 @@ export default function LoginPage() {
       {error && <p className="text-red-600 text-sm">{error}</p>}
       {message && <p className="text-green-700 text-sm">{message}</p>}
 
-        <button onClick={handleEmailSubmit} disabled={(needsAgreement && !agreed) || missingName || loading}
+        <button onClick={handleEmailSubmit} disabled={loading}
               className="w-full inline-flex items-center justify-center gap-2 rounded-xl py-2.5 text-sm font-medium text-white bg-gradient-to-b from-orange-400 to-orange-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-2px_0_rgba(0,0,0,0.15),0_6px_14px_-4px_rgba(234,88,12,0.5)] hover:from-orange-500 hover:to-orange-700 active:translate-y-px active:shadow-[inset_0_1px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(0,0,0,0.15),0_2px_6px_-2px_rgba(234,88,12,0.5)] transition-all disabled:opacity-40 disabled:cursor-not-allowed">
         {loading ? 'Please wait…' : mode === 'signup' ? 'Create account' : 'Log in'}
       </button>
-      <button onClick={signInWithGoogle} disabled={needsAgreement && !agreed}
-              className="border rounded p-2 w-full disabled:opacity-40 disabled:cursor-not-allowed">
+      <button onClick={signInWithGoogle}
+              className="border rounded p-2 w-full">
         Continue with Google
       </button>
     </div>
